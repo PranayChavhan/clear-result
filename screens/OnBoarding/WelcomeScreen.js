@@ -7,11 +7,11 @@ import {
   ImageBackground,
   TouchableWithoutFeedback
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import TopBar from "../../components/TopBar";
 import Logo from "../../assets/images/cr_logo_auth.png";
 import Screen from "../../components/Screen";
+import colors from "../../constants/colors";
 
 export default function WelcomeScreen() {
   const navigation = useNavigation();
@@ -41,7 +41,7 @@ export default function WelcomeScreen() {
       setCurrentPage(currentPage + 1);
     } else {
 
-      navigation.navigate("SignUp");
+      navigation.navigate("Signup");
     }
   };
 
@@ -54,48 +54,52 @@ export default function WelcomeScreen() {
     <Screen>
       <TopBar logo={Logo} />
 
-      <View className=" h-full flex flex-col justify-center gap-4">
+      <View className=" h-full flex flex-col justify-center gap-4 px-4">
 
-        <View className="absolute right-0 top-10">
+        <View className="absolute right-[16px] top-10">
           <TouchableWithoutFeedback onPress={handleSkip}>
-            <Text className={`text-[14px] font-medium text-[#2F80ED] underline text-lg`}>Skip</Text>
+            <Text className={`text-[14px] font-medium text-[${colors.primary}] underline`}>Skip</Text>
           </TouchableWithoutFeedback>
         </View>
 
 
 
-        <ImageBackground
+<View className="flex flex-row justify-center items-center">
+
+<ImageBackground
           source={require("../../assets/images/HeroVector.png")}
-          style={{ width: 370, height: 300 }}
+          style={{ width: 310, height: 240 }}
+          
         >
-          <Image source={pages[currentPage - 1].image} className="w-[100%]" />
+          <Image source={pages[currentPage - 1].image} className=" flex flex-row w-full items-center justify-center" />
         </ImageBackground>
 
-        <View className="flex flex-col items-center gap-4 ">
-          <Text className="text-[14px] font-medium">
+</View>
+        <View className="flex flex-col items-center justify-center">
+          <Text className="text-[14px] font-medium mb-2">
             {pages[currentPage - 1].title}
           </Text>
-          <Text className="text-[12px] font-normal text-[#828282]">
+          <Text className="text-[12px] font-normal text-[#828282] mb-16 text-wrap text-center px-10">
             {pages[currentPage - 1].description}
           </Text>
 
-          {/* <View className="flex flex-row gap-1 items-center justify-center">
+          <View className="flex flex-row gap-1 items-center justify-center mb-4">
             {pages.map((_, index) => (
               <Image
                 key={index}
                 source={currentPage === index + 1 ? require('../../assets/icons/rdot.png') : require('../../assets/icons/dot.png')}
-              // style={{ width: 20, height: 20 }} 
+              
               />
             ))}
-          </View> */}
+          </View>
         </View>
 
         <TouchableOpacity
           onPress={handleContinue}
-          className="py-3 bg-[#2F80ED]   rounded-xl"
+          className={`py-3 bg-[${colors.primary}]   rounded-xl`}
         >
           <Text className="text-[14px] font-semibold text-center text-white">
-            {currentPage < pages.length ? "Continue" : "Sign Up"}
+            {currentPage < pages.length ? "Continue" : "Signup"}
           </Text>
         </TouchableOpacity>
       </View>
