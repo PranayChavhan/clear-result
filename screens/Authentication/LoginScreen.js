@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   TextInput,
   TouchableWithoutFeedback,
@@ -12,6 +11,9 @@ import TopBar from "../../components/TopBar";
 import Logo from "../../assets/images/cr_logo_auth.png";
 import Screen from "../../components/Screen";
 import colors from "../../constants/colors";
+
+import IcFacebook from "../../assets/icons/ic_facebook.svg";
+import IcGoogle from "../../assets/icons/ic_google.svg";
 
 const InputFeild = ({
   placeholder,
@@ -33,18 +35,19 @@ const InputFeild = ({
     </View>
   );
 };
-export default function SignupScreen() {
+export default function LoginScreen() {
   const navigation = useNavigation();
   const [password, setPassword] = useState("");
-  const [company, setCompany] = useState("");
-const [contactName, setContactName] = useState("");
-  const [email, setEmail] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
-  const handleLogin = () => {
-    navigation.navigate("Login");
+  const [emailOrPass, setEmailOrPass] = useState("");
+  const handleSignup = () => {
+    navigation.navigate("Signup");
   };
 
-  const handleSignup = () => {};
+  const handleLogin = () => {};
+
+  const handleForgetPassword = () =>{
+    navigation.navigate("ForgetPassword");
+  }
 
   return (
     <Screen>
@@ -52,76 +55,34 @@ const [contactName, setContactName] = useState("");
 
       <View className="px-4">
         <View className="absolute right-[16px] top-5">
-          <TouchableWithoutFeedback onPress={handleLogin}>
+          <TouchableWithoutFeedback onPress={handleSignup}>
             <Text
               className={`text-[16px] font-medium text-[${colors.primary}] underline`}
             >
-              Login
+              Signup
             </Text>
           </TouchableWithoutFeedback>
         </View>
 
-        <View className=" flex flex-col justify-center h-full gap-7">
+     <View className="">
+     <View className=" flex flex-col justify-center h-full  gap-7">
           <Text className={`text-[18px] text-[${colors.primary}] font-medium`}>
-            Get Started with ClearResult
-          </Text>
-          <Text className="text-[14px] font-normal text-[#333333]">
-            Please register to continue
+            Welcome!
           </Text>
          <View>
 
          <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Store/Company Name
+            Email ID/ Mobile Number
           </Text>
           <InputFeild
-            placeholder="Enter the store/company name"
-            value={company}
-            onChangeText={(text) => setCompany(text)}
+            placeholder="olivia@untitledui.com"
+            value={emailOrPass}
+            onChangeText={(text) => setEmailOrPass(text)}
             secureTextEntry={false}
           />
 
          </View>
 
-         <View>
-
-<Text className="text-[14px] font-medium text-[#828282] mb-2">
-   Cantact Name
- </Text>
- <InputFeild
-   placeholder="Enter the name"
-   value={contactName}
-   onChangeText={(text) => setContactName(text)}
-   secureTextEntry={false}
- />
-
-</View>
-         <View>
-
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Mobile Number
-          </Text>
-
-          <InputFeild
-            placeholder="Enter the mobile number"
-            value={contactNumber}
-            onChangeText={(text) => setContactNumber(text)}
-            keyboardType="phone-pad"
-          />
-         </View>
-
-         <View>
-
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Email ID/Username
-          </Text>
-          <InputFeild
-            placeholder="Enter the email ID/username"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            keyboardType="email-address"
-          />
-
-         </View>
          
          <View>
 
@@ -137,14 +98,32 @@ const [contactName, setContactName] = useState("");
          </View>
 
           <TouchableOpacity
-            onPress={handleSignup}
+            onPress={handleLogin}
             className={`py-3 bg-[${colors.primary}]   rounded-lg`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
-              Signup
+              Login
             </Text>
           </TouchableOpacity>
+
+          <View className="flex flex-col items-center justify-center">
+            <Text className="text-[14px] font-normal text-[#333333] mb-4">or login with</Text>
+
+            <View className="flex flex-row gap-2 mb-6">
+                <IcFacebook/>
+                <IcGoogle/>
+            </View>
+
+             <TouchableWithoutFeedback onPress={handleForgetPassword}>
+            <Text
+              className={`text-[14px] font-medium text-[${colors.primary}] underline`}
+            >
+              Forget Password
+            </Text>
+          </TouchableWithoutFeedback>            
+          </View>
         </View>
+     </View>
       </View>
     </Screen>
   );
