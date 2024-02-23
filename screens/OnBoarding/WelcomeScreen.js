@@ -5,13 +5,13 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-import colors from "../../constants/colors";
-import IcNavigation from "../../assets/icons/ic_notification.svg";
 import TopBar from "../../components/TopBar";
+import Logo from "../../assets/images/cr_logo_auth.png";
+import Screen from "../../components/Screen";
 
 export default function WelcomeScreen() {
   const navigation = useNavigation();
@@ -44,54 +44,61 @@ export default function WelcomeScreen() {
       navigation.navigate("SignUp");
     }
   };
+
   const handleSkip = () => {
-    navigation.navigate("Dashboard/Home");
+    setCurrentPage(3);
   };
 
 
-
   return (
-    <SafeAreaView className="">
-      <View className="p-4">
+    <Screen>
+      <TopBar logo={Logo} />
 
-        <View className=" h-full flex flex-col justify-center gap-4 relative">
-          <View className="absolute right-0 top-10">
-            <TouchableWithoutFeedback onPress={handleSkip}>
-              <Text className={`text-[12px] font-normal text-blue-500 underline text-lg`}>Skip</Text>
-            </TouchableWithoutFeedback>
-          </View>
-          <ImageBackground
-            source={require("../../assets/images/HeroVector.png")}
-            style={{ width: 370, height: 300 }}
-          >
-            <Image source={pages[currentPage - 1].image} className="w-[100%]" />
-          </ImageBackground>
+      <View className=" h-full flex flex-col justify-center gap-4">
 
-          <View className="flex flex-col items-center gap-4 ">
-            <Text className="text-[14px] font-medium">
-              {pages[currentPage - 1].title}
-            </Text>
-            <Text className="text-[12px] font-normal text-[#828282]">
-              {pages[currentPage - 1].description}
-            </Text>
-
-            <View className="flex flex-row">
-              {pages.map((_, index) => (
-                <Text key={index}>{currentPage === index + 1 ? "●" : "○"}</Text>
-              ))}
-            </View>
-          </View>
-
-          <TouchableOpacity
-            onPress={handleContinue}
-            className="py-3 bg-[#2F80ED]   rounded-xl"
-          >
-            <Text className="text-[14px] font-semibold text-center text-white">
-              {currentPage < pages.length ? "Continue" : "Sign Up"}
-            </Text>
-          </TouchableOpacity>
+        <View className="absolute right-0 top-10">
+          <TouchableWithoutFeedback onPress={handleSkip}>
+            <Text className={`text-[14px] font-medium text-[#2F80ED] underline text-lg`}>Skip</Text>
+          </TouchableWithoutFeedback>
         </View>
+
+
+
+        <ImageBackground
+          source={require("../../assets/images/HeroVector.png")}
+          style={{ width: 370, height: 300 }}
+        >
+          <Image source={pages[currentPage - 1].image} className="w-[100%]" />
+        </ImageBackground>
+
+        <View className="flex flex-col items-center gap-4 ">
+          <Text className="text-[14px] font-medium">
+            {pages[currentPage - 1].title}
+          </Text>
+          <Text className="text-[12px] font-normal text-[#828282]">
+            {pages[currentPage - 1].description}
+          </Text>
+
+          {/* <View className="flex flex-row gap-1 items-center justify-center">
+            {pages.map((_, index) => (
+              <Image
+                key={index}
+                source={currentPage === index + 1 ? require('../../assets/icons/rdot.png') : require('../../assets/icons/dot.png')}
+              // style={{ width: 20, height: 20 }} 
+              />
+            ))}
+          </View> */}
+        </View>
+
+        <TouchableOpacity
+          onPress={handleContinue}
+          className="py-3 bg-[#2F80ED]   rounded-xl"
+        >
+          <Text className="text-[14px] font-semibold text-center text-white">
+            {currentPage < pages.length ? "Continue" : "Sign Up"}
+          </Text>
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </Screen>
   );
 }
