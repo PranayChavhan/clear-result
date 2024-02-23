@@ -76,15 +76,15 @@ export default function WelcomeScreen() {
             <Image source={pages[currentPage - 1].image} className="w-[100%]" />
           </ImageBackground>
 
-          <View className="flex flex-col items-center gap-4 ">
-            <Text className="text-[14px] font-medium">
+          <View className="flex flex-col items-center justify-center">
+            <Text className="text-[14px] font-medium mb-2">
               {pages[currentPage - 1].title}
             </Text>
-            <Text className="text-[12px] font-normal text-[#828282]">
+            <Text className="text-[12px] font-normal text-[#828282] mb-3">
               {pages[currentPage - 1].description}
             </Text>
 
-            <View className="flex flex-row gap-1 items-center justify-center">
+            <View className="flex flex-row gap-1 items-center justify-center w-full">
               {pages.map((_, index) => (
                 <Image 
                 key={index} 
