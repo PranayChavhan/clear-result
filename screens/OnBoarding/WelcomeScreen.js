@@ -9,6 +9,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import colors from "../../constants/colors";
+import IcNavigation from "../../assets/icons/ic_notification.svg";
+import TopBar from "../../components/TopBar";
 
 export default function WelcomeScreen() {
   const navigation = useNavigation();
@@ -37,7 +40,7 @@ export default function WelcomeScreen() {
     if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     } else {
-     
+
       navigation.navigate("SignUp");
     }
   };
