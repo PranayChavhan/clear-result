@@ -4,13 +4,13 @@ import IcNotification from "../assets/icons/ic_notification.svg"
 import IcMenu from "../assets/icons/ic_menu.svg"
 
 
-const TopBar = () => {
+const TopBar = ({ logo }) => {
     return (
-        <View className="flex flex-row items-center justify-between px-4 py-2 bg-blue-200">
-            <View className="w-8 h-8 flex items-center justify-center border-gray-500 rounded-lg border ">
-                <IcMenu />
+        <View className="flex flex-row items-center justify-between px-4 py-2 ">
+            <View className="w-8 h-8 flex items-center justify-center  ">
+                <IcMenu width={20} height={20} />
             </View>
-            <Text>Logo</Text>
+            <Image source={logo} className="h-10 object-contain" />
             <TouchableOpacity
                 onPress={() => navigation.navigate("Login")}
                 className="m-0 p-0"
