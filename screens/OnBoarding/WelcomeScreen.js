@@ -5,9 +5,13 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import colors from "../../constants/colors";
+import IcNavigation from "../../assets/icons/ic_notification.svg";
+import TopBar from "../../components/TopBar";
 
 export default function WelcomeScreen() {
   const navigation = useNavigation();
@@ -36,21 +40,26 @@ export default function WelcomeScreen() {
     if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     } else {
-     
+
       navigation.navigate("SignUp");
     }
   };
+  const handleSkip = () => {
+    navigation.navigate("Dashboard/Home");
+  };
+
+
 
   return (
     <SafeAreaView className="">
       <View className="p-4">
-        <View className="flex flex-row items-center justify-between">
-          <Text>icon</Text>
-          <Text>Logo</Text>
-          <Text>notification</Text>
-        </View>
 
-        <View className=" h-full flex flex-col justify-center gap-4">
+        <View className=" h-full flex flex-col justify-center gap-4 relative">
+          <View className="absolute right-0 top-10">
+            <TouchableWithoutFeedback onPress={handleSkip}>
+              <Text className={`text-[12px] font-normal text-blue-500 underline text-lg`}>Skip</Text>
+            </TouchableWithoutFeedback>
+          </View>
           <ImageBackground
             source={require("../../assets/images/HeroVector.png")}
             style={{ width: 370, height: 300 }}
