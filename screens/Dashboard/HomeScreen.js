@@ -1,4 +1,6 @@
+
 import { ScrollView, StyleSheet, TouchableOpacity, Text, View, Platform, ImageBackground } from 'react-native'
+
 import React from 'react'
 import Screen from '../../components/Screen'
 import TopBar from '../../components/TopBar'
@@ -54,4 +56,6 @@ const HomeScreen = () => {
     )
 }
 
+
 export default HomeScreen
+
