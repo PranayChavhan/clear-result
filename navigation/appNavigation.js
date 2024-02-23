@@ -6,6 +6,9 @@ import HomeScreen from '../screens/Dashboard/HomeScreen';
 import SignupScreen from '../screens/Authentication/SignupScreen';
 import LoginScreen from '../screens/Authentication/LoginScreen';
 import ForgetPasswordScreen from '../screens/Authentication/ForgetPasswordScreen';
+import TabNavigation from './tabNavigation';
+import CheckEmailScreen from '../screens/Authentication/CheckEmail';
+import CreatePasswordScreen from '../screens/Authentication/CreatePassword';
 const Stack = createNativeStackNavigator();
 
 
@@ -24,6 +27,15 @@ export default function AppNavigation() {
         
         <Stack.Screen name="ForgetPassword" options={{ headerShown: false }} component={ForgetPasswordScreen} />
         
+
+        <Stack.Screen name="CheckEmail" options={{ headerShown: false }} component={CheckEmailScreen} />
+
+        <Stack.Screen name="CreatePassword" options={{ headerShown: false }} component={CreatePasswordScreen} />
+
+
+
+
+        <Stack.Screen name="Tab" options={{headerShown: false}} component={TabNavigation}  />
       </Stack.Navigator>
     </NavigationContainer>
   )

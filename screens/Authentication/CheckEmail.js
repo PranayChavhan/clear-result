@@ -3,6 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import TopBar from "../../components/TopBar";
@@ -13,7 +14,9 @@ import colors from "../../constants/colors";
 export default function CheckEmailScreen() {
   const navigation = useNavigation();
 
-  const handleEvent = () => {};
+  const handleEvent = () => {
+    navigation.navigate("CreatePassword");
+  };
   const handleConfirmEmail = () =>{};
 
   return (
@@ -28,23 +31,25 @@ export default function CheckEmailScreen() {
           </Text>
 
 
-         <Text className="text-[14px] font-normal text-[#333333] pr-[50px]">
+         <Text className="text-[14px] font-normal text-[#333333] mb-8">
             We have sent you the password recovery instruction to your email.
          </Text>
 
-         <TouchableWithoutFeedback onPress={handleConfirmEmail}>
+      
+       <TouchableWithoutFeedback onPress={handleConfirmEmail}>
             <Text
-              className={`text-[16px] font-medium text-[${colors.primary}] underline`}
+              className={`text-[16px] font-medium text-[#2F80ED] underline text-center w-full`}
             >
               Skip, I'll confirm later
             </Text>
           </TouchableWithoutFeedback>
 
 
+     
          
           <TouchableOpacity
             onPress={handleEvent}
-            className={`py-3 bg-[${colors.primary}]   rounded-lg`}
+            className={`py-3 bg-[#2F80ED]   rounded-lg`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
                 Open Email App

@@ -34,7 +34,9 @@ export default function ForgetPasswordScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
 
-  const handleEvent = () => {};
+  const handleEvent = () => {
+    navigation.navigate("CheckEmail");
+  };
 
   return (
     <Screen>

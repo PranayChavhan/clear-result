@@ -3,13 +3,13 @@ import React from 'react'
 import Screen from '../../components/Screen'
 import TopBar from '../../components/TopBar'
 
-const HomeScreen = () => {
+const CreateScreen = () => {
     return (
         <Screen>
             <TopBar />
-            <Text>HomeScreen</Text>
+            <Text>CreateScreen</Text>
         </Screen>
     )
 }
 
-export default HomeScreen
+export default CreateScreen
