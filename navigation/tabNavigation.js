@@ -12,6 +12,7 @@ import InactiveTasks from "../assets/icons/inactive_tasks.svg";
 import InactiveMeal from "../assets/icons/inactive_meal.svg";
 import InactiveProfile from "../assets/icons/inactive_profile.svg";
 import SearchScreen from "../screens/Tabs/SearchScreen";
+import HomeScreen from "../screens/Dashboard/HomeScreen";
 const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel: false,
@@ -78,7 +79,7 @@ export default function TabNavigation() {
       />
       <Tab.Screen
   name="Search"
-  component={SearchScreen}
+  component={HomeScreen}
   options={{
     tabBarIcon: ({ focused }) => {
       return (
