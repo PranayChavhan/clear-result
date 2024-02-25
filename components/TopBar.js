@@ -12,7 +12,7 @@ const TopBar = ({ logo }) => {
                     <IcMenu width={20} height={20} />
                 </View>
             </TouchableOpacity>
-            <Image source={logo} className="h-10 object-contain" />
+            <Image source={logo} className="object-contain" />
             <TouchableOpacity
                 onPress={() => navigation.navigate("Login")}
                 className="m-0 p-0"

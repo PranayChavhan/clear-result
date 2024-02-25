@@ -5,15 +5,27 @@ import CreateScreen from "../screens/Tabs/CreateScreen";
 import TaskScreen from "../screens/Tabs/TaskScreen";
 import MealPlansScreen from "../screens/Tabs/MealPlansScreen";
 import ProfileScreen from "../screens/Tabs/ProfileScreen";
-import IcFacebook from "../assets/icons/ic_facebook.svg";
 import TabSearch from "../assets/icons/Tab_Search.svg";
 import InactiveCreate from "../assets/icons/inactive_create.svg";
 import InactiveTasks from "../assets/icons/inactive_tasks.svg";
 import InactiveMeal from "../assets/icons/inactive_meal.svg";
 import InactiveProfile from "../assets/icons/inactive_profile.svg";
+import ActiveTasks from "../assets/icons/active_tasks.svg";
 import SearchScreen from "../screens/Tabs/SearchScreen";
 import HomeScreen from "../screens/Dashboard/HomeScreen";
+import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Tab = createBottomTabNavigator();
+const TaskStack = createNativeStackNavigator ();
+
+const TaskStackScreen = () => (
+  <TaskStack.Navigator>
+    <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
+  </TaskStack.Navigator>
+);
+
 const screenOptions = {
   tabBarShowLabel: false,
   headerShown: false,
@@ -41,12 +53,12 @@ export default function TabNavigation() {
                 {focused ? (
                  <View className="flex flex-col items-center gap-1">
                  <InactiveCreate/>
-                 <Text>Create</Text>
+                 <Text >Create</Text>
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
                   <InactiveCreate/>
-                 <Text>Create</Text>
+                 <Text className="text-gray-600">Create</Text>
                   </View>
                 )}
               </View>
@@ -56,20 +68,20 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name="Tasks"
-        component={TaskScreen}
+        component={TaskStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {focused ? (
                    <View className="flex flex-col items-center gap-1">
-                   <InactiveTasks/>
-                  <Text>Tasks</Text>
+                   <ActiveTasks/>
+                  <Text >Tasks</Text>
                    </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
                   <InactiveTasks/>
-                 <Text>Tasks</Text>
+                 <Text className="text-gray-600">Tasks</Text>
                   </View>
                 )}
               </View>
@@ -110,12 +122,12 @@ export default function TabNavigation() {
                 {focused ? (
                    <View className="flex flex-col items-center gap-1">
                    <InactiveMeal/>
-                  <Text>Meal Plans</Text>
+                  <Text >Meal Plans</Text>
                    </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
                   <InactiveMeal/>
-                 <Text>Meal Plans</Text>
+                 <Text className="text-gray-600">Meal Plans</Text>
                   </View>
                 )}
               </View>
@@ -138,7 +150,7 @@ export default function TabNavigation() {
                 ) : (
                   <View className="flex flex-col items-center gap-1">
                   <InactiveProfile />
-                 <Text>Profile</Text>
+                 <Text className="text-gray-600">Profile</Text>
                   </View>
                 )}
               </View>

@@ -5,7 +5,7 @@ import React from 'react'
 import Screen from '../../components/Screen'
 import TopBar from '../../components/TopBar'
 import CrLogo from '../../assets/images/cr_logo.png'
-import IcFilter from '../../assets/icons/ic_filter.svg'
+
 import IcNewsLetter from '../../assets/icons/ic_news_letter.svg'
 import SubscriptionCard from '../../components/SubscriptionCard'
 import NewsLetterCard from '../../components/NewsLetterCard'
