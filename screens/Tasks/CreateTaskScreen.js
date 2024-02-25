@@ -9,6 +9,7 @@ const CreateTaskScreen = () => {
     <TopBar logo={CrLogo}/>
     <View className="px-4">
 
+        <Text>Create Task Screen</Text>
     </View>
 </Screen>
   )
