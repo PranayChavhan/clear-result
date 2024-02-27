@@ -16,6 +16,8 @@ import HomeScreen from "../screens/Dashboard/HomeScreen";
 import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
+import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator ();
 
@@ -23,6 +25,8 @@ const TaskStackScreen = () => (
   <TaskStack.Navigator>
     <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
     <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="SubscriptionPackages" component={SubscriptionScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
   </TaskStack.Navigator>
 );
 
