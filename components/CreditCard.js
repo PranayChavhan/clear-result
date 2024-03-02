@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 import InputFeild from "./InputFeild";
 
-const CreditCard = ({ onFocus, onBlur }) => {
+const CreditCard = () => {
   const [cardNumber, setCardNumber] = useState("");
   return (
     <View>
@@ -15,8 +15,7 @@ const CreditCard = ({ onFocus, onBlur }) => {
           value={cardNumber}
           onChangeText={(text) => setCardNumber(text)}
           keyboardType="phone-pad"
-          onFocus={onFocus}
-          onBlur={onBlur}
+
         />
       </View>
     </View>

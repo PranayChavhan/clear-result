@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "sm-app",
-    "slug": "app-sm",
+    "slug": "v1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,15 +19,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pranaychavhan2012.v1"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "../assets/icon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "ce656bff-a888-4252-8db5-565c9d0d01e8"
+      }
+    },
+    "owner": "clear_result"
   }
 }
