@@ -19,7 +19,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
 import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
 const Tab = createBottomTabNavigator();
-const TaskStack = createNativeStackNavigator ();
+const TaskStack = createNativeStackNavigator();
 
 const TaskStackScreen = () => (
   <TaskStack.Navigator>
@@ -55,14 +55,14 @@ export default function TabNavigation() {
             return (
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {focused ? (
-                 <View className="flex flex-col items-center gap-1">
-                 <InactiveCreate/>
-                 <Text >Create</Text>
+                  <View className="flex flex-col items-center gap-1">
+                    <InactiveCreate />
+                    <Text >Create</Text>
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
-                  <InactiveCreate/>
-                 <Text className="text-gray-600">Create</Text>
+                    <InactiveCreate />
+                    <Text className="text-gray-600">Create</Text>
                   </View>
                 )}
               </View>
@@ -78,14 +78,14 @@ export default function TabNavigation() {
             return (
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {focused ? (
-                   <View className="flex flex-col items-center gap-1">
-                   <ActiveTasks/>
-                  <Text >Tasks</Text>
-                   </View>
+                  <View className="flex flex-col items-center gap-1">
+                    <ActiveTasks />
+                    <Text >Tasks</Text>
+                  </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
-                  <InactiveTasks/>
-                 <Text className="text-gray-600">Tasks</Text>
+                    <InactiveTasks />
+                    <Text className="text-gray-600">Tasks</Text>
                   </View>
                 )}
               </View>
@@ -94,28 +94,28 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-  name="Search"
-  component={HomeScreen}
-  options={{
-    tabBarIcon: ({ focused }) => {
-      return (
-        <View className=" absolute -top-5" >
-          {focused ? (
-            <View className="flex flex-col items-center gap-1">
-              <TabSearch/>
-              
-            </View>
-          ) : (
-            <View className="flex flex-col items-center gap-1">
-              <TabSearch/>
-             
-            </View>
-          )}
-        </View>
-      );
-    },
-  }}
-/>
+        name="Search"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <View className=" absolute -top-5" >
+                {focused ? (
+                  <View className="flex flex-col items-center gap-1">
+                    <TabSearch />
+
+                  </View>
+                ) : (
+                  <View className="flex flex-col items-center gap-1">
+                    <TabSearch />
+
+                  </View>
+                )}
+              </View>
+            );
+          },
+        }}
+      />
       <Tab.Screen
         name="Meal Plans"
         component={MealPlansScreen}
@@ -124,14 +124,14 @@ export default function TabNavigation() {
             return (
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {focused ? (
-                   <View className="flex flex-col items-center gap-1">
-                   <InactiveMeal/>
-                  <Text >Meal Plans</Text>
-                   </View>
+                  <View className="flex flex-col items-center gap-1">
+                    <InactiveMeal />
+                    <Text >More</Text>
+                  </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
-                  <InactiveMeal/>
-                 <Text className="text-gray-600">Meal Plans</Text>
+                    <InactiveMeal />
+                    <Text className="text-gray-600">Meal Plans</Text>
                   </View>
                 )}
               </View>
@@ -148,13 +148,13 @@ export default function TabNavigation() {
               <View className=" ">
                 {focused ? (
                   <View className="flex flex-col items-center gap-1">
-                  <InactiveProfile/>
-                 <Text>Profile</Text>
+                    <InactiveProfile />
+                    <Text>Profile</Text>
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
-                  <InactiveProfile />
-                 <Text className="text-gray-600">Profile</Text>
+                    <InactiveProfile />
+                    <Text className="text-gray-600">Profile</Text>
                   </View>
                 )}
               </View>
