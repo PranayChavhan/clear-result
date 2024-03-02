@@ -23,15 +23,15 @@ export default function AppNavigation() {
         <Stack.Screen name="Signup" options={{ headerShown: false }} component={SignupScreen} />
 
         <Stack.Screen name="Login" options={{ headerShown: false }} component={LoginScreen} />
-        
+
         <Stack.Screen name="ForgetPassword" options={{ headerShown: false }} component={ForgetPasswordScreen} />
-        
+
 
         <Stack.Screen name="CheckEmail" options={{ headerShown: false }} component={CheckEmailScreen} />
 
         <Stack.Screen name="CreatePassword" options={{ headerShown: false }} component={CreatePasswordScreen} />
 
-        <Stack.Screen name="Tab" options={{headerShown: false}} component={TabNavigation}  />
+        <Stack.Screen name="Tab" options={{ headerShown: false }} component={TabNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   )
