@@ -256,18 +256,18 @@ const StoreCompany = () => {
 
 
 const EventExhibition = () => {
-    return (
-        <View>
-            <Text>Event Exhibition</Text>
-        </View>
-    )
+  return (
+    <View>
+      <Text>Event Exhibition</Text>
+    </View>
+  )
 }
 
 const ContactPerson = () => {
-    return(
-        <View>
-            <Text>Constact Person</Text>
-        </View>
-    )
+  return (
+    <View>
+      <Text>Constact Person</Text>
+    </View>
+  )
 }
 export default TaskScreen;
