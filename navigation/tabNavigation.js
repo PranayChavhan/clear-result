@@ -142,12 +142,12 @@ export default function TabNavigation() {
           {focused ? (
             <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <ActiveMeal />
-              <Text>More</Text>
+              <Text>Exhibition</Text>
             </View>
           ) : (
             <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
               <InactiveMeal />
-              <Text style={{ color: "gray" }}>More</Text>
+              <Text style={{ color: "gray" }}>Exhibition</Text>
             </View>
           )}
         </View>

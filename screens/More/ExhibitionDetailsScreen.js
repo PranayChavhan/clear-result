@@ -1,10 +1,29 @@
-import { View, Text, ScrollView, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React, { useState } from "react";
 import Screen from "../../components/Screen";
 import TopBar from "../../components/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcDown from "../../assets/icons/ic_down.svg";
 import InputFeild from "../../components/InputFeild";
+import IcToggle from "../../assets/icons/ic_Toggle base.svg";
+import IcEmail from "../../assets/icons/ic_circum_mail.svg";
+import IcWhatsapp from "../../assets/icons/ic_vwp.svg";
+import IcPen from "../../assets/icons/ic_pen.svg";
+import IcAttachment from "../../assets/icons/ic_attachment.svg";
+import IcSearch from "../../assets/icons/ic_search_black.svg";
+import IcFlag from "../../assets/icons/ic_flag-india.svg";
+import IcDropdown from "../../assets/icons/ic_dropdown.svg";
+import Checkbox from "../../components/Checkbox";
+import IcCall from "../../assets/icons/ic_phone_call.svg";
+import IcMail from "../../assets/icons/ic_circum_mail2.svg";
+import IcVender from "../../assets/icons/ic_vender.svg";
 
 const ExhibitionDetailsScreen = () => {
   const [height, setHeight] = useState(40); // Initial height
@@ -108,16 +127,222 @@ const ExhibitionDetailsScreen = () => {
           />
         </View>
 
+        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg">
+          <View className="flex flex-row items-center justify-between mb-4">
+            <Text className="italic text-gray-500 font-medium">Invites</Text>
+            <IcToggle />
+          </View>
 
+          <View className="flex flex-row items-center justify-between">
+            <TouchableOpacity className="bg-gray-200 w-[48%] p-2 rounded-full flex flex-row items-center justify-center">
+              <View className="flex flex-row items-center gap-2">
+                <IcEmail />
+                <Text className="text-gray-600">Emails</Text>
+              </View>
+            </TouchableOpacity>
 
-        <View className="mt-2 bg-blue-50 py-4 px-2">
+            <TouchableOpacity className="bg-blue-200 border-blue-400 border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center">
+              <View className="flex flex-row items-center gap-2">
+                <IcWhatsapp />
+                <View className="flex flex-row items-center justify-between">
+                  <Text className="text-blue-600">Whatsapp</Text>
+                  <Text className="text-blue-600 ml-6">X</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View className="bg-white p-4 mt-4 rounded-xl border-[0.8px] border-gray-300">
+            <View className="flex flex-row items-center justify-between">
+              <Text className="text-[14px] font-semibold">
+                Whatsapp invite message template
+              </Text>
+              <IcPen />
+            </View>
+            <Text className="text-[12px] text-gray-500 my-2">
+              This is a dummy text message just to...
+            </Text>
+
+            <View className="flex flex-row items-center gap-2">
+              <IcAttachment />
+              <Text className="text-[12px] text-gray-500">
+                Attach for invite
+              </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row items-center justify-center">
+            <TouchableWithoutFeedback>
+              <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
+                Share on social media
+              </Text>
+            </TouchableWithoutFeedback>
+          </View>
+        </View>
+
+        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg">
+          <View className="flex flex-row items-center justify-between mb-4">
+            <Text className="italic text-gray-500 font-medium">
+              Exhibition Cost
+            </Text>
+            <IcToggle />
+          </View>
+
+          <View className="flex flex-row items-center justify-center">
+            <TouchableWithoutFeedback>
+              <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
+                + Add other expenses
+              </Text>
+            </TouchableWithoutFeedback>
+          </View>
+        </View>
+
+        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg w-full">
+          <View className="flex flex-row items-center justify-between mb-4">
+            <Text className="italic text-gray-500 font-medium">
+              Contact Details
+            </Text>
+            <IcToggle />
+          </View>
+
+          <View className="mt-2">
+            <Text className="text-[12px] font-medium text-[#828282] mb-2">
+              Profession
+            </Text>
 
             <View className="flex flex-row items-center justify-between">
-                <Text className="italic text-gray-500 font-medium">Invites</Text>
-                <Text>Toggle</Text>
-                </View>
+              <TextInput
+                className="border border-blue-300 p-2 rounded-md bg-white w-[86%]"
+                placeholder="Select the profession"
+              />
 
-            
+              <TouchableOpacity className="bg-gray-300 p-[14px] rounded-md">
+                <IcSearch />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View className="mt-2">
+            <Text className="text-[12px] font-medium text-[#828282] mb-2">
+              Contact Person
+            </Text>
+
+            <TextInput
+              className="border border-blue-300 p-2 rounded-md bg-white "
+              placeholder="Select the contact person"
+            />
+          </View>
+
+          <View className="mt-2">
+            <Text className="text-[12px] font-medium text-[#828282] mb-2">
+              Mobile Number
+            </Text>
+
+            <View className="border border-blue-300 bg-white rounded-md flex flex-row gap-2">
+              <View className="flex flex-row items-center gap-1">
+                <IcFlag />
+                <IcDropdown />
+              </View>
+
+              <TextInput className=" p-2 " placeholder="Enter the number" />
+            </View>
+
+            <View className="flex flex-row items-center ">
+              <Checkbox />
+              <Text className="text-gray-500 text-[12px]">
+                Whatsapp number is not similar
+              </Text>
+            </View>
+          </View>
+
+          <View className="mt-2">
+            <Text className="text-[12px] font-medium text-[#828282] mb-2">
+              Email Address
+            </Text>
+
+            <TextInput
+              className="border border-blue-300 p-2 rounded-md bg-white "
+              placeholder="Enter the email address"
+            />
+          </View>
+
+          <View className="bg-white rounded-lg p-2 mt-2">
+            <View className="flex flex-row items-center justify-between">
+              <Text>Praveen Sharma</Text>
+
+              <IcPen />
+            </View>
+
+            <View className="flex flex-row items-center gap-2 my-1">
+              <IcCall />
+              <Text className="text-[12px] text-gray-400"> +91-7856632923</Text>
+            </View>
+
+            <View className="flex flex-row items-center gap-2 my-1">
+              <IcMail />
+              <Text className="text-[12px] text-gray-400">
+                {" "}
+                praveen@gmail.com
+              </Text>
+            </View>
+
+            <View className="flex flex-row items-center gap-2 my-1 ">
+              <IcVender />
+              <Text className="text-[12px] text-gray-400"> Vender</Text>
+            </View>
+          </View>
+          <View className="fles flex-row items-center justify-center w-full mt-8">
+          <TouchableWithoutFeedback>
+            <Text
+              className={`text-[16px] font-medium text-[#2F80ED] underline`}
+            >
+              + Add contact person
+            </Text>
+          </TouchableWithoutFeedback>
+          </View>
+
+
+
+
+
+
+
+
+        </View>
+
+        <View className="mt-4 flex flex-row items-center justify-between">
+          <TouchableOpacity
+            className={`py-3 bg-white border-[1px] w-[48%] border-[#2F80ED]  rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
+              Discard
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("SubscriptionPackages");
+            }}
+            className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-white">
+              Save
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View className="flex flex-col items-center justify-center mt-4">
+          <TouchableWithoutFeedback>
+            <Text
+              className={`text-[16px] font-medium text-[#2F80ED] underline`}
+            >
+              Save & Create New
+            </Text>
+          </TouchableWithoutFeedback>
+
+          <Text className="text-[12px] italic text-[#828282] mt-8">
+            Powered by ClearResults
+          </Text>
         </View>
       </ScrollView>
     </Screen>
