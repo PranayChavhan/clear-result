@@ -3,12 +3,12 @@ import { Text, View, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CreateScreen from "../screens/Tabs/CreateScreen";
 import TaskScreen from "../screens/Tabs/TaskScreen";
-import MealPlansScreen from "../screens/Tabs/MealPlansScreen";
 import ProfileScreen from "../screens/Tabs/ProfileScreen";
 import TabSearch from "../assets/icons/Tab_Search.svg";
 import InactiveCreate from "../assets/icons/inactive_create.svg";
 import InactiveTasks from "../assets/icons/inactive_tasks.svg";
 import InactiveMeal from "../assets/icons/inactive_meal.svg";
+import ActiveMeal from "../assets/icons/active_meal .svg";
 import InactiveProfile from "../assets/icons/inactive_profile.svg";
 import ActiveTasks from "../assets/icons/active_tasks.svg";
 import SearchScreen from "../screens/Tabs/SearchScreen";
@@ -18,8 +18,12 @@ import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
 import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
+import MoreScreen from "../screens/Tabs/MoreScreen";
+import InviteUserScreen from "../screens/More/InviteUserScreen";
+import ExhibitionDetailsScreen from "../screens/More/ExhibitionDetailsScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
+const MoreStack = createNativeStackNavigator();
 
 const TaskStackScreen = () => (
   <TaskStack.Navigator>
@@ -29,6 +33,18 @@ const TaskStackScreen = () => (
     <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
   </TaskStack.Navigator>
 );
+
+const MoreStackScreen = () => {
+  return (
+    <MoreStack.Navigator>
+      <MoreStack.Screen name="More" component={MoreScreen} options={{ headerShown: false }}/>
+      <MoreStack.Screen name="InviteUser" component={InviteUserScreen} options={{ headerShown: false }}/>
+      <MoreStack.Screen name="ExhibitionDetails" component={ExhibitionDetailsScreen} options={{ headerShown: false }}/>
+
+    </MoreStack.Navigator>
+  );
+};
+
 
 const screenOptions = {
   tabBarShowLabel: false,
@@ -117,28 +133,29 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Meal Plans"
-        component={MealPlansScreen}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                {focused ? (
-                  <View className="flex flex-col items-center gap-1">
-                    <InactiveMeal />
-                    <Text >More</Text>
-                  </View>
-                ) : (
-                  <View className="flex flex-col items-center gap-1">
-                    <InactiveMeal />
-                    <Text className="text-gray-600">Meal Plans</Text>
-                  </View>
-                )}
-              </View>
-            );
-          },
-        }}
-      />
+  name="More"
+  component={MoreStackScreen}
+  options={{
+    tabBarIcon: ({ focused }) => {
+      return (
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          {focused ? (
+            <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <ActiveMeal />
+              <Text>More</Text>
+            </View>
+          ) : (
+            <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <InactiveMeal />
+              <Text style={{ color: "gray" }}>More</Text>
+            </View>
+          )}
+        </View>
+      );
+    },
+  }}
+/>
+
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
