@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function AppNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Welcome'>
+      <Stack.Navigator initialRouteName='CreatePassword'>
 
         <Stack.Screen name="Welcome" options={{ headerShown: false }} component={WelcomeScreen} />
 

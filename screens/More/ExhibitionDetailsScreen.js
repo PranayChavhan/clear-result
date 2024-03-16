@@ -24,8 +24,19 @@ import Checkbox from "../../components/Checkbox";
 import IcCall from "../../assets/icons/ic_phone_call.svg";
 import IcMail from "../../assets/icons/ic_circum_mail2.svg";
 import IcVender from "../../assets/icons/ic_vender.svg";
+import Slider from "@react-native-community/slider";
+import { useNavigation } from "@react-navigation/native";
+
+
 
 const ExhibitionDetailsScreen = () => {
+  const navigation = useNavigation();
+  const [sliderValue, setSliderValue] = useState(0);
+
+  const onValueChange = (value) => {
+    setSliderValue(value);
+  };
+
   const [height, setHeight] = useState(40); // Initial height
 
   const handleChangeText = (text) => {
@@ -188,6 +199,73 @@ const ExhibitionDetailsScreen = () => {
             <IcToggle />
           </View>
 
+          <View
+            style={{
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                width: "100%",
+                height: 5,
+                backgroundColor: "#D3D3D3",
+                borderRadius: 10,
+                overflow: "hidden",
+              }}
+            >
+              <View
+                style={{
+                  height: "100%",
+                  backgroundColor: "#007AFF",
+                  borderRadius: 10,
+                  width: `${sliderValue}%`,
+                }}
+              />
+            </View>
+            <Slider
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: 120,
+                zIndex: 1,
+              }}
+              minimumValue={0}
+              maximumValue={100}
+              value={sliderValue}
+              onValueChange={onValueChange}
+              minimumTrackTintColor="transparent"
+              maximumTrackTintColor="transparent"
+              thumbTintColor="#007AFF"
+            />
+          </View>
+
+          <View className="flex flex-row items-center justify-between my-4">
+            <View className="bg-gray-200 p-2 rounded border-[0.2px]">
+              <Text>10,000</Text>
+            </View>
+
+            <View className="bg-gray-200 p-2 rounded border-[0.2px]">
+              <Text>10,000,00</Text>
+            </View>
+          </View>
+
+          <View className="bg-white rounded-lg p-2 mt-2">
+            <View className="flex flex-row items-center justify-between">
+              <Text>Rental Cost</Text>
+
+              <IcPen />
+            </View>
+
+            <View className="flex flex-row items-center gap-2 my-1">
+              <Text className="text-[12px] text-gray-400">
+                {" "}
+                Budget: 70,000 max.
+              </Text>
+            </View>
+          </View>
+
           <View className="flex flex-row items-center justify-center">
             <TouchableWithoutFeedback>
               <Text className="text-[16px] font-medium text-[#2F80ED] underline mt-4">
@@ -292,22 +370,16 @@ const ExhibitionDetailsScreen = () => {
             </View>
           </View>
           <View className="fles flex-row items-center justify-center w-full mt-8">
-          <TouchableWithoutFeedback>
-            <Text
-              className={`text-[16px] font-medium text-[#2F80ED] underline`}
+            <TouchableWithoutFeedback
+            onPress={() => {navigation.navigate("AddContactPerson")}}
             >
-              + Add contact person
-            </Text>
-          </TouchableWithoutFeedback>
+              <Text
+                className={`text-[16px] font-medium text-[#2F80ED] underline`}
+              >
+                + Add contact person
+              </Text>
+            </TouchableWithoutFeedback>
           </View>
-
-
-
-
-
-
-
-
         </View>
 
         <View className="mt-4 flex flex-row items-center justify-between">
@@ -321,7 +393,7 @@ const ExhibitionDetailsScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("SubscriptionPackages");
+              navigation.navigate("");
             }}
             className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
           >

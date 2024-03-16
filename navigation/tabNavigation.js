@@ -21,6 +21,8 @@ import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
 import MoreScreen from "../screens/Tabs/MoreScreen";
 import InviteUserScreen from "../screens/More/InviteUserScreen";
 import ExhibitionDetailsScreen from "../screens/More/ExhibitionDetailsScreen";
+import AddContactPerson from "../screens/More/AddContactPerson";
+import ShopProfileScreen from "../screens/More/ShopProfileScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
@@ -40,7 +42,9 @@ const MoreStackScreen = () => {
       <MoreStack.Screen name="More" component={MoreScreen} options={{ headerShown: false }}/>
       <MoreStack.Screen name="InviteUser" component={InviteUserScreen} options={{ headerShown: false }}/>
       <MoreStack.Screen name="ExhibitionDetails" component={ExhibitionDetailsScreen} options={{ headerShown: false }}/>
-
+      <MoreStack.Screen name="AddContactPerson" component={AddContactPerson} options={{ headerShown: false }}/>
+      <MoreStack.Screen name="Shopprofile" component={ShopProfileScreen} options={{ headerShown: false }}/>
+ 
     </MoreStack.Navigator>
   );
 };
@@ -133,7 +137,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-  name="More"
+  name="Shopprofile"
   component={MoreStackScreen}
   options={{
     tabBarIcon: ({ focused }) => {

@@ -68,6 +68,7 @@ function ExhibitionCard({
 }
 
 const MoreScreen = () => {
+  const navigation = useNavigation();
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
@@ -97,7 +98,9 @@ const MoreScreen = () => {
           />
 
           <TouchableOpacity
-            // onPress={handleLogin}
+            onPress={()=>{
+              navigation.navigate("Shopprofile");
+            }}
             className={`py-3 bg-blue-500   rounded-lg `}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
