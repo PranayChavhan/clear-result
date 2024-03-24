@@ -23,18 +23,23 @@ import InviteUserScreen from "../screens/More/InviteUserScreen";
 import ExhibitionDetailsScreen from "../screens/More/ExhibitionDetailsScreen";
 import AddContactPerson from "../screens/More/AddContactPerson";
 import ShopProfileScreen from "../screens/More/ShopProfileScreen";
+import CurrentSubscription from "../screens/Tasks/CurrentSubscription";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 
-const TaskStackScreen = () => (
-  <TaskStack.Navigator>
+export function TaskStackScreen() {
+  return (
+<TaskStack.Navigator>
     <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
     <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
     <TaskStack.Screen name="SubscriptionPackages" component={SubscriptionScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="CurrentSubscriptionPackages" component={CurrentSubscription} options={{ headerShown: false }}/>
     <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
   </TaskStack.Navigator>
-);
+  )
+}
+  
 
 const MoreStackScreen = () => {
   return (

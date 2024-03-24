@@ -31,7 +31,7 @@ export default function CreatePasswordScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleEvent = () => {
-    navigation.navigate("Tab");
+    navigation.navigate("Tab", { screen: "Tasks" })
   };
 
   return (
