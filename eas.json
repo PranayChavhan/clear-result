@@ -16,6 +16,6 @@
     "preview4": {
       "distribution": "internal"
     },
-    "production":{"channel": "production", "android":{"image": "./assets/icon.jpg"}}
+    "production":{"channel": "production", "android":{"image": "./assets/icon.png"}}
   }
 }

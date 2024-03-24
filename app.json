@@ -35,6 +35,12 @@
         "projectId": "ce656bff-a888-4252-8db5-565c9d0d01e8"
       }
     },
-    "owner": "clear_result"
+    "owner": "clear_result",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ce656bff-a888-4252-8db5-565c9d0d01e8"
+    }
   }
 }
