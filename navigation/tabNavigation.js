@@ -15,7 +15,7 @@ import SearchScreen from "../screens/Tabs/SearchScreen";
 import HomeScreen from "../screens/Dashboard/HomeScreen";
 import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
 import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
 import MoreScreen from "../screens/Tabs/MoreScreen";
@@ -23,32 +23,118 @@ import InviteUserScreen from "../screens/More/InviteUserScreen";
 import ExhibitionDetailsScreen from "../screens/More/ExhibitionDetailsScreen";
 import AddContactPerson from "../screens/More/AddContactPerson";
 import ShopProfileScreen from "../screens/More/ShopProfileScreen";
+import ThemeScreen from "../screens/Settings/ThemeScreen";
+import FontsScreen from "../screens/Settings/FontsScreen";
+import LanguageScreen from "../screens/Settings/LanguageScreen";
+import PushNotificationScreen from "../screens/Settings/PushNotification";
+import EmailSetupScreen from "../screens/Settings/EmailSetupScreeen";
+import SMSGatewayScreen from "../screens/Settings/SMSGatewayScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
+const ProfileStack = createNativeStackNavigator();
 
 const TaskStackScreen = () => (
   <TaskStack.Navigator>
-    <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="SubscriptionPackages" component={SubscriptionScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen
+      name="Tasks"
+      component={TaskScreen}
+      options={{ headerShown: false }}
+    />
+    <TaskStack.Screen
+      name="CreateTask"
+      component={CreateTaskScreen}
+      options={{ headerShown: false }}
+    />
+    <TaskStack.Screen
+      name="SubscriptionPackages"
+      component={SubscriptionScreen}
+      options={{ headerShown: false }}
+    />
+    <TaskStack.Screen
+      name="PaymentMode"
+      component={PaymentModeScreen}
+      options={{ headerShown: false }}
+    />
   </TaskStack.Navigator>
 );
 
 const MoreStackScreen = () => {
   return (
     <MoreStack.Navigator>
-      <MoreStack.Screen name="More" component={MoreScreen} options={{ headerShown: false }}/>
-      <MoreStack.Screen name="InviteUser" component={InviteUserScreen} options={{ headerShown: false }}/>
-      <MoreStack.Screen name="ExhibitionDetails" component={ExhibitionDetailsScreen} options={{ headerShown: false }}/>
-      <MoreStack.Screen name="AddContactPerson" component={AddContactPerson} options={{ headerShown: false }}/>
-      <MoreStack.Screen name="Shopprofile" component={ShopProfileScreen} options={{ headerShown: false }}/>
- 
+      <MoreStack.Screen
+        name="More"
+        component={MoreScreen}
+        options={{ headerShown: false }}
+      />
+      <MoreStack.Screen
+        name="InviteUser"
+        component={InviteUserScreen}
+        options={{ headerShown: false }}
+      />
+      <MoreStack.Screen
+        name="ExhibitionDetails"
+        component={ExhibitionDetailsScreen}
+        options={{ headerShown: false }}
+      />
+      <MoreStack.Screen
+        name="AddContactPerson"
+        component={AddContactPerson}
+        options={{ headerShown: false }}
+      />
+      <MoreStack.Screen
+        name="Shopprofile"
+        component={ShopProfileScreen}
+        options={{ headerShown: false }}
+      />
     </MoreStack.Navigator>
   );
 };
 
+const ProfileStackScreen = () => {
+  return (
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="Theme"
+        component={ThemeScreen}
+        options={{ headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="Fonts"
+        component={FontsScreen}
+        options={{ headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="Language"
+        component={LanguageScreen}
+        options={{ headerShown: false }}
+      />
+
+      <ProfileStack.Screen
+        name="PushNotification"
+        component={PushNotificationScreen}
+        options={{ headerShown: false }}
+      />
+
+      <ProfileStack.Screen
+        name="EmailSetup"
+        component={EmailSetupScreen}
+        options={{ headerShown: false }}
+      />
+
+      <ProfileStack.Screen
+        name="SMSGateway"
+        component={SMSGatewayScreen}
+        options={{ headerShown: false }}
+      />
+    </ProfileStack.Navigator>
+  );
+};
 
 const screenOptions = {
   tabBarShowLabel: false,
@@ -77,7 +163,7 @@ export default function TabNavigation() {
                 {focused ? (
                   <View className="flex flex-col items-center gap-1">
                     <InactiveCreate />
-                    <Text >Create</Text>
+                    <Text>Create</Text>
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
@@ -100,7 +186,7 @@ export default function TabNavigation() {
                 {focused ? (
                   <View className="flex flex-col items-center gap-1">
                     <ActiveTasks />
-                    <Text >Tasks</Text>
+                    <Text>Tasks</Text>
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
@@ -119,16 +205,14 @@ export default function TabNavigation() {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <View className=" absolute -top-5" >
+              <View className=" absolute -top-5">
                 {focused ? (
                   <View className="flex flex-col items-center gap-1">
                     <TabSearch />
-
                   </View>
                 ) : (
                   <View className="flex flex-col items-center gap-1">
                     <TabSearch />
-
                   </View>
                 )}
               </View>
@@ -137,32 +221,44 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-  name="Shopprofile"
-  component={MoreStackScreen}
-  options={{
-    tabBarIcon: ({ focused }) => {
-      return (
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
-          {focused ? (
-            <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <ActiveMeal />
-              <Text>Exhibition</Text>
-            </View>
-          ) : (
-            <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-              <InactiveMeal />
-              <Text style={{ color: "gray" }}>Exhibition</Text>
-            </View>
-          )}
-        </View>
-      );
-    },
-  }}
-/>
+        name="Shopprofile"
+        component={MoreStackScreen}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <View style={{ alignItems: "center", justifyContent: "center" }}>
+                {focused ? (
+                  <View
+                    style={{
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <ActiveMeal />
+                    <Text>Exhibition</Text>
+                  </View>
+                ) : (
+                  <View
+                    style={{
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <InactiveMeal />
+                    <Text style={{ color: "gray" }}>Exhibition</Text>
+                  </View>
+                )}
+              </View>
+            );
+          },
+        }}
+      />
 
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
