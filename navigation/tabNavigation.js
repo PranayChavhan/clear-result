@@ -34,30 +34,18 @@ const TaskStack = createNativeStackNavigator();
 const MoreStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
 
-const TaskStackScreen = () => (
-  <TaskStack.Navigator>
-    <TaskStack.Screen
-      name="Tasks"
-      component={TaskScreen}
-      options={{ headerShown: false }}
-    />
-    <TaskStack.Screen
-      name="CreateTask"
-      component={CreateTaskScreen}
-      options={{ headerShown: false }}
-    />
-    <TaskStack.Screen
-      name="SubscriptionPackages"
-      component={SubscriptionScreen}
-      options={{ headerShown: false }}
-    />
-    <TaskStack.Screen
-      name="PaymentMode"
-      component={PaymentModeScreen}
-      options={{ headerShown: false }}
-    />
+export function TaskStackScreen() {
+  return (
+<TaskStack.Navigator>
+    <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="SubscriptionPackages" component={SubscriptionScreen} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="CurrentSubscriptionPackages" component={CurrentSubscription} options={{ headerShown: false }}/>
+    <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
   </TaskStack.Navigator>
-);
+  )
+}
+  
 
 const MoreStackScreen = () => {
   return (

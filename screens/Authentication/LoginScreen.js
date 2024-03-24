@@ -14,6 +14,7 @@ import colors from "../../constants/colors";
 
 import IcFacebook from "../../assets/icons/ic_facebook.svg";
 import IcGoogle from "../../assets/icons/ic_google.svg";
+import DynamicToggleButton from "../../components/DynamicToggleButton";
 
 const InputFeild = ({
   placeholder,
@@ -36,6 +37,14 @@ const InputFeild = ({
   );
 };
 export default function LoginScreen() {
+
+  const [toggleValue, setToggleValue] = useState(false);
+
+  const handleToggle = (value) => {
+    setToggleValue(value);
+  };
+
+
   const navigation = useNavigation();
   const [password, setPassword] = useState("");
   const [emailOrPass, setEmailOrPass] = useState("");
@@ -50,11 +59,23 @@ export default function LoginScreen() {
   }
 
   return (
-    <Screen>
+    <Screen className="bg-white">
       <TopBar logo={Logo} />
 
       <View className="px-4">
-        <View className="absolute right-[16px] top-5">
+
+        <View className="flex flex-row items-center bg-[#F3F3F3] -mx-4 p-2 px-4 border-b-[0.5px] border-gray-400">
+        <Text className="text-[12px] font-bold text-[#828282] mr-2">
+        Sales Representative
+          </Text>
+   
+
+    <DynamicToggleButton initialState={false} onToggle={handleToggle} />
+    
+    <Text className="text-[12px] font-bold text-[#64A6FF] ml-2">Admin</Text>
+
+        </View>
+        <View className="absolute right-[16px] top-16">
           <TouchableWithoutFeedback onPress={handleSignup}>
             <Text
               className={`text-[16px] font-medium text-[${colors.primary}] underline`}

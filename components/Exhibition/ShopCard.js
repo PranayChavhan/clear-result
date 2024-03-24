@@ -144,7 +144,7 @@ const ShopCard = () => {
           <View className="flex flex-row items-center w-fit bg-white p-2 rounded-full">
             <IcGlobe />
 
-            <View className="flex flex-row items-center justify-between w-[70%] ml-4">
+            <View className="flex flex-row items-center justify-between w-[75%] ml-4">
               <Text className="text-[14px] text-gray-500">Mumbai</Text>
               <IcDownSmall />
             </View>
@@ -162,9 +162,6 @@ const ShopCard = () => {
           <IcOption />
         </ImageBackground>
       </View>
-
-
-      
     </View>
   );
 };
