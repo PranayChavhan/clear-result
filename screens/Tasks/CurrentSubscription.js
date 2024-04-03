@@ -36,27 +36,29 @@ const CurrentSubscription = () => {
           </TouchableWithoutFeedback>
         </View>
 
-        <View className="bg-white border-b-[0.8px] border-x-[0.8px] border-gray-300 rounded-xl rounded-t-none mt-8 shadow-md py-6">
+        <View className="bg-white border-0.5 shadow-lg m-2 border-gray-300 shadow-gray-400 rounded-xl  mt-8  py-6">
           <View className="flex flex-row items-center justify-between">
-          <Text className="text-[14px] font-semibold px-4">
-            Organiser Pro
-          </Text>
+            <Text className="text-[14px] font-semibold px-4">
+              Organiser Pro
+            </Text>
 
-          <Text className="text-[12px] text-gray-500 text-wrap italic pr-2">order iD- 13E4347RY</Text>
+            <Text className="text-[12px] text-gray-500 text-wrap italic pr-2">
+              order iD- 13E4347RY
+            </Text>
           </View>
 
           <View className=" mt-2 mb-4">
-          <Text className="text-[14px] font-semibold px-4">
-            01st Jan 2024
-          </Text>
+            <Text className="text-[14px] font-semibold px-4">
+              01st Jan 2024
+            </Text>
 
-          <Text className="text-[12px] text-gray-500 text-wrap italic pl-4">Subscription has ended</Text>
-
+            <Text className="text-[12px] text-gray-500 text-wrap italic pl-4">
+              Subscription has ended
+            </Text>
           </View>
 
-
           <Text className="text-[12px] text-gray-500 text-wrap pr-20 my-2 px-4">
-          Multi-exhibitor, post-exhibitions support.
+            Multi-exhibitor, post-exhibitions support.
           </Text>
 
           <View className="bg-gray-200 p-4 flex flex-row items-center mb-4">
@@ -80,11 +82,11 @@ const CurrentSubscription = () => {
         </View>
 
         <View className="flex flex-row items-center justify-center mt-10">
-        <TouchableWithoutFeedback
-        onPress={() => {
-            navigation.navigate("SubscriptionPackages");
-          }}
-        >
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate("SubscriptionPackages");
+            }}
+          >
             <Text
               className={`text-[14px] font-medium text-[#2F80ED] underline`}
             >
@@ -92,13 +94,11 @@ const CurrentSubscription = () => {
             </Text>
           </TouchableWithoutFeedback>
         </View>
-{/* 
+        {/* 
 
         <Text className="text-[12px] italic text-[#828282] absolute top-[100%] left-[122px]">
         Powered by ClearResults
       </Text> */}
-
-
       </ScrollView>
     </Screen>
   );

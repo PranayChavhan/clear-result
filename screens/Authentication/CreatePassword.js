@@ -31,7 +31,7 @@ export default function CreatePasswordScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleEvent = () => {
-    navigation.navigate("Tab", { screen: "Tasks" })
+    navigation.navigate("Home", { screen: "Tasks" });
   };
 
   return (
@@ -74,7 +74,7 @@ export default function CreatePasswordScreen() {
 
           <TouchableOpacity
             onPress={handleEvent}
-            disabled={password&&confirmPassword ? true : false}
+            disabled={password && confirmPassword ? true : false}
             className={`py-3 bg-[${colors.primary}]   rounded-lg`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
