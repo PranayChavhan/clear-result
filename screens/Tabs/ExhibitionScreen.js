@@ -1,4 +1,9 @@
-import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React from "react";
 import Screen from "../../components/Screen";
 import TopBar from "../../components/TopBar";
@@ -8,8 +13,7 @@ import IcLocation from "../../assets/icons/ic_locotion.svg";
 import IcHome from "../../assets/icons/ic_home.svg";
 import IcClock from "../../assets/icons/ic_clock.svg";
 import IcAvatarGroup from "../../assets/icons/ic_Avatar group.svg";
-import { useNavigation } from '@react-navigation/native';
-
+import { useNavigation } from "@react-navigation/native";
 
 function ExhibitionCard({
   name,
@@ -18,14 +22,11 @@ function ExhibitionCard({
   startTime,
   endTime,
   link,
-}) 
-
-{
-
-    const navigation = useNavigation();
-    const handlePress = () => {
-        navigation.navigate(link);
-      };
+}) {
+  const navigation = useNavigation();
+  const handlePress = () => {
+    navigation.navigate(link);
+  };
   return (
     <View className="border-[0.8px] border-gray-300 rounded-xl mb-8">
       <View className="flex flex-row marker:items-center justify-between p-4">
@@ -57,17 +58,16 @@ function ExhibitionCard({
           <IcAvatarGroup />
         </View>
         <TouchableWithoutFeedback onPress={handlePress}>
-        <Text className="text-[16px] underline text-blue-500 font-medium">
-          Invite users
-        </Text>
+          <Text className="text-[16px] underline text-blue-500 font-medium">
+            Invite users
+          </Text>
         </TouchableWithoutFeedback>
-        
       </View>
     </View>
   );
 }
 
-const MoreScreen = () => {
+const ExhibitionScreen = () => {
   const navigation = useNavigation();
   return (
     <Screen className="bg-white">
@@ -98,7 +98,7 @@ const MoreScreen = () => {
           />
 
           <TouchableOpacity
-            onPress={()=>{
+            onPress={() => {
               navigation.navigate("Shopprofile");
             }}
             className={`py-3 bg-blue-500   rounded-lg `}
@@ -109,14 +109,12 @@ const MoreScreen = () => {
           </TouchableOpacity>
         </View>
 
-
-
         <Text className="text-[12px] italic text-[#828282] absolute bottom-[-20%] left-[38%]">
-        Powered by ClearResults
-      </Text>
+          Powered by ClearResults
+        </Text>
       </View>
     </Screen>
   );
 };
 
-export default MoreScreen;
+export default ExhibitionScreen;

@@ -55,7 +55,9 @@ const CustomDrawerContent = ({ navigation }) => {
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl"
         onPress={() =>
-          navigation.navigate("Tasks", { screen: "CurrentSubscriptionPackages" })
+          navigation.navigate("Tasks", {
+            screen: "CurrentSubscriptionPackages",
+          })
         }
       >
         <Text className="font-semibold ">Subscription Model</Text>
@@ -64,7 +66,9 @@ const CustomDrawerContent = ({ navigation }) => {
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl my-2"
         onPress={() =>
-          navigation.navigate("Tasks", { screen: "CurrentSubscriptionPackages" })
+          navigation.navigate("Tasks", {
+            screen: "CurrentSubscriptionPackages",
+          })
         }
       >
         <Text className="font-semibold ">Social Media Integration</Text>
@@ -107,7 +111,7 @@ export default function AppNavigation() {
           options={{ headerShown: false }}
           component={CreatePasswordScreen}
         />
-        <Stack.Screen name="Tab" options={{ headerShown: false }}>
+        <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => <DrawerNavigation />}
         </Stack.Screen>
       </Stack.Navigator>

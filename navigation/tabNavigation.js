@@ -18,64 +18,115 @@ import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
 import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
-import MoreScreen from "../screens/Tabs/MoreScreen";
-import InviteUserScreen from "../screens/More/InviteUserScreen";
-import ExhibitionDetailsScreen from "../screens/More/ExhibitionDetailsScreen";
-import AddContactPerson from "../screens/More/AddContactPerson";
-import ShopProfileScreen from "../screens/More/ShopProfileScreen";
+import ExhibitionScreen from "../screens/Tabs/ExhibitionScreen";
+import InviteUserScreen from "../screens/Exhibition/InviteUserScreen";
+import ExhibitionDetailsScreen from "../screens/Exhibition/ExhibitionDetailsScreen";
+import AddContactPerson from "../screens/Exhibition/AddContactPerson";
+import ShopProfileScreen from "../screens/Exhibition/ShopProfileScreen";
 import ThemeScreen from "../screens/Settings/ThemeScreen";
 import FontsScreen from "../screens/Settings/FontsScreen";
 import LanguageScreen from "../screens/Settings/LanguageScreen";
 import PushNotificationScreen from "../screens/Settings/PushNotification";
 import EmailSetupScreen from "../screens/Settings/EmailSetupScreeen";
 import SMSGatewayScreen from "../screens/Settings/SMSGatewayScreen";
+import CurrentSubscription from "../screens/Tasks/CurrentSubscription";
+import ProspectsScreen from "../screens/Dashboard/ProspectsScreen";
+import UserInfoFormScreen from "../screens/Dashboard/BasicInfoForm";
+import CameraScreen from "../screens/Dashboard/CameraScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
-const MoreStack = createNativeStackNavigator();
+const ExhibitionStack = createNativeStackNavigator();
 const ProfileStack = createNativeStackNavigator();
+const DashboardStack = createNativeStackNavigator();
 
 export function TaskStackScreen() {
   return (
-<TaskStack.Navigator>
-    <TaskStack.Screen name="Tasks" component={TaskScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="CreateTask" component={CreateTaskScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="SubscriptionPackages" component={SubscriptionScreen} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="CurrentSubscriptionPackages" component={CurrentSubscription} options={{ headerShown: false }}/>
-    <TaskStack.Screen name="PaymentMode" component={PaymentModeScreen} options={{ headerShown: false }}/>
-  </TaskStack.Navigator>
-  )
-}
-  
-
-const MoreStackScreen = () => {
-  return (
-    <MoreStack.Navigator>
-      <MoreStack.Screen
-        name="More"
-        component={MoreScreen}
+    <TaskStack.Navigator>
+      <TaskStack.Screen
+        name="Tasks"
+        component={TaskScreen}
         options={{ headerShown: false }}
       />
-      <MoreStack.Screen
+      <TaskStack.Screen
+        name="CreateTask"
+        component={CreateTaskScreen}
+        options={{ headerShown: false }}
+      />
+      <TaskStack.Screen
+        name="SubscriptionPackages"
+        component={SubscriptionScreen}
+        options={{ headerShown: false }}
+      />
+      <TaskStack.Screen
+        name="CurrentSubscriptionPackages"
+        component={CurrentSubscription}
+        options={{ headerShown: false }}
+      />
+      <TaskStack.Screen
+        name="PaymentMode"
+        component={PaymentModeScreen}
+        options={{ headerShown: false }}
+      />
+    </TaskStack.Navigator>
+  );
+}
+
+export function DashboardStackScreen() {
+  return (
+    <DashboardStack.Navigator>
+      <DashboardStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <DashboardStack.Screen
+        name="Prospects"
+        component={ProspectsScreen}
+        options={{ headerShown: false }}
+      />
+      <DashboardStack.Screen
+        name="UserInfoForm"
+        component={UserInfoFormScreen}
+        options={{ headerShown: false }}
+      />
+      <DashboardStack.Screen
+        name="Camera"
+        component={CameraScreen}
+        options={{ headerShown: false, tabBarStyle: { display: "none" } }}
+      />
+    </DashboardStack.Navigator>
+  );
+}
+
+const ExhibitionStackScreen = () => {
+  return (
+    <ExhibitionStack.Navigator>
+      <ExhibitionStack.Screen
+        name="Exhibition"
+        component={ExhibitionScreen}
+        options={{ headerShown: false }}
+      />
+      <ExhibitionStack.Screen
         name="InviteUser"
         component={InviteUserScreen}
         options={{ headerShown: false }}
       />
-      <MoreStack.Screen
+      <ExhibitionStack.Screen
         name="ExhibitionDetails"
         component={ExhibitionDetailsScreen}
         options={{ headerShown: false }}
       />
-      <MoreStack.Screen
+      <ExhibitionStack.Screen
         name="AddContactPerson"
         component={AddContactPerson}
         options={{ headerShown: false }}
       />
-      <MoreStack.Screen
+      <ExhibitionStack.Screen
         name="Shopprofile"
         component={ShopProfileScreen}
         options={{ headerShown: false }}
       />
-    </MoreStack.Navigator>
+    </ExhibitionStack.Navigator>
   );
 };
 
@@ -189,7 +240,7 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name="Search"
-        component={HomeScreen}
+        component={DashboardStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -210,7 +261,7 @@ export default function TabNavigation() {
       />
       <Tab.Screen
         name="Shopprofile"
-        component={MoreStackScreen}
+        component={ExhibitionStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (

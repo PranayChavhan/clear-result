@@ -5,7 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import TopBar from "../../components/TopBar";
@@ -40,8 +40,7 @@ export default function WelcomeScreen() {
     if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     } else {
-
-      navigation.navigate("Signup");
+      navigation.navigate("Login");
     }
   };
 
@@ -49,32 +48,32 @@ export default function WelcomeScreen() {
     setCurrentPage(3);
   };
 
-  
   return (
     <Screen>
       <TopBar logo={Logo} />
 
       <View className=" h-full flex flex-col justify-center gap-4 px-4">
-
         <View className="absolute right-[16px] top-5">
           <TouchableWithoutFeedback onPress={handleSkip}>
-            <Text className={`text-[16px] font-medium text-[${colors.primary}] underline`}>Skip</Text>
+            <Text
+              className={`text-[16px] font-medium text-[${colors.primary}] underline`}
+            >
+              Skip
+            </Text>
           </TouchableWithoutFeedback>
         </View>
 
-
-
-<View className="flex flex-row justify-center items-center">
-
-<ImageBackground
-          source={require("../../assets/images/HeroVector.png")}
-          style={{ width: 310, height: 240 }}
-          
-        >
-          <Image source={pages[currentPage - 1].image} className=" flex flex-row w-full items-center justify-center" />
-        </ImageBackground>
-
-</View>
+        <View className="flex flex-row justify-center items-center">
+          <ImageBackground
+            source={require("../../assets/images/HeroVector.png")}
+            style={{ width: 310, height: 240 }}
+          >
+            <Image
+              source={pages[currentPage - 1].image}
+              className=" flex flex-row w-full items-center justify-center"
+            />
+          </ImageBackground>
+        </View>
         <View className="flex flex-col items-center justify-center">
           <Text className="text-[16px] font-medium mb-2">
             {pages[currentPage - 1].title}
@@ -87,8 +86,11 @@ export default function WelcomeScreen() {
             {pages.map((_, index) => (
               <Image
                 key={index}
-                source={currentPage === index + 1 ? require('../../assets/icons/rdot.png') : require('../../assets/icons/dot.png')}
-              
+                source={
+                  currentPage === index + 1
+                    ? require("../../assets/icons/rdot.png")
+                    : require("../../assets/icons/dot.png")
+                }
               />
             ))}
           </View>
@@ -99,7 +101,7 @@ export default function WelcomeScreen() {
           className={`py-3 bg-[${colors.primary}]  rounded-xl`}
         >
           <Text className="text-[16px] font-semibold text-center text-white">
-            {currentPage < pages.length ? "Continue" : "Signup"}
+            {currentPage < pages.length ? "Continue" : "Login"}
           </Text>
         </TouchableOpacity>
       </View>
