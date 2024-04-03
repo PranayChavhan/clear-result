@@ -31,6 +31,8 @@ import EmailSetupScreen from "../screens/Settings/EmailSetupScreeen";
 import SMSGatewayScreen from "../screens/Settings/SMSGatewayScreen";
 import CurrentSubscription from "../screens/Tasks/CurrentSubscription";
 import ProspectsScreen from "../screens/Dashboard/ProspectsScreen";
+import UserInfoFormScreen from "../screens/Dashboard/BasicInfoForm";
+import CameraScreen from "../screens/Dashboard/CameraScreen";
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
 const ExhibitionStack = createNativeStackNavigator();
@@ -81,6 +83,16 @@ export function DashboardStackScreen() {
         name="Prospects"
         component={ProspectsScreen}
         options={{ headerShown: false }}
+      />
+      <DashboardStack.Screen
+        name="UserInfoForm"
+        component={UserInfoFormScreen}
+        options={{ headerShown: false }}
+      />
+      <DashboardStack.Screen
+        name="Camera"
+        component={CameraScreen}
+        options={{ headerShown: false, tabBarStyle: { display: "none" } }}
       />
     </DashboardStack.Navigator>
   );
