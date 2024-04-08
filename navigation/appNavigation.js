@@ -19,13 +19,17 @@ import IcNotification from "../assets/icons/ic_notification.svg";
 import IcMenu from "../assets/icons/ic_menu.svg";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
 import DashboardScreen from "../screens/admin/DashboardScreen";
+import HomeScreen from "../screens/dashboard/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator drawerContent={CustomDrawerContent}>
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+      drawerContent={CustomDrawerContent}
+    >
       <Drawer.Screen
         name="Tab"
         component={TabNavigation}
@@ -41,10 +45,21 @@ const DrawerNavigation = () => {
         component={ReportScreeen}
         options={{ headerShown: false }}
       />
-
       <Drawer.Screen
         name="ReportsFilter"
         component={ReportFilterScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Drawer.Screen
+        name="AdminDashboard"
+        options={{ headerShown: false }}
+        component={DashboardScreen}
+      />
+
+      <Drawer.Screen
+        name="Dashboard"
+        component={HomeScreen}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>
@@ -105,48 +120,40 @@ const CustomDrawerContent = ({ navigation }) => {
 
 export default function AppNavigation() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen
-          name="Welcome"
-          options={{ headerShown: false }}
-          component={WelcomeScreen}
-        />
-        <Stack.Screen
-          name="Signup"
-          options={{ headerShown: false }}
-          component={SignupScreen}
-        />
-        <Stack.Screen
-          name="Login"
-          options={{ headerShown: false }}
-          component={LoginScreen}
-        />
-        <Stack.Screen
-          name="ForgetPassword"
-          options={{ headerShown: false }}
-          component={ForgetPasswordScreen}
-        />
-        <Stack.Screen
-          name="CheckEmail"
-          options={{ headerShown: false }}
-          component={CheckEmailScreen}
-        />
-        <Stack.Screen
-          name="CreatePassword"
-          options={{ headerShown: false }}
-          component={CreatePasswordScreen}
-        />
-        <Stack.Screen name="Home" options={{ headerShown: false }}>
-          {() => <DrawerNavigation />}
-        </Stack.Screen>
-
-        <Stack.Screen
-          name="AdminDashboard"
-          options={{ headerShown: false }}
-          component={DashboardScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Screen
+        name="Welcome"
+        options={{ headerShown: false }}
+        component={WelcomeScreen}
+      />
+      <Stack.Screen
+        name="Signup"
+        options={{ headerShown: false }}
+        component={SignupScreen}
+      />
+      <Stack.Screen
+        name="Login"
+        options={{ headerShown: false }}
+        component={LoginScreen}
+      />
+      <Stack.Screen
+        name="ForgetPassword"
+        options={{ headerShown: false }}
+        component={ForgetPasswordScreen}
+      />
+      <Stack.Screen
+        name="CheckEmail"
+        options={{ headerShown: false }}
+        component={CheckEmailScreen}
+      />
+      <Stack.Screen
+        name="CreatePassword"
+        options={{ headerShown: false }}
+        component={CreatePasswordScreen}
+      />
+      <Stack.Screen name="Home" options={{ headerShown: false }}>
+        {() => <DrawerNavigation />}
+      </Stack.Screen>
+    </Stack.Navigator>
   );
 }

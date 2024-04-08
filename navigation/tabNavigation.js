@@ -212,9 +212,9 @@ const screenOptions = {
 
 export default function TabNavigation() {
   return (
-    <Tab.Navigator initialRouteName="Search" screenOptions={screenOptions}>
+    <Tab.Navigator initialRouteName="SearchStack" screenOptions={screenOptions}>
       <Tab.Screen
-        name="Create"
+        name="CreateStack"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -237,7 +237,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Tasks"
+        name="TaskStack"
         component={TaskStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -260,7 +260,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="SearchStack"
         component={DashboardStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -281,7 +281,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        name="Shopprofile"
+        name="ExibitionStack"
         component={ExhibitionStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {
@@ -317,7 +317,7 @@ export default function TabNavigation() {
       />
 
       <Tab.Screen
-        name="Profile"
+        name="ProfileStack"
         component={ProfileStackScreen}
         options={{
           tabBarIcon: ({ focused }) => {

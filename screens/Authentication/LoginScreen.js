@@ -59,10 +59,14 @@ export default function LoginScreen() {
     }
 
     if (email == "admin@cr.com" && password == "admin") {
-      navigation.navigate("AdminDashboard");
+      navigation.navigate("Home", {
+        screen: "AdminDashboard",
+      });
       return;
     } else {
-      navigation.navigate("Home");
+      navigation.navigate("Home", {
+        screen: "CreateStack",
+      });
     }
   };
 

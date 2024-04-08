@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "clear_result",
-    "slug": "v1",
+    "slug": "clear-result",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,25 +22,25 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.pranaychavhan2012.v1"
+      "package": "com.ayushsb24.clearresult"
     },
     "web": {
-      "favicon": "../assets/icon.png"
+      "favicon": "./assets/icon.png"
     },
     "plugins": [
       "expo-font"
     ],
     "extra": {
       "eas": {
-        "projectId": "ce656bff-a888-4252-8db5-565c9d0d01e8"
+        "projectId": "8d3e5a33-0874-451a-a9a7-56deedb23d49"
       }
     },
-    "owner": "clear_result",
+    "owner": "ayushsb24",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/ce656bff-a888-4252-8db5-565c9d0d01e8"
+      "url": "https://u.expo.dev/8d3e5a33-0874-451a-a9a7-56deedb23d49"
     }
   }
 }

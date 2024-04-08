@@ -34,7 +34,7 @@ const usersData = [
 const ProspectsTopNavigation = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         labelStyle: {
           fontSize: 12,
           fontWeight: "bold",

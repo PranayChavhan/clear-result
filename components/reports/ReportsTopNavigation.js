@@ -13,7 +13,7 @@ const Tab = createMaterialTopTabNavigator();
 const ReportsTopNavigation = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         labelStyle: { fontSize: 12, fontWeight: "bold", paddingHorizontal: 26 },
         indicatorStyle: {
           backgroundColor: "#2F80ED",
