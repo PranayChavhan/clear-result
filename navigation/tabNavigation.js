@@ -34,6 +34,8 @@ import ProspectsScreen from "../screens/dashboard/ProspectsScreen";
 import UserInfoFormScreen from "../screens/dashboard/BasicInfoForm";
 import CameraScreen from "../screens/dashboard/CameraScreen";
 import AdditionalSettingsScreen from "../screens/settings/AdditionalSettingsScreen";
+import ReportScreen from "../screens/report/ReportScreen";
+import ReportFilterScreen from "../screens/report/ReportsFilter";
 
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
@@ -95,6 +97,17 @@ export function DashboardStackScreen() {
         name="Camera"
         component={CameraScreen}
         options={{ headerShown: false, tabBarStyle: { display: "none" } }}
+      />
+      <DashboardStack.Screen
+        name="Reports"
+        component={ReportScreen}
+        options={{ headerShown: false }}
+      />
+
+      <DashboardStack.Screen
+        name="ReportsFilter"
+        component={ReportFilterScreen}
+        options={{ headerShown: false }}
       />
     </DashboardStack.Navigator>
   );

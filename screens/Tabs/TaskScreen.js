@@ -11,7 +11,7 @@ import CrLogo from "../../assets/images/cr_logo.png";
 import IcFilter from "../../assets/icons/ic_filter.svg";
 import IcFilterDown from "../../assets/icons/ic_filter_down.svg";
 import Constants from "expo-constants";
-import TaskTopNavigation from "../../components/TaskTopNavigation";
+import TaskTopNavigation from "../../components/task/TaskTopNavigation";
 import IcSearch from "../../assets/icons/ic_search.svg";
 import Checkbox from "../../components/ui/Checkbox";
 const TaskScreen = () => {

@@ -14,8 +14,10 @@ import CreateTaskScreen from "../screens/tasks/CreateTaskScreen";
 import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
+import ReportScreeen from "../screens/report/ReportScreen";
 import IcNotification from "../assets/icons/ic_notification.svg";
 import IcMenu from "../assets/icons/ic_menu.svg";
+import ReportFilterScreen from "../screens/report/ReportsFilter";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,6 +33,17 @@ const DrawerNavigation = () => {
       <Drawer.Screen
         name="Subscription Model"
         component={SubscriptionScreen}
+        options={{ headerShown: false }}
+      />
+      <Drawer.Screen
+        name="Reports"
+        component={ReportScreeen}
+        options={{ headerShown: false }}
+      />
+
+      <Drawer.Screen
+        name="ReportsFilter"
+        component={ReportFilterScreen}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>
@@ -72,6 +85,18 @@ const CustomDrawerContent = ({ navigation }) => {
         }
       >
         <Text className="font-semibold ">Social Media Integration</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        className="bg-[#F4F9FF] p-4 rounded-xl my-2"
+        onPress={() =>
+          //open reports sceen
+          navigation.navigate("Search", {
+            screen: "Reports",
+          })
+        }
+      >
+        <Text className="font-semibold ">Reports Segment</Text>
       </TouchableOpacity>
     </View>
   );
