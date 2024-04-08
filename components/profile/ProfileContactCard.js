@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 const ProfileContactCard = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("ShopProfile")}>
+    <TouchableOpacity>
       <View
         className={`rounded-xl  sm flex flex-col p-4 shadow-md bg-white m-4`}
       >

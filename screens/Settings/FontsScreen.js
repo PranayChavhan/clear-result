@@ -69,7 +69,10 @@ const FontsScreen = () => {
           className="pt-4 pl-7 flex gap-3 relativeoverflow-hidden"
         >
           {fonts.map((font, i) => (
-            <TouchableWithoutFeedback onPress={() => setHeadingSize(28)}>
+            <TouchableWithoutFeedback
+              key={i}
+              onPress={() => setHeadingSize(28)}
+            >
               <View className="flex my-6 items-center justify-center mx-2">
                 <View className="p-4 px-8 border border-gray-900 rounded-md h-20">
                   <Text

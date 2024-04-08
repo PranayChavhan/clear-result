@@ -71,31 +71,35 @@ const TodayScreen = () => {
       </View>
 
       <View className="border-[0.8px] border-gray-300 p-4 rounded-lg mb-4">
-        <View className="flex flex-row items-start justify-between">
-          <View>
-            <Text className="text-[18px] font-bold">
-              Follow up mode:Calling
-            </Text>
-            <Text className="text-[12px] italic text-[#828282] mt-1">
-              Anisha Mulay : AM Studio
-            </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("ShopProfile")}>
+          <View className="flex flex-row items-start justify-between">
+            <View>
+              <Text className="text-[18px] font-bold">
+                Follow up mode:Calling
+              </Text>
+              <Text className="text-[12px] italic text-[#828282] mt-1">
+                Anisha Mulay : AM Studio
+              </Text>
+            </View>
+            <View>
+              <IcCall />
+            </View>
           </View>
-          <View>
-            <IcCall />
-          </View>
-        </View>
+        </TouchableOpacity>
 
-        <View className="flex flex-row items-center justify-between border-t-[0.8px] border-gray-300 mt-4 pt-1">
-          <View className="flex flex-row items-center gap-1">
-            <IcCalendar />
-            <Text className="text-[14px] text-[#828282]">
-              Mon, 10 July 2022
-            </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("ShopProfile")}>
+          <View className="flex flex-row items-center justify-between border-t-[0.8px] border-gray-300 mt-4 pt-1">
+            <View className="flex flex-row items-center gap-1">
+              <IcCalendar />
+              <Text className="text-[14px] text-[#828282]">
+                Mon, 10 July 2022
+              </Text>
+            </View>
+            <View>
+              <Avatar01 />
+            </View>
           </View>
-          <View>
-            <Avatar01 />
-          </View>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <View className="border-[0.8px] border-gray-300 p-4 rounded-lg mb-4">

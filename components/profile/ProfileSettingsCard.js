@@ -8,7 +8,7 @@ const ProfileSettingsCard = ({ data }) => {
   return (
     <View className={`rounded-xl  sm flex flex-col p-4 shadow-md bg-white m-4`}>
       {data.map((d, i) => (
-        <View>
+        <View key={i}>
           <TouchableOpacity
             onPress={() => navigation.navigate(d.nav)}
             key={i}

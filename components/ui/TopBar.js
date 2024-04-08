@@ -5,11 +5,15 @@ import { DrawerActions } from "@react-navigation/native";
 import IcNotification from "../../assets/icons/ic_notification.svg";
 import IcMenu from "../../assets/icons/ic_menu.svg";
 
-const TopBar = ({ logo }) => {
+const TopBar = ({ logo, nodrawer }) => {
   const navigation = useNavigation();
 
   const openDrawer = () => {
-    navigation.dispatch(DrawerActions.openDrawer());
+    // check if this screen is in drawer navigation
+    // if not, use navigation.openDrawer()
+    if (!nodrawer) {
+      navigation.dispatch(DrawerActions.openDrawer());
+    }
   };
 
   return (

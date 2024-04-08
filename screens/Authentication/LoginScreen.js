@@ -72,7 +72,7 @@ export default function LoginScreen() {
 
   return (
     <Screen className="bg-white">
-      <TopBar logo={Logo} />
+      <TopBar logo={Logo} nodrawer={true} />
 
       <View className="px-4">
         <View className="absolute right-[16px] top-16">

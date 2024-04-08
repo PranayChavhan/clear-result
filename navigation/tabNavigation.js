@@ -71,6 +71,11 @@ export function TaskStackScreen() {
         component={PaymentModeScreen}
         options={{ headerShown: false }}
       />
+      <TaskStack.Screen
+        name="ShopProfile"
+        component={ShopProfileScreen}
+        options={{ headerShown: false }}
+      />
     </TaskStack.Navigator>
   );
 }
@@ -185,12 +190,6 @@ const ProfileStackScreen = () => {
       <ProfileStack.Screen
         name="AdditionalSettings"
         component={AdditionalSettingsScreen}
-        options={{ headerShown: false }}
-      />
-
-      <ProfileStack.Screen
-        name="ShopProfile"
-        component={ShopProfileScreen}
         options={{ headerShown: false }}
       />
     </ProfileStack.Navigator>
