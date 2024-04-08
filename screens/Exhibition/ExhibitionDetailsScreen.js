@@ -7,11 +7,14 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Slider from "@react-native-community/slider";
+import { useNavigation } from "@react-navigation/native";
+
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcDown from "../../assets/icons/ic_down.svg";
-import InputFeild from "../../components/InputFeild";
+import InputFeild from "../../components/ui/InputFeild";
 import IcToggle from "../../assets/icons/ic_Toggle base.svg";
 import IcEmail from "../../assets/icons/ic_circum_mail.svg";
 import IcWhatsapp from "../../assets/icons/ic_vwp.svg";
@@ -19,15 +22,10 @@ import IcPen from "../../assets/icons/ic_pen.svg";
 import IcAttachment from "../../assets/icons/ic_attachment.svg";
 import IcSearch from "../../assets/icons/ic_search_black.svg";
 import IcFlag from "../../assets/icons/ic_flag-india.svg";
-import IcDropdown from "../../assets/icons/ic_dropdown.svg";
-import Checkbox from "../../components/Checkbox";
 import IcCall from "../../assets/icons/ic_phone_call.svg";
 import IcMail from "../../assets/icons/ic_circum_mail2.svg";
 import IcVender from "../../assets/icons/ic_vender.svg";
-import Slider from "@react-native-community/slider";
-import { useNavigation } from "@react-navigation/native";
-
-
+import CheckBox from "../../components/ui/Checkbox";
 
 const ExhibitionDetailsScreen = () => {
   const navigation = useNavigation();
@@ -311,26 +309,24 @@ const ExhibitionDetailsScreen = () => {
             />
           </View>
 
-          <View className="mt-2">
-            <Text className="text-[12px] font-medium text-[#828282] mb-2">
+          <View className="mt-4 ">
+            <Text className="text-[13px] font-medium text-[#828282] mb-2">
               Mobile Number
             </Text>
+            <View className="flex flex-row items-center bg-white border border-blue-300  rounded-md">
+              <TouchableOpacity>
+                <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
+                  <IcFlag />
+                  <IcDown />
+                </View>
+              </TouchableOpacity>
 
-            <View className="border border-blue-300 bg-white rounded-md flex flex-row gap-2">
-              <View className="flex flex-row items-center gap-1">
-                <IcFlag />
-                <IcDropdown />
-              </View>
-
-              <TextInput className=" p-2 " placeholder="Enter the number" />
+              <TextInput
+                placeholder="Enter the description here"
+                secureTextEntry={false}
+              />
             </View>
-
-            <View className="flex flex-row items-center ">
-              <Checkbox />
-              <Text className="text-gray-500 text-[12px]">
-                Whatsapp number is not similar
-              </Text>
-            </View>
+            <CheckBox className="" label={"Whatsapp Number is not similar?"} />
           </View>
 
           <View className="mt-2">
@@ -371,7 +367,9 @@ const ExhibitionDetailsScreen = () => {
           </View>
           <View className="fles flex-row items-center justify-center w-full mt-8">
             <TouchableWithoutFeedback
-            onPress={() => {navigation.navigate("AddContactPerson")}}
+              onPress={() => {
+                navigation.navigate("AddContactPerson");
+              }}
             >
               <Text
                 className={`text-[16px] font-medium text-[#2F80ED] underline`}

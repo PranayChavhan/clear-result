@@ -8,15 +8,15 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
 import ImgDarkMode from "../../assets/images/theme_dark.png";
 import ImgLightMode from "../../assets/images/theme_light.png";
 import ImgSystemMode from "../../assets/images/theme_system.png";
 import HeroImg from "../../assets/images/sms-gateway.svg";
 
-import TopBar from "../../components/TopBar";
-import InputFeild from "../../components/InputFeild";
+import TopBar from "../../components/ui/TopBar";
+import InputFeild from "../../components/ui/InputFeild";
 
 import IcEdit from "../../assets/icons/ic_edit.svg";
 

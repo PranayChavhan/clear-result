@@ -7,13 +7,13 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
 import ImgDarkMode from "../../assets/images/theme_dark.png";
 import ImgLightMode from "../../assets/images/theme_light.png";
 import ImgSystemMode from "../../assets/images/theme_system.png";
 
-import TopBar from "../../components/TopBar";
+import TopBar from "../../components/ui/TopBar";
 
 const PushNotificationScreen = () => {
   // toggle w

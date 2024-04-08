@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, BackHandler } from "react-native";
 import { Camera, CameraType } from "expo-camera";
 import React, { useState, useEffect } from "react";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 
 const CameraScreen = () => {
   // camera

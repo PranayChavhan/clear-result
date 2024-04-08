@@ -66,5 +66,3 @@ const ProspectUserListItem = ({ item, handleLeftSwipe, handleRightSwipe }) => {
 };
 
 export default ProspectUserListItem;
-
-const styles = StyleSheet.create({});

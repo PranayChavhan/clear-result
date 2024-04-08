@@ -1,7 +1,7 @@
 import { Text, ScrollView, View, Image } from "react-native";
 import React from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import ProfileContactCard from "../../components/profile/ProfileContactCard";
 import ProfileSettingsCard from "../../components/profile/ProfileSettingsCard";
 import IcTheme from "../../assets/icons/ic_set_theme.svg";
@@ -59,6 +59,7 @@ const settings3 = [
     title: "Additional Settings",
     desc: "Personalised configurations at your fingertips",
     icon: <IcAdditional style={{ width: 20, height: 20 }} />,
+    nav: "AdditionalSettings",
   },
 ];
 

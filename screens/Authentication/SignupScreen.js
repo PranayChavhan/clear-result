@@ -8,9 +8,9 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import TopBar from "../../components/TopBar";
+import TopBar from "../../components/ui/TopBar";
 import Logo from "../../assets/images/cr_logo_auth.png";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 import colors from "../../constants/colors";
 
 const InputFeild = ({
@@ -37,7 +37,7 @@ export default function SignupScreen() {
   const navigation = useNavigation();
   const [password, setPassword] = useState("");
   const [company, setCompany] = useState("");
-const [contactName, setContactName] = useState("");
+  const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const handleLogin = () => {
@@ -68,73 +68,65 @@ const [contactName, setContactName] = useState("");
           <Text className="text-[14px] font-normal text-[#333333]">
             Please register to continue
           </Text>
-         <View>
+          <View>
+            <Text className="text-[14px] font-medium text-[#828282] mb-2">
+              Store/Company Name
+            </Text>
+            <InputFeild
+              placeholder="Enter the store/company name"
+              value={company}
+              onChangeText={(text) => setCompany(text)}
+              secureTextEntry={false}
+            />
+          </View>
 
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Store/Company Name
-          </Text>
-          <InputFeild
-            placeholder="Enter the store/company name"
-            value={company}
-            onChangeText={(text) => setCompany(text)}
-            secureTextEntry={false}
-          />
+          <View>
+            <Text className="text-[14px] font-medium text-[#828282] mb-2">
+              Cantact Name
+            </Text>
+            <InputFeild
+              placeholder="Enter the name"
+              value={contactName}
+              onChangeText={(text) => setContactName(text)}
+              secureTextEntry={false}
+            />
+          </View>
+          <View>
+            <Text className="text-[14px] font-medium text-[#828282] mb-2">
+              Mobile Number
+            </Text>
 
-         </View>
+            <InputFeild
+              placeholder="Enter the mobile number"
+              value={contactNumber}
+              onChangeText={(text) => setContactNumber(text)}
+              keyboardType="phone-pad"
+            />
+          </View>
 
-         <View>
+          <View>
+            <Text className="text-[14px] font-medium text-[#828282] mb-2">
+              Email ID/Username
+            </Text>
+            <InputFeild
+              placeholder="Enter the email ID/username"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              keyboardType="email-address"
+            />
+          </View>
 
-<Text className="text-[14px] font-medium text-[#828282] mb-2">
-   Cantact Name
- </Text>
- <InputFeild
-   placeholder="Enter the name"
-   value={contactName}
-   onChangeText={(text) => setContactName(text)}
-   secureTextEntry={false}
- />
-
-</View>
-         <View>
-
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Mobile Number
-          </Text>
-
-          <InputFeild
-            placeholder="Enter the mobile number"
-            value={contactNumber}
-            onChangeText={(text) => setContactNumber(text)}
-            keyboardType="phone-pad"
-          />
-         </View>
-
-         <View>
-
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Email ID/Username
-          </Text>
-          <InputFeild
-            placeholder="Enter the email ID/username"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            keyboardType="email-address"
-          />
-
-         </View>
-         
-         <View>
-
-         <Text className="text-[14px] font-medium text-[#828282] mb-2">
-            Password
-          </Text>
-          <InputFeild
-            placeholder="****************"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-          />
-         </View>
+          <View>
+            <Text className="text-[14px] font-medium text-[#828282] mb-2">
+              Password
+            </Text>
+            <InputFeild
+              placeholder="****************"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry={true}
+            />
+          </View>
 
           <TouchableOpacity
             onPress={handleSignup}

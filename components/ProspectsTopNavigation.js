@@ -14,8 +14,8 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { StyleSheet } from "react-native";
 import { FlatList, Swipeable } from "react-native-gesture-handler";
-import ProspectUserListItem from "./Dashboard/ProspectUserListItem";
-import InputFeild from "./InputFeild";
+import ProspectUserListItem from "./dashboard/ProspectUserListItem";
+import InputFeild from "./ui/InputFeild";
 const Tab = createMaterialTopTabNavigator();
 
 const usersData = [
@@ -68,6 +68,8 @@ const ProspectsTopNavigation = () => {
 
 const UserDetailsTabView = () => {
   const snapPoints = useMemo(() => ["60%", "80%"], []);
+
+  const [companyName, setCompanyName] = useState("");
 
   const navigation = useNavigation();
   const buttonsData = [
@@ -168,6 +170,7 @@ const UserDetailsTabView = () => {
       <BottomSheet
         snapPoints={snapPoints}
         enablePanDownToClose
+        index={-1}
         ref={bottomSheetRef}
         onChange={handleSheetChanges}
       >
@@ -208,6 +211,7 @@ const UserDetailsTabView = () => {
       {/* Create Reschedule Bottom Sheet */}
       <BottomSheet
         snapPoints={snapPoints}
+        index={-1}
         enablePanDownToClose
         ref={bottomSheetRescheduleRef}
         onChange={handleSheetChanges}

@@ -1,7 +1,15 @@
-import { View, Text, TextInput, Switch, ScrollView, TouchableOpacity, TouchableWithoutFeedback  } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Switch,
+  ScrollView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React, { useState } from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcDown from "../../assets/icons/ic_down.svg";
 import IcMail from "../../assets/icons/ic_mail.svg";
@@ -37,14 +45,14 @@ const CreateTaskScreen = () => {
     setIsEnabled((previousState) => !previousState);
   };
   return (
-    <Screen  className="bg-white">
+    <Screen className="bg-white">
       <TopBar logo={CrLogo} />
-    
-      <ScrollView contentContainerStyle={{ paddingBottom: 140 }} showsVerticalScrollIndicator={false} className="px-4 py-4 mb-[30rem]">
 
-        
-
-  
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 140 }}
+        showsVerticalScrollIndicator={false}
+        className="px-4 py-4 mb-[30rem]"
+      >
         <View className="flex flex-row items-center justify-start gap-4">
           <Text
             style={{ fontFamily: "Poppins-Regular", fontWeight: 600 }}
@@ -157,11 +165,7 @@ const CreateTaskScreen = () => {
               />
             </View>
           </View>
-
-
         </View>
-
-
 
         <View className="mt-2 bg-[#F8F8F8] p-2 rounded-md pb-4">
           <View className="flex flex-row items-center justify-between">
@@ -175,53 +179,43 @@ const CreateTaskScreen = () => {
               value={isEnabled}
             />
           </View>
-
-          
         </View>
-
 
         <View className="mt-4 flex flex-row items-center justify-between">
-        <TouchableOpacity
-          
-          className={`py-3 bg-white border-[1px] w-[48%] border-[#2F80ED]  rounded-xl`}
-        >
-          <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
-            Discard
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            className={`py-3 bg-white border-[1px] w-[48%] border-[#2F80ED]  rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
+              Discard
+            </Text>
+          </TouchableOpacity>
 
-
-        <TouchableOpacity
-          onPress={() => {navigation.navigate("SubscriptionPackages")}}
-          className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
-        >
-          <Text className="text-[16px] font-semibold text-center text-white">
-            Save
-          </Text>
-        </TouchableOpacity>
-
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("SubscriptionPackages");
+            }}
+            className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-white">
+              Save
+            </Text>
+          </TouchableOpacity>
         </View>
 
-        
         <View className="flex flex-col items-center justify-center mt-4">
-        <TouchableWithoutFeedback >
-            <Text className={`text-[16px] font-medium text-[#2F80ED] underline`}>
+          <TouchableWithoutFeedback>
+            <Text
+              className={`text-[16px] font-medium text-[#2F80ED] underline`}
+            >
               Save & Create New
             </Text>
           </TouchableWithoutFeedback>
 
-
           <Text className="text-[12px] italic text-[#828282] mt-8">
-        Powered by ClearResults
-      </Text>
-
+            Powered by ClearResults
+          </Text>
         </View>
-
-
-        
-
-
-        </ScrollView>
+      </ScrollView>
     </Screen>
   );
 };

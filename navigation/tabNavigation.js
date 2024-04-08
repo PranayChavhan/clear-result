@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Text, View, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import CreateScreen from "../screens/Tabs/CreateScreen";
-import TaskScreen from "../screens/Tabs/TaskScreen";
-import ProfileScreen from "../screens/Tabs/ProfileScreen";
+import CreateScreen from "../screens/tabs/CreateScreen";
+import TaskScreen from "../screens/tabs/TaskScreen";
+import ProfileScreen from "../screens/tabs/ProfileScreen";
 import TabSearch from "../assets/icons/Tab_Search.svg";
 import InactiveCreate from "../assets/icons/inactive_create.svg";
 import InactiveTasks from "../assets/icons/inactive_tasks.svg";
@@ -11,28 +11,30 @@ import InactiveMeal from "../assets/icons/inactive_meal.svg";
 import ActiveMeal from "../assets/icons/active_meal .svg";
 import InactiveProfile from "../assets/icons/inactive_profile.svg";
 import ActiveTasks from "../assets/icons/active_tasks.svg";
-import SearchScreen from "../screens/Tabs/SearchScreen";
-import HomeScreen from "../screens/Dashboard/HomeScreen";
-import CreateTaskScreen from "../screens/Tasks/CreateTaskScreen";
+import SearchScreen from "../screens/tabs/SearchScreen";
+import HomeScreen from "../screens/dashboard/HomeScreen";
+import CreateTaskScreen from "../screens/tasks/CreateTaskScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SubscriptionScreen from "../screens/Tasks/SubscriptionScreen";
-import PaymentModeScreen from "../screens/Tasks/PaymentModeScreen";
-import ExhibitionScreen from "../screens/Tabs/ExhibitionScreen";
-import InviteUserScreen from "../screens/Exhibition/InviteUserScreen";
-import ExhibitionDetailsScreen from "../screens/Exhibition/ExhibitionDetailsScreen";
-import AddContactPerson from "../screens/Exhibition/AddContactPerson";
-import ShopProfileScreen from "../screens/Exhibition/ShopProfileScreen";
-import ThemeScreen from "../screens/Settings/ThemeScreen";
-import FontsScreen from "../screens/Settings/FontsScreen";
-import LanguageScreen from "../screens/Settings/LanguageScreen";
-import PushNotificationScreen from "../screens/Settings/PushNotification";
-import EmailSetupScreen from "../screens/Settings/EmailSetupScreeen";
-import SMSGatewayScreen from "../screens/Settings/SMSGatewayScreen";
-import CurrentSubscription from "../screens/Tasks/CurrentSubscription";
-import ProspectsScreen from "../screens/Dashboard/ProspectsScreen";
-import UserInfoFormScreen from "../screens/Dashboard/BasicInfoForm";
-import CameraScreen from "../screens/Dashboard/CameraScreen";
+import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
+import PaymentModeScreen from "../screens/tasks/PaymentModeScreen";
+import ExhibitionScreen from "../screens/tabs/ExhibitionScreen";
+import InviteUserScreen from "../screens/exhibition/InviteUserScreen";
+import ExhibitionDetailsScreen from "../screens/exhibition/ExhibitionDetailsScreen";
+import AddContactPerson from "../screens/exhibition/AddContactPerson";
+import ShopProfileScreen from "../screens/settings/ShopProfileScreen";
+import ThemeScreen from "../screens/settings/ThemeScreen";
+import FontsScreen from "../screens/settings/FontsScreen";
+import LanguageScreen from "../screens/settings/LanguageScreen";
+import PushNotificationScreen from "../screens/settings/PushNotification";
+import EmailSetupScreen from "../screens/settings/EmailSetupScreeen";
+import SMSGatewayScreen from "../screens/settings/SMSGatewayScreen";
+import CurrentSubscription from "../screens/tasks/CurrentSubscription";
+import ProspectsScreen from "../screens/dashboard/ProspectsScreen";
+import UserInfoFormScreen from "../screens/dashboard/BasicInfoForm";
+import CameraScreen from "../screens/dashboard/CameraScreen";
+import AdditionalSettingsScreen from "../screens/settings/AdditionalSettingsScreen";
+
 const Tab = createBottomTabNavigator();
 const TaskStack = createNativeStackNavigator();
 const ExhibitionStack = createNativeStackNavigator();
@@ -121,11 +123,6 @@ const ExhibitionStackScreen = () => {
         component={AddContactPerson}
         options={{ headerShown: false }}
       />
-      <ExhibitionStack.Screen
-        name="Shopprofile"
-        component={ShopProfileScreen}
-        options={{ headerShown: false }}
-      />
     </ExhibitionStack.Navigator>
   );
 };
@@ -171,6 +168,18 @@ const ProfileStackScreen = () => {
         component={SMSGatewayScreen}
         options={{ headerShown: false }}
       />
+
+      <ProfileStack.Screen
+        name="AdditionalSettings"
+        component={AdditionalSettingsScreen}
+        options={{ headerShown: false }}
+      />
+
+      <ProfileStack.Screen
+        name="ShopProfile"
+        component={ShopProfileScreen}
+        options={{ headerShown: false }}
+      />
     </ProfileStack.Navigator>
   );
 };
@@ -194,7 +203,7 @@ export default function TabNavigation() {
     <Tab.Navigator initialRouteName="Search" screenOptions={screenOptions}>
       <Tab.Screen
         name="Create"
-        component={CreateScreen}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (

@@ -5,12 +5,12 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import React, { useState } from "react";
 import IcSearch from "../../assets/icons/ic_search.svg";
-import Checkbox from "../../components/Checkbox";
+import Checkbox from "../../components/ui/Checkbox";
 import { useNavigation } from "@react-navigation/native";
 const AddContactPerson = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -103,9 +103,6 @@ const Vendor = () => {
       <Checkbox label="Varun Nair" />
       <Checkbox label="Rohit Ray" />
 
-
-
-
       <Checkbox label="Praveen Sharma" />
       <Checkbox label="Ananya Gupta" />
       <Checkbox label="Madhu Agrawal" />
@@ -128,7 +125,7 @@ const Vendor = () => {
 
         <TouchableOpacity
           onPress={() => {
-             navigation.navigate("ExhibitionDetails");
+            navigation.navigate("ExhibitionDetails");
           }}
           className={`py-3  w-[29%]  bg-[#2F80ED]  rounded-xl`}
         >

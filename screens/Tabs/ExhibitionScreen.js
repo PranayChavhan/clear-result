@@ -5,8 +5,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import React from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcMore from "../../assets/icons/ic_more.svg";
 import IcLocation from "../../assets/icons/ic_locotion.svg";
@@ -99,7 +99,7 @@ const ExhibitionScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Shopprofile");
+              navigation.navigate("ExhibitionDetails");
             }}
             className={`py-3 bg-blue-500   rounded-lg `}
           >

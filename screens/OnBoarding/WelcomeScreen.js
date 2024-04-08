@@ -8,9 +8,9 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import TopBar from "../../components/TopBar";
+import TopBar from "../../components/ui/TopBar";
 import Logo from "../../assets/images/cr_logo_auth.png";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 import colors from "../../constants/colors";
 
 export default function WelcomeScreen() {

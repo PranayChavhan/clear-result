@@ -8,8 +8,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import React, { useState } from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcFlagIndia from "../../assets/icons/ic_flag_india.svg";
 import IcDown from "../../assets/icons/ic_down.svg";
@@ -18,7 +18,7 @@ import IcWhatsapp from "../../assets/icons/ic_whatsapp.svg";
 import IcPlusLight from "../../assets/icons/ic_plus_light.svg";
 import IcCameraUpload from "../../assets/icons/ic_camera_upload.svg";
 import { useNavigation } from "@react-navigation/native";
-import CheckBox from "../../components/Checkbox";
+import CheckBox from "../../components/ui/Checkbox";
 
 const InputFeild = ({
   placeholder,

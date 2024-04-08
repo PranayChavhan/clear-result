@@ -1,7 +1,7 @@
 import { View, ScrollView, TouchableWithoutFeedback, Text } from "react-native";
-import React, { useState,  useRef } from "react";
-import Screen from "../../components/Screen";
-import TopBar from "../../components/TopBar";
+import React, { useState, useRef } from "react";
+import Screen from "../../components/ui/Screen";
+import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import { Radio, RadioGroup } from "@ui-kitten/components";
 import CreditCard from "../../components/CreditCard";
@@ -50,12 +50,7 @@ const PaymentModeScreen = () => {
             Credit / Debit Card
           </Radio>
 
-          {selectedIndex === 0 ? (
-            <CreditCard
-          />
-          ) : (
-            <></>
-          )}
+          {selectedIndex === 0 ? <CreditCard /> : <></>}
           <Radio
             style={{
               borderBottomWidth: 0.5,

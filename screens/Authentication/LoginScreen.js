@@ -7,14 +7,14 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import TopBar from "../../components/TopBar";
+import TopBar from "../../components/ui/TopBar";
 import Logo from "../../assets/images/cr_logo_auth.png";
-import Screen from "../../components/Screen";
+import Screen from "../../components/ui/Screen";
 import colors from "../../constants/colors";
 
 import IcFacebook from "../../assets/icons/ic_facebook.svg";
 import IcGoogle from "../../assets/icons/ic_google.svg";
-import DynamicToggleButton from "../../components/DynamicToggleButton";
+import DynamicToggleButton from "../../components/ui/DynamicToggleButton";
 
 const InputFeild = ({
   placeholder,
