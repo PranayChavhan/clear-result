@@ -18,6 +18,7 @@ import ReportScreeen from "../screens/report/ReportScreen";
 import IcNotification from "../assets/icons/ic_notification.svg";
 import IcMenu from "../assets/icons/ic_menu.svg";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
+import DashboardScreen from "../screens/admin/DashboardScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -139,6 +140,12 @@ export default function AppNavigation() {
         <Stack.Screen name="Home" options={{ headerShown: false }}>
           {() => <DrawerNavigation />}
         </Stack.Screen>
+
+        <Stack.Screen
+          name="AdminDashboard"
+          options={{ headerShown: false }}
+          component={DashboardScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

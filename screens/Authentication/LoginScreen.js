@@ -44,6 +44,8 @@ export default function LoginScreen() {
   };
 
   const navigation = useNavigation();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailOrPass, setEmailOrPass] = useState("");
   const handleSignup = () => {
@@ -51,7 +53,17 @@ export default function LoginScreen() {
   };
 
   const handleLogin = () => {
-    navigation.navigate("Home");
+    if (email === "" || password === "") {
+      alert("Please enter email and password");
+      return;
+    }
+
+    if (email == "admin@cr.com" && password == "admin") {
+      navigation.navigate("AdminDashboard");
+      return;
+    } else {
+      navigation.navigate("Home");
+    }
   };
 
   const handleForgetPassword = () => {
@@ -86,8 +98,8 @@ export default function LoginScreen() {
               </Text>
               <InputFeild
                 placeholder="olivia@untitledui.com"
-                value={emailOrPass}
-                onChangeText={(text) => setEmailOrPass(text)}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
                 secureTextEntry={false}
               />
             </View>
