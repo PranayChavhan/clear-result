@@ -53,20 +53,13 @@ export default function LoginScreen() {
   };
 
   const handleLogin = () => {
-    if (email === "" || password === "") {
-      alert("Please enter email and password");
-      return;
-    }
-
     if (email == "admin@cr.com" && password == "admin") {
       navigation.navigate("Home", {
         screen: "AdminDashboard",
       });
       return;
     } else {
-      navigation.navigate("Home", {
-        screen: "CreateStack",
-      });
+      navigation.navigate("Home");
     }
   };
 

@@ -20,6 +20,7 @@ import IcMenu from "../assets/icons/ic_menu.svg";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
 import DashboardScreen from "../screens/admin/DashboardScreen";
 import HomeScreen from "../screens/dashboard/HomeScreen";
+import TemplateScreen from "../screens/smi/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,7 +28,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Dashboard"
+      initialRouteName="Tab"
       drawerContent={CustomDrawerContent}
     >
       <Drawer.Screen
@@ -40,6 +41,12 @@ const DrawerNavigation = () => {
         component={SubscriptionScreen}
         options={{ headerShown: false }}
       />
+      <Drawer.Screen
+        name="SIMScreen"
+        component={TemplateScreen}
+        options={{ headerShown: false }}
+      />
+
       <Drawer.Screen
         name="Reports"
         component={ReportScreeen}
@@ -55,12 +62,6 @@ const DrawerNavigation = () => {
         name="AdminDashboard"
         options={{ headerShown: false }}
         component={DashboardScreen}
-      />
-
-      <Drawer.Screen
-        name="Dashboard"
-        component={HomeScreen}
-        options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );

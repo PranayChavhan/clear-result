@@ -9,9 +9,6 @@ import {
 } from "react-native";
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import * as ImagePicker from "expo-image-picker";
-import { Camera, CameraType } from "expo-camera";
 
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
@@ -29,75 +26,71 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <Screen>
-          <TopBar logo={CrLogo} />
+    <Screen>
+      <TopBar logo={CrLogo} />
 
-          <ScrollView
-            classnName="px-2"
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
+      <ScrollView
+        classnName="px-2"
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
+        {/* Scrollable Cards. */}
+        <ScrollView
+          horizontal
+          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <SubscriptionCard />
+          <SubscriptionCard />
+        </ScrollView>
+        {/* Just For You */}
+        <View className="flex flex-row  justify-start items-center px-4 gap-3">
+          <IcNewsLetter />
+          <Text
+            className={"font-semibold text-lg"}
+            style={{ fontFamily: "Poppins-Regular" }}
           >
-            {/* Scrollable Cards. */}
-            <ScrollView
-              horizontal
-              className="p-4 flex relative max-h-300 h-300 overflow-hidden"
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            >
-              <SubscriptionCard />
-              <SubscriptionCard />
-            </ScrollView>
-            {/* Just For You */}
-            <View className="flex flex-row  justify-start items-center px-4 gap-3">
-              <IcNewsLetter />
-              <Text
-                className={"font-semibold text-lg"}
-                style={{ fontFamily: "Poppins-Regular" }}
-              >
-                Just For You
-              </Text>
-            </View>
-            <ScrollView
-              horizontal
-              className="p-4 flex relative max-h-300 h-300 overflow-hidden"
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            >
-              <NewsLetterCard />
-              <NewsLetterCard />
-            </ScrollView>
-            {/* Upcoming Exibitions */}
-            <ScrollView
-              horizontal
-              className="p-4 flex relative max-h-300 h-300 overflow-hidden"
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            >
-              <UpcomingExCard />
-            </ScrollView>
+            Just For You
+          </Text>
+        </View>
+        <ScrollView
+          horizontal
+          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <NewsLetterCard />
+          <NewsLetterCard />
+        </ScrollView>
+        {/* Upcoming Exibitions */}
+        <ScrollView
+          horizontal
+          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <UpcomingExCard />
+        </ScrollView>
 
-            <TouchableOpacity
-              className={` mx-3  mb-3 flex-row items-center justify-center p-3 rounded-lg bg-[${colors.primary}] `}
-            >
-              <Text
-                className="text-white"
-                style={{ fontFamily: "Poppins-Regular" }}
-              >
-                Invite Users
-              </Text>
-            </TouchableOpacity>
+        <TouchableOpacity
+          className={` mx-3  mb-3 flex-row items-center justify-center p-3 rounded-lg bg-[${colors.primary}] `}
+        >
+          <Text
+            className="text-white"
+            style={{ fontFamily: "Poppins-Regular" }}
+          >
+            Invite Users
+          </Text>
+        </TouchableOpacity>
 
-            <View className="pt-10 pb-16">
-              <Text className="text-xs italic text-gray-300 text-center">
-                Powered By Clear Results{" "}
-              </Text>
-            </View>
-          </ScrollView>
-        </Screen>
-      </GestureHandlerRootView>
-    </>
+        <View className="pt-10 pb-16">
+          <Text className="text-xs italic text-gray-300 text-center">
+            Powered By Clear Results{" "}
+          </Text>
+        </View>
+      </ScrollView>
+    </Screen>
   );
 };
 
