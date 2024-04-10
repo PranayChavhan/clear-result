@@ -1,8 +1,10 @@
 import AdditionalSettingsScreen from "../screens/settings/AdditionalSettingsScreen";
 import EmailSetupScreeen from "../screens/settings/EmailSetupScreeen";
+import EmailTemplateScreen from "../screens/settings/EmailTemplateScreen";
 import FontsScreen from "../screens/settings/FontsScreen";
 import LanguageScreen from "../screens/settings/LanguageScreen";
 import PushNotificationScreen from "../screens/settings/PushNotification";
+import SelectTemplateScreen from "../screens/settings/SelectTemplateScreen";
 import SMSGatewayScreeen from "../screens/settings/SMSGatewayScreen";
 import ThemeScreen from "../screens/settings/ThemeScreen";
 import ProfileScreen from "../screens/tabs/ProfileScreen";
@@ -44,6 +46,18 @@ const SettingsStack = () => {
       <Stack.Screen
         name="EmailSetup"
         component={EmailSetupScreeen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="EmailTemplate"
+        component={EmailTemplateScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="SelectTemplate"
+        component={SelectTemplateScreen}
         options={{ headerShown: false }}
       />
 

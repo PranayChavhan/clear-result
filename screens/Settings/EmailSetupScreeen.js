@@ -7,7 +7,8 @@ import {
   TouchableWithoutFeedback,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
 import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
 import ImgDarkMode from "../../assets/images/theme_dark.png";
@@ -20,10 +21,18 @@ import InputFeild from "../../components/ui/InputFeild";
 
 import IcEdit from "../../assets/icons/ic_edit.svg";
 
-const EmailSetupScreeen = () => {
+const EmailSetupScreeen = ({ route }) => {
   const [tab, setTab] = useState(0);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const template = route?.params?.template;
+
+  useEffect(() => {
+    if (template) {
+      setTab(1);
+    }
+  }, [template]);
 
   return (
     <Screen>
@@ -74,21 +83,22 @@ const EmailSetupScreeen = () => {
 export default EmailSetupScreeen;
 
 const NewEmail = ({ setTab }) => {
+  const navigation = useNavigation();
   return (
     <>
       <View className="w-full flex items-center justify-center">
         <HeroImg />
-        <Text className="font-semibold text-sm ">
-          Start Creating Email Templates
-        </Text>
+        <Text className="font-semibold text-sm ">Email Templates</Text>
 
         <Text className="text-xs font-light mt-3">
           You can create Email Templates for multiple tasks.
         </Text>
 
-        <TouchableWithoutFeedback onPress={() => setTab(1)}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate("EmailTemplate")}
+        >
           <View className=" m-3 bg-blue-500 p-4 py-3  rounded-xl mt-6 items-center justify-center">
-            <Text className="text-white text-center">Create Template</Text>
+            <Text className="text-white text-center">Start Creating</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>
