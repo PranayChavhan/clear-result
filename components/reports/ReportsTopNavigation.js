@@ -14,17 +14,24 @@ const ReportsTopNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        labelStyle: { fontSize: 12, fontWeight: "bold", paddingHorizontal: 26 },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          textTransform: "uppercase",
+          flex: 1,
+          width: "100",
+        },
+        tabBarPressColor: "#FFBF1A0D",
         indicatorStyle: {
           backgroundColor: "#2F80ED",
-          width: 0.55,
-          height: 3,
+          width: 0.65,
+          height: 4,
           marginBottom: -1,
         },
-        tabStyle: { width: "auto", padding: 0 },
-        scrollEnabled: true,
-        style: {
-          backgroundColor: "#FFBF1A0D",
+        tabBarScrollEnabled: true,
+        tabBarItemStyle: { width: "auto", padding: 12, paddingHorizontal: 18 },
+        scrollEnabled: false, // Set to false for horizontal scrolling
+        tabBarStyle: {
+          backgroundColor: "#fff9e9",
           elevation: 0,
           borderBottomWidth: 1,
           borderBottomColor: "#E1E1E1",
