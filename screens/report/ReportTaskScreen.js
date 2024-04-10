@@ -1,4 +1,5 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
+
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
@@ -26,27 +27,39 @@ const ReportTaskScreen = () => {
         <View className="p-1">
           <Image
             source={require("../../assets/images/reports/report_1.png")}
-            className="w-screen max-h-[250px] object-contain mb-4"
+            className="w-full mb-4 "
+            style={{
+              height: Dimensions.get("screen").width * (9 / 16) + 12,
+            }}
+            resizeMode="contain"
           />
 
           <Image
             source={require("../../assets/images/reports/report_2.png")}
-            className="w-screen max-h-[250px] my-4 object-contain"
+            className="w-full mb-4 "
+            style={{
+              height: Dimensions.get("screen").width * (9 / 16) + 28,
+            }}
+            resizeMode="contain"
           />
 
           <Image
             source={require("../../assets/images/reports/report_3.png")}
-            className="w-screen max-h-[250px] my-4  object-contain"
+            className="w-full mb-4 "
+            style={{
+              height: Dimensions.get("screen").width * (9 / 16) - 10,
+            }}
+            resizeMode="contain"
           />
-          <View className="py-2">
-            <Button varient={"outline"}> Download Reports</Button>
-          </View>
+        </View>
+        <View className="p-4">
+          <Button varient={"outline"}> Download Reports</Button>
+        </View>
 
-          <View className="">
-            <Text className="text-gray-400 text-center italic text-sm text-light">
-              Powered By ClearResult
-            </Text>
-          </View>
+        <View className=" pb-8">
+          <Text className="text-gray-400 text-center italic text-sm text-light">
+            Powered By ClearResult
+          </Text>
         </View>
       </ScrollView>
     </View>

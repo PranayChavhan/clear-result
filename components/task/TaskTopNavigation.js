@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import React, { useState } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import IcCall from "../../assets/icons/ic_call.svg";
@@ -59,7 +59,7 @@ const TodayScreen = () => {
   };
 
   return (
-    <View className="bg-white h-screen px-4 pt-4">
+    <ScrollView className="bg-white h-screen px-4 pt-4">
       <View className="flex flex-row items-center justify-between gap-4 mb-4">
         {buttonsData.map((button, index) => (
           <TouchableOpacity
@@ -151,7 +151,7 @@ const TodayScreen = () => {
       <Text className="text-[12px] italic text-[#828282] absolute bottom-[30%] left-[39%]">
         Powered by ClearResults
       </Text>
-    </View>
+    </ScrollView>
   );
 };
 

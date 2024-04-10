@@ -123,7 +123,7 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="ProfileStack"
         component={SettingsStack}
         options={{
           tabBarIcon: ({ focused }) => {

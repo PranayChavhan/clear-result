@@ -31,10 +31,6 @@ const HomeScreen = () => {
   const [bottomSheetModal, setBottomSheetModal] = useState(false);
   const bottomSheetRef = useRef(null);
 
-  useEffect(() => {
-    bottomSheetRef && bottomSheetRef.current.close();
-  }, []);
-
   const openBottomSheet = () => {
     bottomSheetRef.current.expand();
   };

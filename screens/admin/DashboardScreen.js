@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import TopBar from "../../components/ui/TopBar";
@@ -30,15 +31,23 @@ const DashboardScreen = () => {
         <ScrollView>
           <ScreenTitle>Admin Dashboards</ScreenTitle>
 
-          <View className="p-1">
+          <View className=" w-screen px-4">
             <Image
               source={require("../../assets/images/reports/report_1.png")}
-              className="w-screen max-h-[250px] object-contain mb-4"
+              className="w-full mb-4 "
+              style={{
+                height: Dimensions.get("screen").width * (9 / 16) + 12,
+              }}
+              resizeMode="contain"
             />
 
             <Image
               source={require("../../assets/images/reports/report_4.png")}
-              className="w-screen max-h-[170px] my-4 object-contain"
+              className="w-full mb-4 "
+              style={{
+                height: Dimensions.get("screen").width * (9 / 16) + 12,
+              }}
+              resizeMode="contain"
             />
 
             <View className="">

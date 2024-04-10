@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Dimensions } from "react-native";
 import React from "react";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import IcFilter from "../../assets/icons/ic_filter.svg";
@@ -20,22 +20,30 @@ const OtherReportScreen = () => {
         <View className="p-1">
           <Image
             source={require("../../assets/images/reports/report_4.png")}
-            className="w-screen max-h-[180px] object-contain mb-4"
+            className="w-full mb-4 "
+            style={{
+              height: Dimensions.get("screen").width * (9 / 16) - 32,
+            }}
+            resizeMode="contain"
           />
 
           <Image
             source={require("../../assets/images/reports/report_5.png")}
-            className="w-screen max-h-[250px] my-4 object-contain"
+            className="w-full mb-4 "
+            style={{
+              height: Dimensions.get("screen").width * (3 / 4) - 28,
+            }}
+            resizeMode="contain"
           />
-          <View className="py-2">
-            <Button varient={"outline"}> Download Reports</Button>
-          </View>
+        </View>
+        <View className="py-2">
+          <Button varient={"outline"}> Download Reports</Button>
+        </View>
 
-          <View className="">
-            <Text className="text-gray-400 text-center italic text-sm text-light">
-              Powered By ClearResult
-            </Text>
-          </View>
+        <View className="pb-10">
+          <Text className="text-gray-400 text-center italic text-sm text-light">
+            Powered By ClearResult
+          </Text>
         </View>
       </ScrollView>
     </View>
