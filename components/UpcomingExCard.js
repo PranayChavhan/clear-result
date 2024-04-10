@@ -18,6 +18,11 @@ const UpcomingExCard = () => {
       <View className=" bg-white h-auto flex flex-col overflow-hidden rounded-3xl">
         <View className="h-32 relative rounded-3xl p-0 overflow-hidden">
           <Image
+            source={require("../assets/images/google-placeholder.png")}
+            resizeMode="cover"
+            className={`h-full w-full`}
+          />
+          <Image
             source={require("../assets/images/badge_upcoming.png")}
             resizeMode="cover"
             className={` absolute bottom-0 right-0`}
@@ -29,7 +34,7 @@ const UpcomingExCard = () => {
             className={"text-xl font-semibold text-ellipsis line-clamp-1"}
             style={{ fontFamily: "Poppins-Regular" }}
           >
-            Daily delivery service{" "}
+            Fashion Gallery{" "}
           </Text>
           {/* Grid */}
           <View className="flex-row items-center gap-x-2">

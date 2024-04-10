@@ -10,17 +10,13 @@ import ForgetPasswordScreen from "../screens/authentication/ForgetPasswordScreen
 import TabNavigation from "./tabNavigation";
 import CheckEmailScreen from "../screens/authentication/CheckEmail";
 import CreatePasswordScreen from "../screens/authentication/CreatePassword";
-import CreateTaskScreen from "../screens/tasks/CreateTaskScreen";
 import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
-import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
 import ReportScreeen from "../screens/report/ReportScreen";
-import IcNotification from "../assets/icons/ic_notification.svg";
 import IcMenu from "../assets/icons/ic_menu.svg";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
 import DashboardScreen from "../screens/admin/DashboardScreen";
-import HomeScreen from "../screens/dashboard/HomeScreen";
-import TemplateScreen from "../screens/smi/HomeScreen";
+import TemplateScreen from "../screens/smi/TemplateScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -37,7 +33,7 @@ const DrawerNavigation = () => {
         options={{ headerShown: false }}
       />
       <Drawer.Screen
-        name="Subscription Model"
+        name="CurrentSubscription"
         component={SubscriptionScreen}
         options={{ headerShown: false }}
       />
@@ -85,8 +81,8 @@ const CustomDrawerContent = ({ navigation }) => {
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl"
         onPress={() =>
-          navigation.navigate("Tasks", {
-            screen: "CurrentSubscriptionPackages",
+          navigation.navigate("Home", {
+            screen: "CurrentSubscription",
           })
         }
       >
@@ -96,8 +92,9 @@ const CustomDrawerContent = ({ navigation }) => {
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl my-2"
         onPress={() =>
-          navigation.navigate("Tasks", {
-            screen: "CurrentSubscriptionPackages",
+          //open reports sceen
+          navigation.navigate("Home", {
+            screen: "SIMScreen",
           })
         }
       >
@@ -108,7 +105,7 @@ const CustomDrawerContent = ({ navigation }) => {
         className="bg-[#F4F9FF] p-4 rounded-xl my-2"
         onPress={() =>
           //open reports sceen
-          navigation.navigate("Search", {
+          navigation.navigate("Home", {
             screen: "Reports",
           })
         }
