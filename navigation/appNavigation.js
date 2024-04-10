@@ -17,6 +17,7 @@ import IcMenu from "../assets/icons/ic_menu.svg";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
 import DashboardScreen from "../screens/admin/DashboardScreen";
 import TemplateScreen from "../screens/smi/TemplateScreen";
+import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -40,6 +41,12 @@ const DrawerNavigation = () => {
       <Drawer.Screen
         name="SIMScreen"
         component={TemplateScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Drawer.Screen
+        name="EditTemplate"
+        component={EditTemplateScreen}
         options={{ headerShown: false }}
       />
 

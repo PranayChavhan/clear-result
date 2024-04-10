@@ -112,7 +112,7 @@ const DueTasks = ({ clickDueTask }) => {
   return (
     <View className="border-[0.2px] border-gray-200 rounded-b-lg shadow-2xl bg-white px-4 pt-4 ">
       <View className="flex flex-row items-center justify-between gap-4 mb-4">
-        {buttonsData.map((button, index) => (
+        {buttonsDatascreenOptions((button, index) => (
           <TouchableOpacity
             key={index}
             onPress={() => handleButtonPress(index)}
@@ -128,7 +128,7 @@ const DueTasks = ({ clickDueTask }) => {
         ))}
       </View>
 
-      {usersData.map((user, index) => (
+      {usersDatascreenOptions((user, index) => (
         <TouchableOpacity key={index} onPress={() => clickDueTask()}>
           <View className="flex flex-row items-center justify-between my-2">
             <View className="flex flex-row items-center gap-2">

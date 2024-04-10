@@ -109,7 +109,7 @@ const ShopCard = () => {
                   transform: [{ translateY: -5 }],
                 }}
               >
-                {stops.map((stop, i) => (
+                {stopsscreenOptions((stop, i) => (
                   <View
                     key={i}
                     style={{

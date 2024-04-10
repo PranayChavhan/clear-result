@@ -108,13 +108,16 @@ const ShopProfileScreen = () => {
       {/* Bottom Sheet */}
 
       <BottomSheet
-      index={-1}
+        index={-1}
         snapPoints={snapPoints}
         enablePanDownToClose
         ref={bottomSheetRef}
         onChange={handleSheetChanges}
       >
-        <BottomSheetView className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8 px-16">
+        <BottomSheetView
+          className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
+          style={{ paddingHorizontal: 12 }}
+        >
           <View className="flex items-center justify-center p-3 gap-x-2 flex-row border-b border-gray-200 ">
             <Text className="text-lg font-semibold ">Due Task</Text>
           </View>

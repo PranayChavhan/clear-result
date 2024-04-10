@@ -5,6 +5,7 @@ import HomeScreen from "../screens/dashboard/HomeScreen";
 import ProspectsScreen from "../screens/dashboard/ProspectsScreen";
 import ReportScreen from "../screens/report/ReportScreen";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
+import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
 
 const Stack = createNativeStackNavigator();
 export function DashboardStack() {

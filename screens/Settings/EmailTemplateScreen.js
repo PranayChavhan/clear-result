@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import React from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import Screen from "../../components/ui/Screen";
 import IcTemplate from "../../assets/icons/ic_template.svg";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import { Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 
 const EmailTemplateScreen = () => {
   const windowWidth = Dimensions.get("window").width;
@@ -122,7 +123,6 @@ const EmailTemplateScreen = () => {
             </View>
           </TouchableWithoutFeedback>
         </View>
-        {/* Image Grid 2 columns */}
       </ScrollView>
     </Screen>
   );
