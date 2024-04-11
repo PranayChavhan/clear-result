@@ -10,8 +10,8 @@ import SettingsStack from "./SettingsNavigation";
 import InactiveCreate from "../assets/icons/inactive_create.svg";
 import InactiveProfile from "../assets/icons/inactive_profile.svg";
 import InactiveTasks from "../assets/icons/inactive_tasks.svg";
-import InactiveMeal from "../assets/icons/inactive_meal.svg";
-import ActiveMeal from "../assets/icons/active_meal .svg";
+import InactiveMeal from "../assets/icons/ic_exhibition.svg";
+import ActiveMeal from "../assets/icons/ic_exhibition.svg";
 import ActiveTasks from "../assets/icons/active_tasks.svg";
 import SearchScreen from "../screens/tabs/SearchScreen";
 

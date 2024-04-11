@@ -31,7 +31,7 @@ const usersData = [
   },
 ];
 
-const ProspectsTopNavigation = () => {
+const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -59,17 +59,58 @@ const ProspectsTopNavigation = () => {
         },
       }}
     >
-      <Tab.Screen name="To be contacted" component={UserDetailsTabView} />
-      <Tab.Screen name="Pending Vist " component={UserDetailsTabView} />
-      <Tab.Screen name="Pending" component={UserDetailsTabView} />
-      <Tab.Screen name="Negotiation" component={UserDetailsTabView} />
-      <Tab.Screen name="Inactive" component={UserDetailsTabView} />
+      <Tab.Screen
+        name="To be contacted"
+        children={() => (
+          <UserDetailsTabView
+            bulkDelete={bulkDelete}
+            bulkTransfer={bulkTransfer}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="Pending Vist "
+        children={() => (
+          <UserDetailsTabView
+            bulkDelete={bulkDelete}
+            bulkTransfer={bulkTransfer}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="Pending"
+        children={() => (
+          <UserDetailsTabView
+            bulkDelete={bulkDelete}
+            bulkTransfer={bulkTransfer}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="Negotiation"
+        children={() => (
+          <UserDetailsTabView
+            bulkDelete={bulkDelete}
+            bulkTransfer={bulkTransfer}
+          />
+        )}
+      />
+      <Tab.Screen
+        name="Inactive"
+        children={() => (
+          <UserDetailsTabView
+            bulkDelete={bulkDelete}
+            bulkTransfer={bulkTransfer}
+          />
+        )}
+      />
     </Tab.Navigator>
   );
 };
 
-const UserDetailsTabView = () => {
+const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
   const snapPoints = useMemo(() => ["60%", "80%"], []);
+  const resSnapPoints = useMemo(() => ["95%"], []);
 
   const [companyName, setCompanyName] = useState("");
 
@@ -127,6 +168,34 @@ const UserDetailsTabView = () => {
         </View>
       </View>
 
+      {/* Bulk */}
+      {bulkDelete && (
+        <View className="p-2">
+          <Text className="text-sm font-bold">Bulk Delete</Text>
+          <Text className="text-sm text-gray-500">
+            Select contacts which you want to delete
+          </Text>
+        </View>
+      )}
+
+      {bulkTransfer && (
+        <View className="px-2 pb-3">
+          <View className="py-2">
+            <Text className="text-sm font-bold">Bulk Transfer</Text>
+            <Text className="text-sm text-gray-500">
+              Select contacts which you want to transfer
+            </Text>
+          </View>
+
+          <InputFeild
+            placeholder="Select & Search Person"
+            value={companyName}
+            onChangeText={(text) => setCompanyName(text)}
+            secureTextEntry={false}
+          />
+        </View>
+      )}
+
       {/* Users */}
 
       <FlatList
@@ -137,6 +206,7 @@ const UserDetailsTabView = () => {
             item={item}
             handleLeftSwipe={toggleRecheduleBottomSheet}
             handleRightSwipe={toggleUserBottomSheet}
+            bulk={bulkDelete || bulkTransfer}
             toggle
           />
         )}
@@ -212,7 +282,7 @@ const UserDetailsTabView = () => {
 
       {/* Create Reschedule Bottom Sheet */}
       <BottomSheet
-        snapPoints={snapPoints}
+        snapPoints={resSnapPoints}
         index={-1}
         enablePanDownToClose
         ref={bottomSheetRescheduleRef}
@@ -220,14 +290,27 @@ const UserDetailsTabView = () => {
       >
         <BottomSheetView
           style={styles.bottomSheet}
-          className="shadow-md shadow-gray-400 p-8 px-16"
+          className="shadow-md shadow-gray-400  px-16"
         >
-          <View className="mt-4">
+          <View className="border-b border-gray-300 flex pb-3  flex-row gap-x-2 items-center justify-center">
+            <Avatar01 width="36" height="36" />
+            <Text className="text-sm text-center font-semibold">
+              Praveen Sharma
+            </Text>
+          </View>
+
+          <View className="flex flex-row gap-x-1 py-4 items-center">
+            <Text className="text-sm text-gray-500 ">
+              Currently Assigned to:{" "}
+            </Text>
+            <Text className="text-lg text-gray-800">Rahul Sharma</Text>
+          </View>
+          <View className="">
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
-              Task Title
+              Current Task
             </Text>
             <InputFeild
-              placeholder="Enter the title for the task"
+              placeholder="Follow up call"
               value={companyName}
               onChangeText={(text) => setCompanyName(text)}
               secureTextEntry={false}
@@ -236,14 +319,51 @@ const UserDetailsTabView = () => {
 
           <View className="mt-4">
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
-              Task Title
+              Transfer to
             </Text>
             <InputFeild
-              placeholder="Enter the title for the task"
+              placeholder="select & search Person"
               value={companyName}
               onChangeText={(text) => setCompanyName(text)}
               secureTextEntry={false}
             />
+          </View>
+          <View className="mt-4">
+            <Text className="text-[13px] font-medium text-[#828282] mb-2">
+              Date
+            </Text>
+            <InputFeild
+              placeholder="Select Date"
+              value={companyName}
+              onChangeText={(text) => setCompanyName(text)}
+              secureTextEntry={false}
+            />
+          </View>
+
+          {/* Save and Discard */}
+
+          <View className="flex-row flex gap-3  mt-3">
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("CreateTask");
+              }}
+              className={`py-3 bg-white border-[1px] border-[#2F80ED] flex-1 rounded-xl`}
+            >
+              <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
+                Discard
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                bottomSheetRescheduleRef.current?.close();
+              }}
+              className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
+            >
+              <Text className="text-[16px] font-semibold text-center text-white">
+                Save
+              </Text>
+            </TouchableOpacity>
           </View>
         </BottomSheetView>
       </BottomSheet>

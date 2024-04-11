@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
-import IcMore from "../../assets/icons/ic_more.svg";
+import IcMore from "../../assets/icons/ic_exhibition.svg";
 import IcFilter from "../../assets/icons/ic_filter.svg";
 import Checkbox from "../../components/ui/Checkbox";
 import { useNavigation } from "@react-navigation/native";

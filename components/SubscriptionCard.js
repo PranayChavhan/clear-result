@@ -16,7 +16,7 @@ import IcWin from "../assets/icons/ic_win_orange.svg";
 import IcClose from "../assets/icons/ic_close_orange.svg";
 import SubscriptionStatBox from "./SubscriptionStatBox";
 
-const SubscriptionCard = () => {
+const SubscriptionCard = ({ type }) => {
   const { width, height } = Dimensions.get("window");
   const navigator = useNavigation();
 
@@ -35,7 +35,7 @@ const SubscriptionCard = () => {
               fontFamily: "Poppins-SemiBold",
             }}
           >
-            Prospects
+            {type}
           </Text>
           <Text
             className={"text-sm font-semibold"}

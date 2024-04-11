@@ -5,49 +5,53 @@ import {
   SafeAreaView,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcFilter from "../../assets/icons/ic_filter.svg";
 import IcFilterDown from "../../assets/icons/ic_filter_down.svg";
-import Constants from "expo-constants";
-import TaskTopNavigation from "../../components/task/TaskTopNavigation";
 import IcSearch from "../../assets/icons/ic_search.svg";
 import Checkbox from "../../components/ui/Checkbox";
 import ProspectsTopNavigation from "../../components/ProspectsTopNavigation";
+import Screen from "../../components/ui/Screen";
+
 const ProspectsScreen = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [dropdwn, setDropdwn] = useState(false);
 
-  const handleFilterScreen = () => {
-    if (isFilterVisible === false) {
-      setIsFilterVisible(true);
-    } else {
-      setIsFilterVisible(false);
-    }
+  const [bulkDelete, setBulkDelete] = useState(true);
+  const [bulkTransfer, setBulkTransfer] = useState(false);
+
+  const handleBulkTransfer = () => {
+    setBulkTransfer(!bulkTransfer);
+    setBulkDelete(false);
+    setDropdwn(false);
+  };
+
+  const handleBulkDelete = () => {
+    setBulkDelete(!bulkDelete);
+    setBulkTransfer(false);
+    setDropdwn(false);
   };
 
   return (
-    <>
-      <SafeAreaView
-        style={{
-          paddingTop: Constants.statusBarHeight,
-          backgroundColor: "white",
-          paddingBottom: 10,
-        }}
-      >
-        <TopBar logo={CrLogo} />
-        <View className="">
-          <View className="flex flex-row items-center justify-between mt-4 px-4">
-            <Text
-              className="text-[18px]"
-              style={{ fontFamily: "Poppins-Regular", fontWeight: 600 }}
-            >
-              {/* {isFilterVisible ? "Task Filters" : "Prospects"} */}
-              Prospects
-            </Text>
+    <Screen>
+      <TopBar logo={CrLogo} />
 
+      {/* Top  Title and Filter */}
+      <View className="">
+        <View className="flex flex-row items-center justify-between px-4 py-4">
+          <Text
+            className="text-[18px]"
+            style={{ fontFamily: "Poppins-Regular", fontWeight: 600 }}
+          >
+            {/* {isFilterVisible ? "Task Filters" : "Prospects"} */}
+            Prospects
+          </Text>
+          <View className="relative">
             <View className="flex flex-row items-center gap-2">
               <TouchableOpacity
+                onPress={() => setDropdwn(!dropdwn)}
                 style={{
                   backgroundColor: "white",
                   paddingVertical: 6,
@@ -101,135 +105,36 @@ const ProspectsScreen = () => {
                 <IcFilter />
               </TouchableOpacity>
             </View>
+
+            {/* Drop Down */}
+            <View
+              className={`${
+                dropdwn ? "" : "hidden"
+              } z-50 absolute top-12 left-2 p-2 rounded-lg shadow-md shadow-gray-600 bg-white`}
+            >
+              <TouchableOpacity
+                onPress={handleBulkDelete}
+                className="px-4 py-2 rounded-md"
+              >
+                <Text className="text-sm ">Bulk Delete</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleBulkTransfer}
+                className="px-4 py-2 rounded-md"
+              >
+                <Text className="text-sm ">Bulk Transfer</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </SafeAreaView>
-
-      <ProspectsTopNavigation />
-    </>
-  );
-};
-
-const Filter = () => {
-  const [activeButton, setActiveButton] = useState(0);
-  const items = [
-    { label: "Task Type", value: "Task Type" },
-    { label: "Store/Company", value: "Store/Company" },
-    { label: "Event/Exhibition", value: "Event/Exhibition" },
-    { label: "Contact Person", value: "Contact Person" },
-  ];
-  return (
-    <View className="bg-white h-screen pt-4">
-      <View className="flex flex-row h-full">
-        <View className="w-[35%]">
-          {items.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => {
-                setActiveButton(index);
-              }}
-              style={{
-                backgroundColor: activeButton === index ? "white" : "#F8F8F8",
-                padding: 20,
-                paddingVertical: 26,
-                borderBottomWidth: index > 0 ? 0.8 : 0,
-                borderTopWidth: index > 0 ? 0.8 : 0,
-                borderColor: "#E1E1E1",
-              }}
-            >
-              <Text className="text-center w-full text-[12px] font-medium">
-                {item.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <View className="w-full px-4">
-          {activeButton === 0 ? <TaskType /> : null}
-          {activeButton === 1 ? <StoreCompany /> : null}
-          {activeButton === 2 ? <EventExhibition /> : null}
-          {activeButton === 3 ? <ContactPerson /> : null}
-        </View>
       </View>
-
-      <Text className="text-[12px] italic text-[#828282] absolute bottom-[24%] left-[36%]">
-        Powered by ClearResults
-      </Text>
-    </View>
+      {/* Content Tabs */}
+      <ProspectsTopNavigation
+        bulkDelete={bulkDelete}
+        bulkTransfer={bulkTransfer}
+      />
+    </Screen>
   );
 };
 
-const TaskType = () => {
-  return (
-    <View>
-      <Text className="text-[12px] font-bold text-[#828282]">Types</Text>
-
-      <Checkbox label="Follow Up" />
-      <Checkbox label="Pending Visits" />
-      <Checkbox label="Send Docs" />
-      <Checkbox label="Sample Tasks" />
-
-      <Text className="text-[12px] font-bold text-[#828282] mt-6">
-        Sub-task Types
-      </Text>
-
-      <Checkbox label="Call" />
-      <Checkbox label="Mail" />
-      <Checkbox label="Message" />
-      <Checkbox label="Brochures" />
-      <Checkbox label="Catalogue" />
-      <Checkbox label="Invites" />
-    </View>
-  );
-};
-
-const StoreCompany = () => {
-  return (
-    <View>
-      <Text className="text-[12px] font-bold text-[#828282]">
-        Company/Store
-      </Text>
-
-      <Text className="text-[14px] mt-4 mb-1 font-bold text-[#828282]">
-        Email Address
-      </Text>
-
-      <View className="flex flex-row items-center justify-start border-[0.8px] border-[#2F80ED] rounded-md w-[65%] px-2">
-        <IcSearch style={{ marginRight: 2 }} />
-        <TextInput
-          style={{
-            padding: 8,
-          }}
-          placeholder="Search store/company"
-        />
-      </View>
-
-      <Checkbox label="Shopper Shop" />
-      <Checkbox label="Anouk" />
-      <Checkbox label="H&M" />
-      <Checkbox label="Japore" />
-      <Checkbox label="Reebok" />
-      <Checkbox label="Marks & Spencers" />
-      <Checkbox label="Global Desi" />
-      <Checkbox label="Sample Store 1" />
-      <Checkbox label="Sample Store 2" />
-      <Checkbox label="Sample Store 3" />
-    </View>
-  );
-};
-
-const EventExhibition = () => {
-  return (
-    <View>
-      <Text>Event Exhibition</Text>
-    </View>
-  );
-};
-
-const ContactPerson = () => {
-  return (
-    <View>
-      <Text>Constact Person</Text>
-    </View>
-  );
-};
 export default ProspectsScreen;

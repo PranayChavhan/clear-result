@@ -8,7 +8,7 @@ import React from "react";
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
-import IcMore from "../../assets/icons/ic_more.svg";
+import IcMore from "../../assets/icons/ic_exhibition.svg";
 import IcLocation from "../../assets/icons/ic_locotion.svg";
 import IcHome from "../../assets/icons/ic_home.svg";
 import IcClock from "../../assets/icons/ic_clock.svg";
@@ -59,7 +59,7 @@ function ExhibitionCard({
         </View>
         <TouchableWithoutFeedback onPress={handlePress}>
           <Text className="text-[16px] underline text-blue-500 font-medium">
-            Invite users
+            Invite lead
           </Text>
         </TouchableWithoutFeedback>
       </View>

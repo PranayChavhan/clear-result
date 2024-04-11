@@ -2,8 +2,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 
 const Button = ({ children, varient, onPress, className }) => {
-  console.log("Button -> varient", varient);
-  console.log("Button -> onPress", onPress);
   return (
     <TouchableOpacity
       onPress={onPress}

@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Image,
+  ImageBackground,
+} from "react-native";
 import React, {
   useState,
   useEffect,
@@ -9,10 +16,10 @@ import React, {
 import Avatar02 from "../../assets/icons/avatar_02.svg";
 import { Swipeable } from "react-native-gesture-handler";
 import IcCloseX from "../../assets/icons/ic_close_x.svg";
-import BottomSheet, {
-  BottomSheetView,
-  useBottomSheet,
-} from "@gorhom/bottom-sheet";
+import BgCorner from "../../assets/images/prospect_corner_bg.png";
+import IcMore from "../../assets/icons/ic_vertical_dots.svg";
+import Checkbox from "../ui/Checkbox";
+
 const LeftSwipeActions = () => {
   return (
     <View className="flex items-center py-4">
@@ -38,7 +45,12 @@ const rightSwipeActions = () => {
   );
 };
 
-const ProspectUserListItem = ({ item, handleLeftSwipe, handleRightSwipe }) => {
+const ProspectUserListItem = ({
+  item,
+  handleLeftSwipe,
+  handleRightSwipe,
+  bulk,
+}) => {
   const swipeFromLeftOpen = () => {
     toggleBottomSheet();
   };
@@ -53,7 +65,17 @@ const ProspectUserListItem = ({ item, handleLeftSwipe, handleRightSwipe }) => {
       onSwipeableLeftOpen={handleRightSwipe}
     >
       <View className=" bg-white  shadow-sm m-2 border-gray-300 shadow-gray-500 rounded-xl ">
-        <View className="py-6 rounded-lg p-2 flex-row items-center gap-x-3">
+        <TouchableWithoutFeedback onPress={handleLeftSwipe}>
+          <ImageBackground
+            source={BgCorner}
+            borderTopRightRadius={10}
+            className="w-10 h-16 absolute top-0 right-0 rounded-tr-xl flex items-center pt-4"
+          >
+            <IcMore />
+          </ImageBackground>
+        </TouchableWithoutFeedback>
+        <View className="py-6 rounded-lg p-2 flex-row items-center">
+          {bulk ? <Checkbox /> : null}
           <Avatar02 width="64" height="64" />
           <View>
             <Text className="text-lg font-semibold">{item.name}</Text>

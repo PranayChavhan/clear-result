@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from "react-native";
+import React from "react";
 
 const UPIPayment = () => {
   return (
-    <View>
+    <View className="ml-3 mb-4">
       <Text>UPIPayment</Text>
     </View>
-  )
-}
+  );
+};
 
-export default UPIPayment
+export default UPIPayment;

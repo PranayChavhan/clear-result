@@ -51,8 +51,8 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
-          <SubscriptionCard />
-          <SubscriptionCard />
+          <SubscriptionCard type={"Prospects"} />
+          <SubscriptionCard type={"Customer"} />
         </ScrollView>
         {/* Just For You */}
         <View className="flex flex-row  justify-start items-center px-4 gap-3">

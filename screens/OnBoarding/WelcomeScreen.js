@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   TouchableWithoutFeedback,
+  Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import TopBar from "../../components/ui/TopBar";
@@ -17,20 +18,22 @@ export default function WelcomeScreen() {
   const navigation = useNavigation();
   const [currentPage, setCurrentPage] = useState(1);
 
+  const imageWith = Dimensions.get("window").width;
+
   const pages = [
     {
-      image: require("../../assets/images/hero1.png"),
+      image: require("../../assets/images/hero-1.png"),
       title: "Instantly contacting leads for conversions",
       description: "Contact with WhatsApp, call, or email instantly.",
     },
     {
-      image: require("../../assets/images/hero2.png"),
+      image: require("../../assets/images/hero-2.png"),
       title: "Lead management for seamless growth",
       description:
         "Your guide to effortless lead management, maximizing growth potential.",
     },
     {
-      image: require("../../assets/images/hero3.png"),
+      image: require("../../assets/images/hero-3.png"),
       title: "Boost engagement with social media fusion",
       description: "Integrate CRM with social media for smarter connections.",
     },
@@ -52,8 +55,8 @@ export default function WelcomeScreen() {
     <Screen>
       <TopBar logo={Logo} nodrawer={true} />
 
-      <View className=" h-full flex flex-col justify-center gap-4 px-4">
-        <View className="absolute right-[16px] top-5">
+      <View className=" h-full flex flex-col  gap-4 px-4">
+        <View className="absolute right-6 top-5">
           <TouchableWithoutFeedback onPress={handleSkip}>
             <Text
               className={`text-[16px] font-medium text-[${colors.primary}] underline`}
@@ -62,26 +65,17 @@ export default function WelcomeScreen() {
             </Text>
           </TouchableWithoutFeedback>
         </View>
+        <View className="h-12" />
 
-        <View className="flex flex-row justify-center items-center">
-          <ImageBackground
-            source={require("../../assets/images/HeroVector.png")}
-            style={{ width: 310, height: 240 }}
-          >
-            <Image
-              source={pages[currentPage - 1].image}
-              className=" flex flex-row w-full items-center justify-center"
-            />
-          </ImageBackground>
+        <View className="flex flex-row justify-center items-center ">
+          <Image
+            source={pages[currentPage - 1].image}
+            className=" flex flex-row w-full items-center justify-center"
+            style={{ width: imageWith, height: imageWith }}
+            resizeMode="contain"
+          />
         </View>
         <View className="flex flex-col items-center justify-center">
-          <Text className="text-[16px] font-medium mb-2">
-            {pages[currentPage - 1].title}
-          </Text>
-          <Text className="text-[14px] font-normal text-[#828282] mb-16 text-wrap text-center px-10">
-            {pages[currentPage - 1].description}
-          </Text>
-
           <View className="flex flex-row gap-1 items-center justify-center mb-4">
             {pages.map((_, index) => (
               <Image
