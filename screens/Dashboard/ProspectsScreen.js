@@ -5,21 +5,21 @@ import {
   SafeAreaView,
   TextInput,
 } from "react-native";
+
 import React, { useEffect, useState } from "react";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcFilter from "../../assets/icons/ic_filter.svg";
 import IcFilterDown from "../../assets/icons/ic_filter_down.svg";
-import IcSearch from "../../assets/icons/ic_search.svg";
-import Checkbox from "../../components/ui/Checkbox";
 import ProspectsTopNavigation from "../../components/ProspectsTopNavigation";
 import Screen from "../../components/ui/Screen";
+import Button from "../../components/ui/Button";
 
 const ProspectsScreen = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [dropdwn, setDropdwn] = useState(false);
 
-  const [bulkDelete, setBulkDelete] = useState(true);
+  const [bulkDelete, setBulkDelete] = useState(false);
   const [bulkTransfer, setBulkTransfer] = useState(false);
 
   const handleBulkTransfer = () => {
@@ -133,6 +133,13 @@ const ProspectsScreen = () => {
         bulkDelete={bulkDelete}
         bulkTransfer={bulkTransfer}
       />
+      {bulkDelete ||
+        (bulkTransfer && (
+          <View>
+            <Button title="Apply" />
+            <Button title="Cancel" />
+          </View>
+        ))}
     </Screen>
   );
 };

@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Image, Button } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Button,
+  Dimensions,
+} from "react-native";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import IcPhone from "../assets/icons/ic_phone.svg";
@@ -167,7 +174,6 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           <Text className="text-sm text-amber-400">This Week</Text>
         </View>
       </View>
-
       {/* Bulk */}
       {bulkDelete && (
         <View className="p-2">
@@ -177,7 +183,6 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           </Text>
         </View>
       )}
-
       {bulkTransfer && (
         <View className="px-2 pb-3">
           <View className="py-2">
@@ -195,49 +200,52 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           />
         </View>
       )}
-
       {/* Users */}
-
-      <FlatList
-        data={usersData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <ProspectUserListItem
-            item={item}
-            handleLeftSwipe={toggleRecheduleBottomSheet}
-            handleRightSwipe={toggleUserBottomSheet}
-            bulk={bulkDelete || bulkTransfer}
-            toggle
-          />
-        )}
-      />
-      <View className="flex-row flex gap-3  mt-8">
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("CreateTask");
-          }}
-          className={`py-3 bg-white border-[1px] border-[#2F80ED] flex-1 rounded-xl`}
-        >
-          <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
-            Cancel
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("CreateTask");
-          }}
-          className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
-        >
-          <Text className="text-[16px] font-semibold text-center text-white">
-            Delete
-          </Text>
-        </TouchableOpacity>
+      <View
+        style={{
+          height: Dimensions.get("window").width - 120,
+        }}
+      >
+        <FlatList
+          data={usersData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <ProspectUserListItem
+              item={item}
+              handleLeftSwipe={toggleRecheduleBottomSheet}
+              handleRightSwipe={toggleUserBottomSheet}
+              bulk={bulkDelete || bulkTransfer}
+              toggle
+            />
+          )}
+          scrollEnabled
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-      <Text className="text-[12px] italic text-[#828282] absolute bottom-[30%] left-[39%]">
+
+      {(bulkDelete || bulkTransfer) && (
+        <View className="flex-row flex gap-3 ">
+          <TouchableOpacity
+            className={`py-3 bg-white border-[1px] border-[#2F80ED] flex-1 rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
+              Cancel
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
+          >
+            <Text className="text-[16px] font-semibold text-center text-white">
+              Delete
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      <Text className="text-[12px] py-2 italic text-[#828282] text-center">
         Powered by ClearResults
       </Text>
-
       {/* Create Seperate Bottom Sheet Later */}
       <BottomSheet
         snapPoints={snapPoints}
@@ -279,7 +287,6 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           </Text>
         </BottomSheetView>
       </BottomSheet>
-
       {/* Create Reschedule Bottom Sheet */}
       <BottomSheet
         snapPoints={resSnapPoints}

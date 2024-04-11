@@ -23,7 +23,7 @@ const SelectTemplateScreen = () => {
       <TopBar logo={CrLogo} />
       <ScrollView>
         <View className="flex flex-row gap-x-2 items-center px-6 py-4 ">
-          <Text className="text-md font-medium">Email Templates</Text>
+          <Text className="text-md font-medium">Email Template</Text>
         </View>
 
         {/* Image Grid 2 columns */}

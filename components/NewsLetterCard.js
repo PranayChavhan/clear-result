@@ -71,13 +71,13 @@ const NewsLetterCard = () => {
             title="Subscribe"
             className="text-sm flex-grow flex items-center justify-center p-2 rounded-lg border-gray-300  border bg-white "
           >
-            <Text style={{ fontFamily: "Poppins-Regular" }}>SugnUp</Text>
+            <Text style={{ fontFamily: "Poppins-Regular" }}>Trending</Text>
           </TouchableOpacity>
           <TouchableOpacity
             title="Subscribe"
             className="text-sm flex-grow flex items-center justify-center p-2 rounded-lg border-gray-300  border bg-white "
           >
-            <Text style={{ fontFamily: "Poppins-Regular" }}>SugnUp</Text>
+            <Text style={{ fontFamily: "Poppins-Regular" }}>Most Read</Text>
           </TouchableOpacity>
         </View>
       </View>

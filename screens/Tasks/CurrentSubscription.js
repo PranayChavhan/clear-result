@@ -27,7 +27,7 @@ const CurrentSubscription = () => {
             Current Subscription Packages
           </Text>
 
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
             <Text
               className={`text-[14px] font-medium text-[#2F80ED] underline`}
             >

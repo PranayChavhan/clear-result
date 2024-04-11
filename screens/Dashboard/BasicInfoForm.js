@@ -42,7 +42,6 @@ const InputFeild = ({
 
 const UserInfoFormScreen = () => {
   const navigation = useNavigation();
-  const [companyName, setCompanyName] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
@@ -77,11 +76,12 @@ const UserInfoFormScreen = () => {
             </Text>
             <InputFeild
               placeholder="Enter the company/store name"
-              value={companyName}
-              onChangeText={(text) => setCompanyName(text)}
               secureTextEntry={false}
             />
-            <CheckBox className="" label={"Is this a new company?"} />
+            <CheckBox
+              className=""
+              label={"Company name and store name is different."}
+            />
           </View>
         </View>
 
@@ -91,7 +91,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter firstname and last name of the contact"
-            value={companyName}
             onChangeText={(text) => setCompanyName(text)}
             secureTextEntry={false}
           />
@@ -111,8 +110,6 @@ const UserInfoFormScreen = () => {
 
             <TextInput
               placeholder="Enter the description here"
-              value={companyName}
-              onChangeText={(text) => setCompanyName(text)}
               secureTextEntry={false}
             />
           </View>
@@ -134,8 +131,6 @@ const UserInfoFormScreen = () => {
 
             <TextInput
               placeholder="Enter the description here"
-              value={companyName}
-              onChangeText={(text) => setCompanyName(text)}
               secureTextEntry={false}
             />
           </View>
@@ -148,7 +143,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the email address"
-            value={companyName}
             onChangeText={(text) => setCompanyName(text)}
             secureTextEntry={false}
           />
@@ -214,7 +208,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Please enter if any notes"
-            value={companyName}
             onChangeText={(text) => setCompanyName(text)}
             secureTextEntry={false}
           />

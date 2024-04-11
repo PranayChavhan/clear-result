@@ -16,10 +16,19 @@ import ImgLightMode from "../../assets/images/theme_light.png";
 import ImgSystemMode from "../../assets/images/theme_system.png";
 
 import TopBar from "../../components/ui/TopBar";
+import Slider from "@react-native-community/slider";
 
 const FontsScreen = () => {
-  const [headingSize, setHeadingSize] = useState(28);
-  const [descSize, setDescSize] = useState(16);
+  const [headingSize, setHeadingSize] = useState(16);
+  const [descSize, setDescSize] = useState(8);
+
+  const [sliderValue, setSliderValue] = useState(0);
+
+  const onValueChange = (value) => {
+    setSliderValue(value);
+    setHeadingSize(16 + value / 4);
+    setDescSize(8 + value / 4);
+  };
 
   const fonts = [
     "Poppins-Regular",
@@ -38,29 +47,28 @@ const FontsScreen = () => {
         <Text className="font-bold text-md">Theme</Text>
       </View>
       <ScrollView>
-        <View className="border border-black rounded-md mx-6 p-4">
+        <ScrollView className="border border-black rounded-md mx-6 p-4 h-56">
           <Text
-            className={`text-gray-500  mt-2 font-semibold`}
+            className={`text-gray-800  mt-2 font-semibold`}
             style={{ fontSize: headingSize }}
           >
-            {" "}
             Heading Text
           </Text>
           <Text
-            className={`text-gray-500  mt-2 font-medium`}
+            className={`text-gray-800  mt-2 font-medium`}
             style={{ fontSize: descSize }}
           >
-            {" "}
             Heading Text
           </Text>
           <Text
-            className={`text-gray-500  mt-2 font-medium`}
+            className={`text-gray-800  mt-2 font-medium`}
             style={{ fontSize: descSize }}
           >
-            {" "}
-            node_modules/expo/AppEntry.bundle//&platform=android&dev=true&hot=false&transform.engine=hermes&transform.routerRoot{" "}
+            In publishing and graphic design, Lorem ipsum is a placeholder text
+            commonly used to demonstrate the visual form of a document or a
+            typeface without relying on meaningful content.
           </Text>
-        </View>
+        </ScrollView>
         {/* Font Selection */}
         <ScrollView
           horizontal
@@ -93,6 +101,20 @@ const FontsScreen = () => {
         {/* Font Size */}
         <View className="p-4">
           <Text className="font-bold text-md">Font Size</Text>
+          <View className="py-3">
+            <Slider
+              style={{
+                zIndex: 1,
+              }}
+              minimumValue={0}
+              maximumValue={50}
+              value={sliderValue}
+              onValueChange={onValueChange}
+              minimumTrackTintColor="transparent"
+              maximumTrackTintColor="gray"
+              thumbTintColor="#007AFF"
+            />
+          </View>
         </View>
         {/* Apply  Button */}
         <TouchableWithoutFeedback>
