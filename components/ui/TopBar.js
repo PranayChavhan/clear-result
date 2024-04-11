@@ -17,7 +17,7 @@ const TopBar = ({ logo, nodrawer }) => {
   };
 
   return (
-    <View className="flex flex-row items-center justify-between px-4 py-2  z-50">
+    <View className="flex flex-row items-center justify-between px-4 py-4  z-50">
       <TouchableOpacity onPress={openDrawer}>
         <View className="p-2  rounded-lg bg-white flex items-center justify-center  ">
           <IcMenu width={20} height={20} />

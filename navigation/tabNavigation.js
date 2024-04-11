@@ -13,6 +13,7 @@ import InactiveTasks from "../assets/icons/inactive_tasks.svg";
 import InactiveMeal from "../assets/icons/inactive_meal.svg";
 import ActiveMeal from "../assets/icons/active_meal .svg";
 import ActiveTasks from "../assets/icons/active_tasks.svg";
+import SearchScreen from "../screens/tabs/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -81,9 +82,10 @@ const TabNavigation = () => {
           },
         }}
       />
+
       <Tab.Screen
         name="SeachStack"
-        component={DashboardStack}
+        component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -102,6 +104,7 @@ const TabNavigation = () => {
           },
         }}
       />
+
       <Tab.Screen
         name="ExhibitionStack"
         component={ExhibitionStack}
@@ -122,6 +125,7 @@ const TabNavigation = () => {
           },
         }}
       />
+
       <Tab.Screen
         name="ProfileStack"
         component={SettingsStack}

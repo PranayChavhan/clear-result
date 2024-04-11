@@ -6,14 +6,26 @@ import ProspectsScreen from "../screens/dashboard/ProspectsScreen";
 import ReportScreen from "../screens/report/ReportScreen";
 import ReportFilterScreen from "../screens/report/ReportsFilter";
 import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
+import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
+import PaymentModeScreen from "../screens/dashboard/PaymentModeScreen";
 
 const Stack = createNativeStackNavigator();
 export function DashboardStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="SubscriptionPackage">
       <Stack.Screen
         name="Home"
         component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SubscriptionPackage"
+        component={SubscriptionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PaymentMode"
+        component={PaymentModeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen

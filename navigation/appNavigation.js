@@ -38,6 +38,7 @@ const DrawerNavigation = () => {
         component={SubscriptionScreen}
         options={{ headerShown: false }}
       />
+
       <Drawer.Screen
         name="SIMScreen"
         component={TemplateScreen}

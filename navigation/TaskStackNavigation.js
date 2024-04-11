@@ -3,7 +3,7 @@ import ShopProfileScreen from "../screens/settings/ShopProfileScreen";
 import TaskScreen from "../screens/tabs/TaskScreen";
 import CreateTaskScreen from "../screens/tasks/CreateTaskScreen";
 import CurrentSubscription from "../screens/tasks/CurrentSubscription";
-import PaymentModeScreen from "../screens/tasks/PaymentModeScreen";
+import PaymentModeScreen from "../screens/dashboard/PaymentModeScreen";
 import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
 
 const Stack = createNativeStackNavigator();
@@ -28,11 +28,6 @@ const TaskStack = () => {
       <Stack.Screen
         name="CurrentSubscriptionPackages"
         component={CurrentSubscription}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="PaymentMode"
-        component={PaymentModeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
