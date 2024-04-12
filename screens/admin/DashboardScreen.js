@@ -11,27 +11,27 @@ import {
 import React, { useState } from "react";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
-import IcFilter from "../../assets/icons/ic_filter.svg";
-import IcFilterDown from "../../assets/icons/ic_filter_down.svg";
-import Constants from "expo-constants";
-import TaskTopNavigation from "../../components/task/TaskTopNavigation";
-import IcSearch from "../../assets/icons/ic_search.svg";
-import Checkbox from "../../components/ui/Checkbox";
-import Screen from "../../components/ui/Screen";
 import ScreenTitle from "../../components/ui/ScreenTitle";
-import ReportsTopNavigation from "../../components/reports/ReportsTopNavigation";
-import Button from "../../components/ui/Button";
+import Screen from "../../components/ui/Screen";
 
 import IcMultiPerson from "../../assets/icons/ic_multi_person.svg";
 import SalesRepresentativeCard from "../../components/SalesRepresentativeCard";
+import { useNavigation } from "@react-navigation/native";
 
 const DashboardScreen = () => {
+  const navigation = useNavigation();
+
+  const handleSalesRepresentative = (name) => {
+    console.log(name);
+    navigation.navigate("SalesRepresentative", { name: name });
+  }
   return (
     <>
       <Screen className="bg-white">
         <TopBar logo={CrLogo} />
 
         <ScrollView>
+          
           <ScreenTitle>Admin Dashboards</ScreenTitle>
 
           <View className=" w-screen px-4">
@@ -63,12 +63,12 @@ const DashboardScreen = () => {
               </View>
 
                 <View className="flex mt-4 flex-row justify-between">
-                  <SalesRepresentativeCard title={"Amit Gupta"}/>
-                  <SalesRepresentativeCard title={"Rohit Mehta"}/>
+                  <SalesRepresentativeCard title={"Amit Gupta"} onPress={handleSalesRepresentative}/>
+                  <SalesRepresentativeCard title={"Rohit Mehta"} onPress={handleSalesRepresentative}/>
                 </View>
                 <View className="flex flex-row justify-between">
-                  <SalesRepresentativeCard title={"Rahul Sharma"}/>
-                  <SalesRepresentativeCard title={"Ananya Roy"}/>
+                  <SalesRepresentativeCard title={"Rahul Sharma"} onPress={handleSalesRepresentative}/>
+                  <SalesRepresentativeCard title={"Ananya Roy"} onPress={handleSalesRepresentative}/>
                 </View>
 
             </View>

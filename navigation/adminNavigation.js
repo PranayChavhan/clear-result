@@ -18,10 +18,12 @@ import DashboardScreen from "../screens/admin/DashboardScreen";
 import SettingsStack from "./SettingsNavigation";
 import ExhibitionStack from "./ExhibitionNavigation";
 import AdminTaskScreen from "../screens/admin/AdminTaskScreen";
+import SalesRepresentative from "../screens/admin/SalesRepresentative";
 // import DashboardStack from "./DashBoardNavigation";
 // import TaskStack from "./TaskStackNavigation";
 
 const Tab = createBottomTabNavigator();
+const Dashboard = createNativeStackNavigator();
 
 
 const screenOptions = {
@@ -39,13 +41,31 @@ const screenOptions = {
 };
 
 
+const DashboardTabNavigation = () => {
+    return (
+        <Dashboard.Navigator screenOptions={screenOptions}>
+            <Dashboard.Screen
+                name="Dashboard"
+                component={DashboardScreen}
+                options={{headerShown: false}}
+            />
+            <Dashboard.Screen
+                name="SalesRepresentative"
+                component={SalesRepresentative}
+                options={{headerShown: false}}
+            />
+        </Dashboard.Navigator>
+    );
+};
+
+
 // Tab Navigation
 const AdminTabNavigation = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="CreateStack"
-        component={DashboardScreen}
+        component={DashboardTabNavigation}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
