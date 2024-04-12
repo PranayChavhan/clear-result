@@ -33,7 +33,7 @@ const RefundData = [
   {
     title: "Refund Approved",
     desc: "Fri, 13th Sept 24,  10.04 AM",
-    done: false,
+    done: true,
   },
   {
     title: "Refund Initiated",

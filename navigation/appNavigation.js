@@ -21,6 +21,7 @@ import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
 import CurrentSubscription from "../screens/dashboard/CurrentSubscription";
 import RequestRefund from "../screens/dashboard/RequestRefund";
 import TrackRefundStatus from "../screens/dashboard/TrackRefundStatus";
+import AdminTabNavigation from "./adminNavigation";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -36,6 +37,13 @@ const DrawerNavigation = () => {
         component={TabNavigation}
         options={{ headerShown: false }}
       />
+
+      <Drawer.Screen
+        name="AdminDashboard"
+        options={{ headerShown: false }}
+        component={AdminTabNavigation}
+      />
+
       <Drawer.Screen
         name="SubscriptionScreen"
         component={SubscriptionScreen}
@@ -66,29 +74,22 @@ const DrawerNavigation = () => {
       />
 
       <Drawer.Screen
-        name="AdminDashboard"
-        options={{ headerShown: false }}
-        component={DashboardScreen}
-      />
-
-      <Drawer.Screen
         name="CurrentSubscription"
         component={CurrentSubscription}
         options={{ headerShown: false }}
-        />
-
-      <Drawer.Screen
-      name="RequestRefund"
-      component={RequestRefund}
-      options={{ headerShown: false }}
       />
 
       <Drawer.Screen
-      name="TrackRefundStatus"
-      component={TrackRefundStatus}
-      options={{ headerShown: false }}
+        name="RequestRefund"
+        component={RequestRefund}
+        options={{ headerShown: false }}
       />
-        
+
+      <Drawer.Screen
+        name="TrackRefundStatus"
+        component={TrackRefundStatus}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -119,7 +120,6 @@ const CustomDrawerContent = ({ navigation }) => {
         <Text className="font-semibold ">Subscription Model</Text>
       </TouchableOpacity>
 
-
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 my-2 rounded-xl"
         onPress={() =>
@@ -130,7 +130,6 @@ const CustomDrawerContent = ({ navigation }) => {
       >
         <Text className="font-semibold ">Current Subscription</Text>
       </TouchableOpacity>
-
 
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl my-2"
