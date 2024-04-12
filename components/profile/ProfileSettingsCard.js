@@ -12,14 +12,14 @@ const ProfileSettingsCard = ({ data }) => {
           <TouchableOpacity
             onPress={() => navigation.navigate(d.nav)}
             key={i}
-            className={`  flex gap-4 flex-row justify-start items-center `}
+            className={` my-1 flex gap-x-4 flex-row justify-start items-center `}
           >
-            <View className={``}>{d.icon ? d.icon : <IcSettTheme />}</View>
-            <View className="flex gap-y-2">
+            <View className={`w-8`}>{d.icon ? d.icon : <IcSettTheme />}</View>
+            <View className="">
               <Text className="font-medium text-sm">{d.title}</Text>
-              <Text className="text-xs text-gray-600">{d.desc}</Text>
+              <Text className="text-xs mt-1 text-gray-600">{d.desc}</Text>
             </View>
-            {i != 2 && <View className={`w-full my-2 h-[0.3px] bg-gray-400`} />}
+            
           </TouchableOpacity>
         </View>
       ))}

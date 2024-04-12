@@ -18,6 +18,9 @@ import ReportFilterScreen from "../screens/report/ReportsFilter";
 import DashboardScreen from "../screens/admin/DashboardScreen";
 import TemplateScreen from "../screens/smi/TemplateScreen";
 import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
+import CurrentSubscription from "../screens/dashboard/CurrentSubscription";
+import RequestRefund from "../screens/dashboard/RequestRefund";
+import TrackRefundStatus from "../screens/dashboard/TrackRefundStatus";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -34,7 +37,7 @@ const DrawerNavigation = () => {
         options={{ headerShown: false }}
       />
       <Drawer.Screen
-        name="CurrentSubscription"
+        name="SubscriptionScreen"
         component={SubscriptionScreen}
         options={{ headerShown: false }}
       />
@@ -67,6 +70,25 @@ const DrawerNavigation = () => {
         options={{ headerShown: false }}
         component={DashboardScreen}
       />
+
+      <Drawer.Screen
+        name="CurrentSubscription"
+        component={CurrentSubscription}
+        options={{ headerShown: false }}
+        />
+
+      <Drawer.Screen
+      name="RequestRefund"
+      component={RequestRefund}
+      options={{ headerShown: false }}
+      />
+
+      <Drawer.Screen
+      name="TrackRefundStatus"
+      component={TrackRefundStatus}
+      options={{ headerShown: false }}
+      />
+        
     </Drawer.Navigator>
   );
 };
@@ -77,7 +99,7 @@ const CustomDrawerContent = ({ navigation }) => {
   };
 
   return (
-    <View className="mt-8">
+    <View className="mt-2 px-2">
       <View className="flex flex-row items-center justify-between px-4 py-2 mb-10 ">
         <TouchableOpacity onPress={closeDrawer}>
           <View className="p-2  rounded-lg bg-gray-50 shadow-2xl flex items-center justify-center  ">
@@ -90,12 +112,25 @@ const CustomDrawerContent = ({ navigation }) => {
         className="bg-[#F4F9FF] p-4 rounded-xl"
         onPress={() =>
           navigation.navigate("Home", {
-            screen: "CurrentSubscription",
+            screen: "SubscriptionScreen",
           })
         }
       >
         <Text className="font-semibold ">Subscription Model</Text>
       </TouchableOpacity>
+
+
+      <TouchableOpacity
+        className="bg-[#F4F9FF] p-4 my-2 rounded-xl"
+        onPress={() =>
+          navigation.navigate("Home", {
+            screen: "CurrentSubscription",
+          })
+        }
+      >
+        <Text className="font-semibold ">Current Subscription</Text>
+      </TouchableOpacity>
+
 
       <TouchableOpacity
         className="bg-[#F4F9FF] p-4 rounded-xl my-2"

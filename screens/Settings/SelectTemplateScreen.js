@@ -44,7 +44,7 @@ const SelectTemplateScreen = () => {
           >
             <View className=" m-3 bg-blue-500 p-4 py-3  rounded-xl mt-6 items-center justify-center">
               <Text className="text-white text-center">
-                Select This Temlate
+                Select This Template
               </Text>
             </View>
           </TouchableWithoutFeedback>

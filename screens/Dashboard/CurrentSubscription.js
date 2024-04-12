@@ -27,11 +27,11 @@ const CurrentSubscription = () => {
             Current Subscription Packages
           </Text>
 
-          <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
+          <TouchableWithoutFeedback onPress={() => navigation.navigate("SubscriptionScreen")}>
             <Text
               className={`text-[14px] font-medium text-[#2F80ED] underline`}
             >
-              Skip
+              View all Packages
             </Text>
           </TouchableWithoutFeedback>
         </View>
@@ -73,24 +73,28 @@ const CurrentSubscription = () => {
             onPress={() => {
               navigation.navigate("PaymentMode");
             }}
-            className={`py-3   bg-[#2F80ED]  rounded-lg mx-4`}
+            className={`py-3   bg-[#2F80ED] opacity-75  rounded-lg mx-4`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
               Renew
             </Text>
           </TouchableOpacity>
+
+          <View className="pt-4">
+            <Text className="text-center text-gray-500">Reneval Date 25th March 2025</Text>
+          </View>
         </View>
 
         <View className="flex flex-row items-center justify-center mt-10">
           <TouchableWithoutFeedback
             onPress={() => {
-              navigation.navigate("SubscriptionPackages");
+              navigation.navigate("RequestRefund");
             }}
           >
             <Text
               className={`text-[14px] font-medium text-[#2F80ED] underline`}
             >
-              View all Packages
+              Cancel Subscription
             </Text>
           </TouchableWithoutFeedback>
         </View>

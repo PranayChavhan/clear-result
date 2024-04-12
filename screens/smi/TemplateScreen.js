@@ -44,7 +44,7 @@ const TemplateScreen = () => {
       <ScrollView>
         <View className="flex flex-row gap-x-2 items-center px-6 py-4 ">
           <IcTemplate />
-          <Text className="text-md font-medium">Temlates for You</Text>
+          <Text className="text-md font-medium">Templates for You</Text>
         </View>
         <View className="py-8">
           <TouchableOpacity onPress={openBottomSheet}>

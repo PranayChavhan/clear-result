@@ -73,7 +73,7 @@ const ShopProfileScreen = () => {
       >
         <ShopCard />
 
-        <ShopSliderNavigartion clickItemTask={toggleCancelTaskBottomSheet} />
+        <ShopSliderNavigartion clickItemTask={toggleDueTaskBottomSheet} />
 
         <TasksTabs clickDueTask={toggleDueTaskBottomSheet} />
 
@@ -155,9 +155,13 @@ const ShopProfileScreen = () => {
           </View>
 
           <View className="mt-4 flex flex-row items-center justify-between">
-            <Button varient="primary">Send</Button>
+            <Button varient="primary" onPress={()=>{
+              bottomSheetRef.current.close()
+            }}>Send</Button>
             <Button
-              onPress={() => bottomSheetRef.current.close()}
+              onPress={() => {bottomSheetRef.current.close()
+                bottomCancelSheetRef.current.expand()
+              }}
               varient="outline"
             >
               Discard
@@ -178,6 +182,13 @@ const ShopProfileScreen = () => {
             <Text className="text-lg font-semibold ">Cancelling Task</Text>
           </View>
           {/* Input  */}
+
+          <View className="flex items-center mt-2 flex-row">
+            <Text className="text-gray-500 text-xs"> Current Task:</Text>
+            <Text className="text-gray-800 text-sm ml-2">
+              Follow Up (Call)
+            </Text>
+          </View>
           <View className="mt-4">
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
               Reschedule Task Dates
@@ -208,7 +219,7 @@ const ShopProfileScreen = () => {
           <View className="mt-4 flex flex-row items-center justify-between">
             <Button varient="primary">Send</Button>
             <Button
-              onPress={() => bottomSheetRef.current.close()}
+              onPress={() => bottomCancelSheetRef.current.close()}
               varient="outline"
             >
               Discard
