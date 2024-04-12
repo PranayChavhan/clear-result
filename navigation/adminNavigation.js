@@ -14,16 +14,19 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 import DashboardScreen from "../screens/admin/DashboardScreen";
+import ExhibitionGraphScreen from "../screens/admin/ExhibitionGraphScreen";
 
 import SettingsStack from "./SettingsNavigation";
-import ExhibitionStack from "./ExhibitionNavigation";
 import AdminTaskScreen from "../screens/admin/AdminTaskScreen";
 import SalesRepresentative from "../screens/admin/SalesRepresentative";
+import ExhibitionListScreen from "../screens/admin/ExhibitionListScreen";
+import ExhibitionInfoScreen from "../screens/admin/ExhibitionInfoScreen";
 // import DashboardStack from "./DashBoardNavigation";
 // import TaskStack from "./TaskStackNavigation";
 
 const Tab = createBottomTabNavigator();
 const Dashboard = createNativeStackNavigator();
+const Exhibition = createNativeStackNavigator();
 
 
 const screenOptions = {
@@ -57,6 +60,29 @@ const DashboardTabNavigation = () => {
         </Dashboard.Navigator>
     );
 };
+
+const ExhibitionStack = () => {
+    return (
+        <Exhibition.Navigator screenOptions={screenOptions}>
+            <Exhibition.Screen
+                name="Exhibition"
+                component={ExhibitionListScreen}
+                options={{headerShown: false}}
+            />
+            <Exhibition.Screen
+                name="ExhibitionInfo"
+                component={ExhibitionInfoScreen}
+                options={{headerShown: false}}
+            />
+            <Exhibition.Screen
+                name="ExhibitionGraph"
+                component={ExhibitionGraphScreen}
+                options={{headerShown: false}}
+            />
+        </Exhibition.Navigator>
+    );
+};
+
 
 
 // Tab Navigation
@@ -158,6 +184,8 @@ const AdminTabNavigation = () => {
       <Tab.Screen
         name="ProfileStack"
         component={SettingsStack}
+        //pass param to screen
+        initialParams={{ admin: true }}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -176,6 +204,7 @@ const AdminTabNavigation = () => {
             );
           },
         }}
+        
       />
     </Tab.Navigator>
   );

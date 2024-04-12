@@ -16,20 +16,7 @@ import IcFilter from "../../assets/icons/ic_filter.svg";
 import Checkbox from "../../components/ui/Checkbox";
 import { useNavigation } from "@react-navigation/native";
 import IcSearch from "../../assets/icons/ic_search.svg";
-function UserListItem({ isChecked, imageSource, name, email }) {
-  return (
-    <View className="flex flex-row items-center justify-start mt-8">
-      <Checkbox checked={isChecked} />
-
-      <Image className="rounded-full w-12 h-12 mx-4" source={imageSource} />
-
-      <View>
-        <Text className="text-[16px] font-[500]">{name}</Text>
-        <Text className="text-[12px] text-gray-500">{email}</Text>
-      </View>
-    </View>
-  );
-}
+import UserListItem from "../../components/exhibition/UserListItem";
 
 const Filter = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -221,45 +208,45 @@ const InviteUserScreen = () => {
             <>
               <View className="px-4">
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile1.png")}
                   name="Praveen Sharma"
                   email="praveens@gmail.com"
+                  isChecked={true}
                 />
 
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile2.png")}
                   name="Ananya Gupta"
                   email="agupta@gmail.com"
+                  isChecked={true}
                 />
 
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile3.png")}
                   name="Rahul Shah"
                   email="rahulshah@gmail.com"
+                  isChecked={true}
                 />
 
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile4.png")}
                   name="Mohit Kale"
                   email="kale.m@gmail.com"
+                  isChecked={true}
                 />
 
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile5.png")}
                   name="Ritika Agrawal"
                   email="agrawalriti@gmail.com"
+                  isChecked={true}
                 />
 
                 <UserListItem
-                  isChecked={true}
                   imageSource={require("../../assets/images/profile6.png")}
                   name="Reena Desai"
                   email="agrawalriti@gmail.com"
+                  isChecked={true}
                 />
 
                 <View className="mt-10 flex flex-row items-center justify-between">

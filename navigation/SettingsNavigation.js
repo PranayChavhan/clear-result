@@ -5,6 +5,7 @@ import FontsScreen from "../screens/settings/FontsScreen";
 import LanguageScreen from "../screens/settings/LanguageScreen";
 import PushNotificationScreen from "../screens/settings/PushNotification";
 import SelectTemplateScreen from "../screens/settings/SelectTemplateScreen";
+import UserRightsScreen from "../screens/settings/UserRightsScreen";
 import SMSGatewayScreeen from "../screens/settings/SMSGatewayScreen";
 import ThemeScreen from "../screens/settings/ThemeScreen";
 import ProfileScreen from "../screens/tabs/ProfileScreen";
@@ -13,14 +14,23 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-const SettingsStack = () => {
+const SettingsStack = ({route}) => {
+
+  const admin = route?.params?.admin;
+  console.log(admin);
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
         options={{ headerShown: false }}
+        initialParams={{admin: admin}}
       />
+      <Stack.Screen
+        name="UserRights"
+        component={UserRightsScreen}
+        options={{ headerShown: false }}
+        />
       <Stack.Screen
         name="Theme"
         component={ThemeScreen}

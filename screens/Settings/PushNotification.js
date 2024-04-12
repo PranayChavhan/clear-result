@@ -17,8 +17,15 @@ import TopBar from "../../components/ui/TopBar";
 
 const PushNotificationScreen = () => {
   // toggle w
-  const [isEnabled, setIsEnabled] = React.useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [isEnabled1, setIsEnabled1] = React.useState(false);
+
+  const [isEnabled2, setIsEnabled2] = React.useState(false);
+
+  const [isEnabled3, setIsEnabled3] = React.useState(false);
+
+  const toggleSwitch1 = () => setIsEnabled1((previousState) => !previousState);
+  const toggleSwitch2 = () => setIsEnabled2((previousState) => !previousState);
+  const toggleSwitch3 = () => setIsEnabled3((previousState) => !previousState);
 
   return (
     <Screen>
@@ -30,24 +37,24 @@ const PushNotificationScreen = () => {
 
       <View className="px-4  flex gap-3">
         <View className="flex flex-row w-full  items-center justify-between">
-          <Text className="text-gray-700">Task Remainder</Text>
+          <Text className="text-gray-700">Task Reminder</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-            thumbColor={isEnabled ? "white" : "white"}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            thumbColor={isEnabled1 ? "white" : "white"}
+            onValueChange={toggleSwitch1}
+            value={isEnabled1}
           />
         </View>
       </View>
 
       <View className="px-4  flex gap-3">
         <View className="flex flex-row w-full  items-center justify-between">
-          <Text className="text-gray-700">Exibition Updates</Text>
+          <Text className="text-gray-700">Exhibition Updates</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-            thumbColor={isEnabled ? "white" : "white"}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            thumbColor={isEnabled2 ? "white" : "white"}
+            onValueChange={toggleSwitch2}
+            value={isEnabled2}
           />
         </View>
       </View>
@@ -57,9 +64,9 @@ const PushNotificationScreen = () => {
           <Text className="text-gray-700">Prospects/Customer Updates</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-            thumbColor={isEnabled ? "white" : "white"}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            thumbColor={isEnabled3 ? "white" : "white"}
+            onValueChange={toggleSwitch3}
+            value={isEnabled3}
           />
         </View>
       </View>

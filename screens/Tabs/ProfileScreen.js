@@ -10,6 +10,7 @@ import IcLanguage from "../../assets/icons/ic_set_language.svg";
 import IcNotification from "../../assets/icons/ic_set_notification.svg";
 import IcSms from "../../assets/icons/ic_set_sms.svg";
 import IcEmail from "../../assets/icons/ic_set_email.svg";
+import IcUserRights from "../../assets/icons/ic_user_rights.svg";
 
 import IcAdditional from "../../assets/icons/ic_set_additional.svg";
 
@@ -34,6 +35,13 @@ const settings1 = [
   },
 ];
 const settings2 = [
+  {
+      title:"User Rights",
+      desc:"Set your privacy preferences with ease",
+      icon: <IcUserRights style={{ width: 20, height: 20 }} />,
+      nav: "UserRights",
+  },
+
   {
     title: "Push Notification",
     desc: "Stay in loop - tailor your notifications, your way",
@@ -63,7 +71,14 @@ const settings3 = [
   },
 ];
 
-const ProfileScreen = () => {
+
+
+const ProfileScreen = ({route}) => {
+
+  //get admin param
+  const admin  = route?.params?.admin;
+  console.log("admin param");
+  console.log(admin);
   return (
     <Screen className={`bg-gray-100`}>
       <TopBar />
@@ -75,7 +90,7 @@ const ProfileScreen = () => {
         <ProfileSettingsCard data={settings1} />
 
         {/* Settings Card */}
-        <ProfileSettingsCard data={settings2} />
+        <ProfileSettingsCard data={admin?settings2:settings2.slice(1,settings2.length)} />
         <ProfileSettingsCard data={settings3} />
         <View className="h-32"></View>
       </ScrollView>

@@ -390,9 +390,7 @@ const ExhibitionDetailsScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("");
-            }}
+            onPress={() => {}}
             className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
