@@ -193,7 +193,7 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
 
       {
         (notification !="" && !reschedule) &&
-        <SuccessToast text={notification} color={"emerald"}/>
+        <SuccessToast text={notification} color="emerald"/>
       }
       {
         (notification != "" && reschedule ) &&

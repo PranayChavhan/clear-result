@@ -19,7 +19,7 @@ const ExhibitionCard = ({
       navigation.navigate(link);
     };
     return (
-      <View className="border-[0.8px] border-gray-300 rounded-xl mb-8">
+      <View className="border-[0.8px] border-gray-300 bg-white rounded-xl mb-8">
         <View className="flex flex-row marker:items-center justify-between p-4">
           <View>
             <Text className="text-[16px] font-semibold mb-4">{name}</Text>

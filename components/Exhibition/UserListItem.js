@@ -5,7 +5,7 @@ import Checkbox from "../ui/Checkbox";
 
 const UserListItem = ({  imageSource, name, email, isChecked}) => {
   return (
-    <View className="flex flex-row items-center justify-start mt-8">
+    <View className="flex flex-row py-3 items-center justify-start mt-8 bg-white rounded-lg">
      {isChecked&& <Checkbox checked={isChecked} />}
 
       <Image className="rounded-full w-12 h-12 mx-4" source={imageSource} />
