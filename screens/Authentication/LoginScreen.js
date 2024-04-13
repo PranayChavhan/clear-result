@@ -54,7 +54,7 @@ export default function LoginScreen() {
   };
 
   const handleLogin = () => {
-    if (email !== "admin@cr.com" && password !== "admin") {
+    if (email == "admin@cr.com" && password == "admin") {
       navigation.navigate("Home", {
         screen: "AdminDashboard",
       });
