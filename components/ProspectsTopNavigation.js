@@ -6,13 +6,15 @@ import {
   Button,
   Dimensions,
 } from "react-native";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import IcPhone from "../assets/icons/ic_phone.svg";
 import Avatar01 from "../assets/icons/avatar_01.svg";
 import Avatar02 from "../assets/icons/avatar_02.svg";
-import IcShop from "../assets/icons/ic_shop.svg";
+import {Picker} from '@react-native-picker/picker';
 import IcCalendar from "../assets/icons/ic_calendar.svg";
+import { SelectList } from 'react-native-dropdown-select-list'
+
 import IcMail from "../assets/icons/ic_mail.svg";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet, {
@@ -23,6 +25,7 @@ import { StyleSheet } from "react-native";
 import { FlatList, Swipeable } from "react-native-gesture-handler";
 import ProspectUserListItem from "./dashboard/ProspectUserListItem";
 import InputFeild from "./ui/InputFeild";
+import SuccessToast from "./SuccessToast";
 const Tab = createMaterialTopTabNavigator();
 
 const usersData = [
@@ -121,6 +124,28 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
 
   const [companyName, setCompanyName] = useState("");
 
+  const [reschedule,setReschedule] = useState(false);
+
+  const [notification, setNotification] = useState("");
+
+  useEffect(() => {
+    if (notification!="") {
+      setTimeout(() => {
+        setNotification("")
+        setReschedule(false);
+      }, 2000);
+    }
+  }, [notification]);
+
+  const [selectedPerson, setSelectedPerson] = useState("");
+
+  
+  const data = [
+      {key:'1', value:'John Doe'},
+      {key:'2', value:'Kia Doe'},
+  ]
+
+
   const navigation = useNavigation();
   const buttonsData = [
     { label: "Follow Ups", count: "02" },
@@ -135,25 +160,16 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
   const bottomSheetRescheduleRef = useRef(null);
 
   const toggleUserBottomSheet = () => {
-    //toggle
-    if (isVisible) {
-      bottomSheetRef.current?.close();
-      setIsVisible(false);
-    } else {
-      bottomSheetRef.current?.expand();
-      setIsVisible(true);
-    }
+    console.log("toggleUserBottomSheet")
+    setReschedule(false);
+    setNotification("Praveen's Task Completed!")
+    bottomSheetRef.current?.expand();
   };
 
   const toggleRecheduleBottomSheet = () => {
-    //toggle
-    if (isVisible) {
-      bottomSheetRescheduleRef.current?.close();
-      setIsVisible(false);
-    } else {
-      bottomSheetRescheduleRef.current?.expand();
-      setIsVisible(true);
-    }
+    bottomSheetRescheduleRef.current?.expand();
+    setNotification("ReScheduling Task!")
+    setReschedule(true);
   };
 
   // callbacks
@@ -174,6 +190,16 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           <Text className="text-sm text-amber-400">This Week</Text>
         </View>
       </View>
+
+      {
+        (notification !="" && !reschedule) &&
+        <SuccessToast text={notification} color={"emerald"}/>
+      }
+      {
+        (notification != "" && reschedule ) &&
+        <SuccessToast text={notification} color="amber"/>
+      }
+
       {/* Bulk */}
       {bulkDelete && (
         <View className="p-2">
@@ -192,12 +218,13 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
             </Text>
           </View>
 
-          <InputFeild
-            placeholder="Select & Search Person"
-            value={companyName}
-            onChangeText={(text) => setCompanyName(text)}
-            secureTextEntry={false}
-          />
+          <SelectList
+        setSelected={(val) => setSelectedPerson(val)} 
+        data={data} 
+        save="value"
+        boxStyles={{borderWidth: 1, borderColor: '#95C2FF', borderRadius: 8}}
+        dropdownStyles={{position: 'absolute', zIndex: 1000, width: '100%', top: 36, left: 0, backgroundColor: 'white', borderColor:"white", borderRadius: 8, shadowColor: '#000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5}}
+    />
         </View>
       )}
       {/* Users */}
@@ -237,7 +264,7 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
             className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
-              Delete
+              {bulkDelete ? "Delete" : "Transfer"}
             </Text>
           </TouchableOpacity>
         </View>

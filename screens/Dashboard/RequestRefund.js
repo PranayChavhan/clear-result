@@ -16,12 +16,15 @@ import PricingCard from "../../components/PricingCard";
 import { Radio, RadioGroup } from "@ui-kitten/components";
 import InputFeild from "../../components/ui/InputFeild";
 import IcClose from "../../assets/icons/ic_close_x.svg";
+import SuccessToast from "../../components/SuccessToast";
 
 const RequestRefund = () => {
   const navigation = useNavigation();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const isTextInputFocused = useRef(false);
+
+  const [expand, setExpand] = useState(false);
 
   const [notification, setNotification] = useState(false);
 
@@ -46,21 +49,11 @@ const RequestRefund = () => {
 
        {
           notification && (
-            <View className="p-3 rounded-xl my-4 relative bg-emerald-500 flex flex-row items-center ">
-            <View className="h-10 w-1 bg-emerald-200 absolute rounded-full top-2"></View>
-            <Text className="text-xs text-white ">
-              Your request for a refund has been received. You'll hear from us
-              soon.{" "}
-            </Text>
-            <TouchableOpacity  className="">
-              <IcClose />
-            </TouchableOpacity>
-          </View>
+            <SuccessToast text="Your request for a refund has been received. You'll hear from us
+            soon." color={"emerald"} />
           )
        }
-
-
-
+       
         <View className="flex flex-row items-center justify-between">
           <Text className="text-[16px] font-semibold">
             Request Subscription Refund
@@ -84,12 +77,17 @@ const RequestRefund = () => {
         </View>
 
         <View className="p-4 rounded-2xl bg-gray-100">
+          <TouchableWithoutFeedback onPress={() => setExpand(!expand)}>
           <View className="flex flex-row justify-between items-center border-b pb-3 border-gray-300">
             <Text>Why do you want to cancel subscription?</Text>
-            <IcArrowUp />
-          </View>
+            <View className={`${expand?"rotate-180":""} transition-all `}>
 
-          <View className="bg-white p-4 mt-3 rounded-2xl ">
+            <IcArrowUp />
+            </View>
+          </View>
+          </TouchableWithoutFeedback>
+
+          <View className={`bg-white p-4 mt-3 rounded-2xl ${expand?"":"hidden"}`}>
             <RadioGroup
               style={{ marginTop: 20 }}
               selectedIndex={isTextInputFocused.current ? null : selectedIndex}

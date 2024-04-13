@@ -4,6 +4,7 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import React, { useRef, useMemo, useState, useEffect } from "react";
 import Screen from "../../components/ui/Screen";
@@ -22,12 +23,30 @@ import IcShare from "../../assets/icons/ic_ed_share.svg";
 import IcArrowBack from "../../assets/icons/ic_arrowback_round.svg";
 import IcArrowFront from "../../assets/icons/ic_arrowfront_round.svg";
 import Button from "../../components/ui/Button";
+import { TextInput, TouchableWithoutFeedback } from "react-native-gesture-handler";
+
+import Img1 from "../../assets/images/social_post.png";
+import Img2 from "../../assets/images/social_post_text.png";
 
 const EditTemplateScreen = () => {
   const windowWidth = Dimensions.get("window").width;
   const snapPoints = useMemo(() => ["25%", "70%"], []);
   const textSnapPoints = useMemo(() => ["30%"], []);
   const shareSnapPoints = useMemo(() => ["45%"], []);
+
+  const [text, setText] = useState("Our Most Awaited Collection");
+
+  const [textImg, setTextImg] = useState(false);
+
+  const [showText, setShowText] = useState(false);
+
+  const saveTextImg = () => { 
+    setTextImg(true);
+    setShowText(false);
+    setText("");
+  }
+
+
 
   const designSheetRef = useRef(null);
 
@@ -46,31 +65,44 @@ const EditTemplateScreen = () => {
     textSheetRef.current?.expand();
   };
 
+
+  const addTextBox = () => {  
+    setShowText(true);
+    setText("Add Text Here");
+    textSheetRef.current?.close();
+  }
   return (
     <Screen>
       <TopBar logo={CrLogo} />
       <ScrollView className="h-full">
         <View className="flex items-start p-4">
           <View className="p-2 rounded-lg bg-gray-200 flex flex-row ">
-            <TouchableOpacity className="px-2">
+            <TouchableOpacity onPress={()=>setTextImg(false)} className="px-2">
               <IcArrowBack />
             </TouchableOpacity>
-            <TouchableOpacity className="px-2">
+            <TouchableOpacity onPress={()=>setTextImg(true)} className="px-2">
               <IcArrowFront />
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Post */}
-        <View className="py-8  flex items-center ">
-          <Image
-            source={require("../../assets/images/social_post.png")}
+        <View className="py-8  flex items-center px-12">
+          <ImageBackground
+            source={textImg?Img2:Img1}
             style={{
               height: Dimensions.get("window").height / 2,
-              width: "80%",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
             resizeMode="contain"
-          />
+          >
+            <TouchableWithoutFeedback className={`${showText?"":"hidden"}`} onPress={saveTextImg}>
+              <TextInput className="bg-transparent text-blue border border-blue-400 bg-blue-400 text-white " multiline value={text} />
+            </TouchableWithoutFeedback>
+          </ImageBackground>
         </View>
 
         {/* Bottom menu */}
@@ -191,7 +223,7 @@ const EditTemplateScreen = () => {
           </View>
 
           <TouchableOpacity
-            onPress={() => textSheetRef.current?.close()}
+            onPress={addTextBox}
             className={`py-3 border-[1px]  mx-1 border-[#2F80ED] bg-[#2F80ED] rounded-xl `}
           >
             <Text

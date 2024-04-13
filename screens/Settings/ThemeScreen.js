@@ -66,6 +66,12 @@ const ThemeScreen = () => {
             <Text className="text-blue-500 text-center">Save Changes</Text>
           </View>
         </TouchableWithoutFeedback>
+
+        <View className="mb-32 mt-12">
+              <Text className="text-gray-400 text-center italic text-sm text-light">
+                Powered By ClearResult
+              </Text>
+        </View>
       </ScrollView>
     </Screen>
   );

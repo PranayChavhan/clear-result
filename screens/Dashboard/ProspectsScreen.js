@@ -14,10 +14,14 @@ import IcFilterDown from "../../assets/icons/ic_filter_down.svg";
 import ProspectsTopNavigation from "../../components/ProspectsTopNavigation";
 import Screen from "../../components/ui/Screen";
 import Button from "../../components/ui/Button";
+import SuccessToast from "../../components/SuccessToast";
 
 const ProspectsScreen = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [dropdwn, setDropdwn] = useState(false);
+
+  const [bulkDeleteNotification, setBulkDeleteNotification] = useState(false);
+  const [bulkTransferNotification, setBulkTransferNotification] = useState(false);
 
   const [bulkDelete, setBulkDelete] = useState(false);
   const [bulkTransfer, setBulkTransfer] = useState(false);
@@ -39,6 +43,7 @@ const ProspectsScreen = () => {
       <TopBar logo={CrLogo} />
 
       {/* Top  Title and Filter */}
+
       <View className="">
         <View className="flex flex-row items-center justify-between px-4 py-4">
           <Text

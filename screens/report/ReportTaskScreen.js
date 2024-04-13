@@ -13,12 +13,6 @@ const ReportTaskScreen = () => {
       {/* Filter */}
       <ScrollView>
         <View className="w-full p-4 flex-row  items-center  justify-end">
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ReportsFilter")}
-            className="shadow-md bg-white p-2 px-4  shadow-gray-300 rounded-md"
-          >
-            <Text>Filter</Text>
-          </TouchableOpacity>
           <TouchableOpacity className=" ml-2 shadow-md bg-white px-2 py-3 shadow-gray-300 rounded-md ">
             <IcFilter />
           </TouchableOpacity>

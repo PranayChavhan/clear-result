@@ -52,17 +52,17 @@ const ProspectUserListItem = ({
   bulk,
 }) => {
   const swipeFromLeftOpen = () => {
-    toggleBottomSheet();
+    handleRightSwipe();
   };
   const swipeFromRightOpen = () => {
-    toggleBottomSheet();
+    handleLeftSwipe();
   };
   return (
     <Swipeable
       renderLeftActions={LeftSwipeActions}
       renderRightActions={rightSwipeActions}
-      onSwipeableRightOpen={handleLeftSwipe}
-      onSwipeableLeftOpen={handleRightSwipe}
+      onSwipeableLeftOpen={swipeFromLeftOpen}
+      onSwipeableRightOpen={swipeFromRightOpen}
     >
       <View className=" bg-white  shadow-sm m-2 border-gray-300 shadow-gray-500 rounded-xl ">
         <TouchableWithoutFeedback onPress={handleLeftSwipe}>
