@@ -29,7 +29,6 @@ const TaskScreen = () => {
     <>
       <SafeAreaView
         style={{
-          paddingTop: Constants.statusBarHeight,
           backgroundColor: "white",
           paddingBottom: 10,
         }}

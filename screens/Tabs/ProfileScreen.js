@@ -11,7 +11,7 @@ import IcNotification from "../../assets/icons/ic_set_notification.svg";
 import IcSms from "../../assets/icons/ic_set_sms.svg";
 import IcEmail from "../../assets/icons/ic_set_email.svg";
 import IcUserRights from "../../assets/icons/ic_user_rights.svg";
-
+import CrLogo from "../../assets/images/cr_logo.png";
 import IcAdditional from "../../assets/icons/ic_set_additional.svg";
 
 const settings1 = [
@@ -81,7 +81,7 @@ const ProfileScreen = ({route}) => {
   console.log(admin);
   return (
     <Screen className={`bg-gray-100`}>
-      <TopBar />
+      <TopBar logo={CrLogo} />
       <ScrollView>
         {/* Profile Card */}
         <ProfileContactCard />

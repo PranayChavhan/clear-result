@@ -68,7 +68,7 @@ const EditTemplateScreen = () => {
 
   const addTextBox = () => {  
     setShowText(true);
-    setText("Add Text Here");
+    setText("Our Most Awaited Collection");
     textSheetRef.current?.close();
   }
   return (

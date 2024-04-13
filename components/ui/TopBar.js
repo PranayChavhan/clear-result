@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
@@ -23,9 +23,11 @@ const TopBar = ({ logo, nodrawer }) => {
           <IcMenu width={20} height={20} />
         </View>
       </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={()=>navigation.navigate("HomeStack",{screen:"Home"})}>
       <View className="object-contain w-40 flex items-center justify-center h-8">
         <Image source={logo} className="max-w-full h-6 object-contain" />
       </View>
+      </TouchableWithoutFeedback>
       <TouchableOpacity
         onPress={() => navigation.navigate("Login")}
         className="m-0 p-0"
