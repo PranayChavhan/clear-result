@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions } from "react-native";
+import { View, Text, Image, Dimensions, ImageBackground } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
@@ -12,21 +12,21 @@ const ReportTaskScreen = () => {
     <View>
       {/* Filter */}
       <ScrollView>
-        <View className="w-full p-4 flex-row  items-center  justify-end">
-          <TouchableOpacity className=" ml-2 shadow-md bg-white px-2 py-3 shadow-gray-300 rounded-md ">
-            <IcFilter />
-          </TouchableOpacity>
-        </View>
         {/* Images */}
-        <View className="p-1">
-          <Image
+        <View className="p-1 py-2">
+          <ImageBackground
             source={require("../../assets/images/reports/report_1.png")}
-            className="w-full mb-4 "
+            className="w-full mt-4 mb-4 z-0"
             style={{
               height: Dimensions.get("screen").width * (9 / 16) + 12,
+              zIndex: 0,
             }}
             resizeMode="contain"
-          />
+          >
+            <TouchableOpacity onPress={()=>navigation.navigate("ReportsFilter")} className="absolute z-50 right-3 -top-4 ml-2 shadow-md bg-white px-2 py-3 shadow-gray-500 rounded-md ">
+              <IcFilter />
+            </TouchableOpacity>
+          </ImageBackground>
 
           <Image
             source={require("../../assets/images/reports/report_2.png")}
@@ -45,9 +45,11 @@ const ReportTaskScreen = () => {
             }}
             resizeMode="contain"
           />
-        </View>
+
+
         <View className="p-4">
           <Button varient={"outline"}> Download Reports</Button>
+        </View>
         </View>
 
         <View className=" pb-8">

@@ -11,14 +11,17 @@ import {
 import React from "react";
 import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
+import { useNavigation } from "@react-navigation/native";
 import ImgDarkMode from "../../assets/images/theme_dark.png";
 import ImgLightMode from "../../assets/images/theme_light.png";
 import ImgSystemMode from "../../assets/images/theme_system.png";
 
 import TopBar from "../../components/ui/TopBar";
 import Slider from "@react-native-community/slider";
+import Button from "../../components/ui/Button";
 
 const FontsScreen = () => {
+  const navigation = useNavigation();
   const [headingSize, setHeadingSize] = useState(16);
   const [descSize, setDescSize] = useState(8);
 
@@ -30,6 +33,11 @@ const FontsScreen = () => {
     setDescSize(8 + value / 4);
   };
 
+  const handleBack = () => {
+    console.log("back");
+    navigation.goBack();
+  }
+
   const fonts = [
     "Poppins-Regular",
     "Roboto-Regular",
@@ -40,88 +48,89 @@ const FontsScreen = () => {
   ];
 
   return (
-    <Screen>
+    <Screen className="bg-white">
       <TopBar logo={CrLogo} />
-
-      <View className="p-4">
-        <Text className="font-bold text-md">Theme</Text>
-      </View>
       <ScrollView>
-        <ScrollView className="border border-black rounded-md mx-6 p-4 h-56">
-          <Text
-            className={`text-gray-800  mt-2 font-semibold`}
-            style={{ fontSize: headingSize }}
-          >
-            Heading Text
-          </Text>
-          <Text
-            className={`text-gray-800  mt-2 font-medium`}
-            style={{ fontSize: descSize }}
-          >
-            Heading Text
-          </Text>
-          <Text
-            className={`text-gray-800  mt-2 font-medium`}
-            style={{ fontSize: descSize }}
-          >
-            In publishing and graphic design, Lorem ipsum is a placeholder text
-            commonly used to demonstrate the visual form of a document or a
-            typeface without relying on meaningful content.
-          </Text>
-        </ScrollView>
-        {/* Font Selection */}
-        <ScrollView
-          horizontal
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-          className="pt-4 pl-7 flex gap-3 relativeoverflow-hidden"
-        >
-          {fonts.map((font, i) => (
-            <TouchableWithoutFeedback
-              key={i}
-              onPress={() => setHeadingSize(28)}
+        <View className="p-4">
+          <Text className="font-bold text-md">Theme</Text>
+        </View>
+        <ScrollView>
+          <ScrollView className="border border-black rounded-md mx-6 p-4 h-56">
+            <Text
+              className={`text-gray-800  mt-2 font-semibold`}
+              style={{ fontSize: headingSize }}
             >
-              <View className="flex my-6 items-center justify-center mx-2">
-                <View className="p-4 px-8 border border-gray-900 rounded-md h-20">
-                  <Text
-                    className="font-medium text-5xl"
-                    style={{ fontFamily: font }}
-                  >
-                    Aa
+              Heading Text
+            </Text>
+            <Text
+              className={`text-gray-800  mt-2 font-medium`}
+              style={{ fontSize: descSize }}
+            >
+              Heading Text
+            </Text>
+            <Text
+              className={`text-gray-800  mt-2 font-medium`}
+              style={{ fontSize: descSize }}
+            >
+              In publishing and graphic design, Lorem ipsum is a placeholder
+              text commonly used to demonstrate the visual form of a document or
+              a typeface without relying on meaningful content.
+            </Text>
+          </ScrollView>
+          {/* Font Selection */}
+          <ScrollView
+            horizontal
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            className="pt-4 pl-7 flex gap-3 relativeoverflow-hidden"
+          >
+            {fonts.map((font, i) => (
+              <TouchableWithoutFeedback
+                key={i}
+                onPress={() => setHeadingSize(28)}
+              >
+                <View className="flex my-6 items-center justify-center mx-2">
+                  <View className="p-4 px-8 border border-gray-900 rounded-md h-20">
+                    <Text
+                      className="font-medium text-5xl"
+                      style={{ fontFamily: font }}
+                    >
+                      Aa
+                    </Text>
+                  </View>
+                  <Text className="text-xs capitalize py-2">
+                    {font.split("-")[0]}
                   </Text>
                 </View>
-                <Text className="text-xs capitalize py-2">
-                  {font.split("-")[0]}
-                </Text>
-              </View>
-            </TouchableWithoutFeedback>
-          ))}
-        </ScrollView>
+              </TouchableWithoutFeedback>
+            ))}
+          </ScrollView>
 
-        {/* Font Size */}
-        <View className="p-4">
-          <Text className="font-bold text-md">Font Size</Text>
-          <View className="py-3">
-            <Slider
-              style={{
-                zIndex: 1,
-              }}
-              minimumValue={0}
-              maximumValue={50}
-              value={sliderValue}
-              onValueChange={onValueChange}
-              minimumTrackTintColor="transparent"
-              maximumTrackTintColor="gray"
-              thumbTintColor="#007AFF"
-            />
+          {/* Font Size */}
+          <View className="p-4">
+            <Text className="font-bold text-md">Font Size</Text>
+            <View className="py-3">
+              <Slider
+                style={{
+                  zIndex: 1,
+                }}
+                minimumValue={0}
+                maximumValue={50}
+                value={sliderValue}
+                onValueChange={onValueChange}
+                minimumTrackTintColor="transparent"
+                maximumTrackTintColor="gray"
+                thumbTintColor="#007AFF"
+              />
+            </View>
           </View>
-        </View>
-        {/* Apply  Button */}
-        <TouchableWithoutFeedback>
-          <View className="border m-3 border-blue-500 p-4 rounded-xl mt-4 items-center justify-center">
-            <Text className="text-blue-500 text-center">Apply Changes</Text>
+          {/* Apply  Button */}
+          <View className="px-4">
+            <Button varient={"outline"} onPress={handleBack}>
+              Apply Changes
+            </Button>
           </View>
-        </TouchableWithoutFeedback>
+        </ScrollView>
       </ScrollView>
     </Screen>
   );

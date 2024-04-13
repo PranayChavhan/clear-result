@@ -46,6 +46,11 @@ const EditTemplateScreen = () => {
     setText("");
   }
 
+  const [designSheetModal, setDesignSheetModal] = useState(false);
+  const [textSheetModal, setTextSheetModal] = useState(false);
+  const [shareSheetModal, setShareSheetModal] = useState(false);
+
+
 
 
   const designSheetRef = useRef(null);
@@ -59,10 +64,17 @@ const EditTemplateScreen = () => {
   //open bottom sheet
   const openDesignSheet = () => {
     designSheetRef.current?.expand();
+    setDesignSheetModal(true);
   };
 
   const openTextSheet = () => {
     textSheetRef.current?.expand();
+    setTextSheetModal(true);
+  };
+
+  const openShareSheet = () => {
+    shareSheetRef.current?.expand();
+    setShareSheetModal(true);
   };
 
 
@@ -72,6 +84,7 @@ const EditTemplateScreen = () => {
     textSheetRef.current?.close();
   }
   return (
+    <>
     <Screen>
       <TopBar logo={CrLogo} />
       <ScrollView className="h-full">
@@ -128,7 +141,7 @@ const EditTemplateScreen = () => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => shareSheetRef?.current?.expand()}>
+          <TouchableOpacity onPress={openShareSheet}>
             <View className="flex items-center justify-center flex-col">
               <IcShare />
               <Text className="text-sm mt-2">Share</Text>
@@ -138,6 +151,7 @@ const EditTemplateScreen = () => {
 
         {/* Bottom Sheet  */}
       </ScrollView>
+      </Screen>
 
       {/* Design Bottom Sheet */}
       <BottomSheet
@@ -145,6 +159,12 @@ const EditTemplateScreen = () => {
         snapPoints={snapPoints}
         enablePanDownToClose
         ref={designSheetRef}
+        onClose={() => setDesignSheetModal(false)}
+        backdropComponent={({ style }) =>
+          designSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
@@ -213,6 +233,12 @@ const EditTemplateScreen = () => {
         snapPoints={textSnapPoints}
         enablePanDownToClose
         ref={textSheetRef}
+        onClose={() => setTextSheetModal(false)}
+        backdropComponent={({ style }) =>
+          textSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
@@ -243,6 +269,12 @@ const EditTemplateScreen = () => {
         snapPoints={shareSnapPoints}
         enablePanDownToClose
         ref={shareSheetRef}
+        onClose={() => setShareSheetModal(false)}
+        backdropComponent={({ style }) =>
+          shareSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
@@ -266,7 +298,8 @@ const EditTemplateScreen = () => {
           </View>
         </BottomSheetView>
       </BottomSheet>
-    </Screen>
+
+    </>
   );
 };
 

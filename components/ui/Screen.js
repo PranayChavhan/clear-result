@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     fontFamily:"Poppins-Regular",
+    backgroundColor: "#fff",
   },
 
   view: {

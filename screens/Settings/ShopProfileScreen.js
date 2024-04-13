@@ -26,6 +26,10 @@ import Button from "../../components/ui/Button";
 const ShopProfileScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
   const snapPoints = useMemo(() => ["65%"], []);
+
+  const [bottomSheetModal, setBottomSheetModal] = useState(false);
+  const [bottomCancelSheetModal, setBottomCancelSheetModal] = useState(false);
+
   const bottomSheetRef = useRef(null);
 
   const bottomCancelSheetRef = useRef(null);
@@ -37,24 +41,16 @@ const ShopProfileScreen = () => {
 
   const toggleDueTaskBottomSheet = () => {
     //toggle
-    if (isVisible) {
-      bottomSheetRef.current?.close();
-      setIsVisible(false);
-    } else {
-      bottomSheetRef.current?.expand();
-      setIsVisible(true);
-    }
+    bottomSheetRef.current?.expand();
+    setBottomSheetModal(true);
   };
 
-  const toggleCancelTaskBottomSheet = () => {
+  const openBottomCancelSheet = () => {
     //toggle
-    if (isVisible) {
-      bottomCancelSheetRef.current?.close();
-      setIsVisible(false);
-    } else {
-      bottomCancelSheetRef.current?.expand();
-      setIsVisible(true);
-    }
+    bottomCancelSheetRef.current?.expand();
+    bottomSheetRef.current?.close();
+    setBottomSheetModal(false);
+    setBottomCancelSheetModal(true);
   };
 
   // callbacks
@@ -63,56 +59,63 @@ const ShopProfileScreen = () => {
   }, []);
 
   return (
-    <Screen className="bg-white">
-      <TopBar logo={CrLogo} />
+    <>
+      <Screen className="bg-white">
+        <TopBar logo={CrLogo} />
 
-      <ScrollView
-        contentContainerStyle={{ paddingBottom: 180 }}
-        showsVerticalScrollIndicator={false}
-        className="px-4 py-4"
-      >
-        <ShopCard />
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 180 }}
+          showsVerticalScrollIndicator={false}
+          className="px-4 py-4"
+        >
+          <ShopCard />
 
-        <ShopSliderNavigartion clickItemTask={toggleDueTaskBottomSheet} />
+          <ShopSliderNavigartion clickItemTask={toggleDueTaskBottomSheet} />
 
-        <TasksTabs clickDueTask={toggleDueTaskBottomSheet} />
+          <TasksTabs clickDueTask={toggleDueTaskBottomSheet} />
 
-        <View className="bg-white border-[0.2px] border-gray-200 rounded-b-lg shadow-2xl p-2 px-4 mt-8 rounded-md">
-          <View className="flex flex-row items-center gap-2">
-            <IcDoc />
-            <Text className="text-[14px] font-bold">Documents</Text>
-          </View>
+          <View className="bg-white border-[0.2px] border-gray-200 rounded-b-lg shadow-2xl p-2 px-4 mt-8 rounded-md">
+            <View className="flex flex-row items-center gap-2">
+              <IcDoc />
+              <Text className="text-[14px] font-bold">Documents</Text>
+            </View>
 
-          <View className="flex flex-row items-center p-2 border-[0.8px] rounded-xl my-4 border-gray-400">
-            <IcAttachment />
-            <View className="ml-3">
-              <Text className="font-bold">whatsapp invite</Text>
-              <Text className="text-gray-400">10 MB PNG</Text>
+            <View className="flex flex-row items-center p-2 border-[0.8px] rounded-xl my-4 border-gray-400">
+              <IcAttachment />
+              <View className="ml-3">
+                <Text className="font-bold">whatsapp invite</Text>
+                <Text className="text-gray-400">10 MB PNG</Text>
+              </View>
+            </View>
+
+            <View className="flex flex-row items-center p-2 border-[0.8px] rounded-xl mb-4 border-gray-400">
+              <IcAttachment />
+              <View className="ml-3">
+                <Text className="font-bold">whatsapp invite</Text>
+                <Text className="text-gray-400">10 MB PNG</Text>
+              </View>
             </View>
           </View>
 
-          <View className="flex flex-row items-center p-2 border-[0.8px] rounded-xl mb-4 border-gray-400">
-            <IcAttachment />
-            <View className="ml-3">
-              <Text className="font-bold">whatsapp invite</Text>
-              <Text className="text-gray-400">10 MB PNG</Text>
-            </View>
-          </View>
-        </View>
+          <Text className="text-[12px] italic text-[#828282] absolute bottom-[12%] left-[33%]">
+            Powered by ClearResults
+          </Text>
+        </ScrollView>
 
-        <Text className="text-[12px] italic text-[#828282] absolute bottom-[12%] left-[33%]">
-          Powered by ClearResults
-        </Text>
-      </ScrollView>
-
-      {/* Bottom Sheet */}
-
+        {/* Bottom Sheet */}
+      </Screen>
       <BottomSheet
         index={-1}
         snapPoints={snapPoints}
         enablePanDownToClose
         ref={bottomSheetRef}
         onChange={handleSheetChanges}
+        onClose={() => setBottomSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
@@ -155,13 +158,16 @@ const ShopProfileScreen = () => {
           </View>
 
           <View className="mt-4 flex flex-row items-center justify-between">
-            <Button varient="primary" onPress={()=>{
-              bottomSheetRef.current.close()
-            }}>Send</Button>
             <Button
-              onPress={() => {bottomSheetRef.current.close()
-                bottomCancelSheetRef.current.expand()
+              varient="primary"
+              onPress={() => {
+                bottomSheetRef.current.close();
               }}
+            >
+              Send
+            </Button>
+            <Button
+              onPress={openBottomCancelSheet}
               varient="outline"
             >
               Discard
@@ -176,6 +182,12 @@ const ShopProfileScreen = () => {
         enablePanDownToClose
         ref={bottomCancelSheetRef}
         onChange={handleSheetChanges}
+        onClose={() => setBottomCancelSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomCancelSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView style={{ paddingHorizontal: 12 }}>
           <View className="flex items-center justify-center p-3 gap-x-2 flex-row border-b border-gray-200 ">
@@ -185,9 +197,7 @@ const ShopProfileScreen = () => {
 
           <View className="flex items-center mt-2 flex-row">
             <Text className="text-gray-500 text-xs"> Current Task:</Text>
-            <Text className="text-gray-800 text-sm ml-2">
-              Follow Up (Call)
-            </Text>
+            <Text className="text-gray-800 text-sm ml-2">Follow Up (Call)</Text>
           </View>
           <View className="mt-4">
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
@@ -217,7 +227,7 @@ const ShopProfileScreen = () => {
           </View>
 
           <View className="mt-4 flex flex-row items-center justify-between">
-            <Button varient="primary">Send</Button>
+            <Button varient="primary" onPress={()=>bottomCancelSheetRef.current.close()}>Send</Button>
             <Button
               onPress={() => bottomCancelSheetRef.current.close()}
               varient="outline"
@@ -227,7 +237,7 @@ const ShopProfileScreen = () => {
           </View>
         </BottomSheetView>
       </BottomSheet>
-    </Screen>
+    </>
   );
 };
 

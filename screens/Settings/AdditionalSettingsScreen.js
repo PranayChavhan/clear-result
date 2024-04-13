@@ -51,6 +51,10 @@ const AdditionalSettingsScreen = () => {
 
   const [textVal, settextVal] = useState("");
 
+  const handleBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
@@ -154,6 +158,7 @@ const AdditionalSettingsScreen = () => {
 
         <View className="mt-4 flex flex-row items-center justify-between">
           <TouchableOpacity
+            onPress={handleBack}
             className={`py-3 bg-white border-[1px] w-[48%] border-[#2F80ED]  rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
@@ -162,9 +167,7 @@ const AdditionalSettingsScreen = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("SubscriptionPackages");
-            }}
+            onPress={handleBack}
             className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">

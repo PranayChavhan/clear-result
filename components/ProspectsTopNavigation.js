@@ -6,14 +6,20 @@ import {
   Button,
   Dimensions,
 } from "react-native";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import IcPhone from "../assets/icons/ic_phone.svg";
 import Avatar01 from "../assets/icons/avatar_01.svg";
 import Avatar02 from "../assets/icons/avatar_02.svg";
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from "@react-native-picker/picker";
 import IcCalendar from "../assets/icons/ic_calendar.svg";
-import { SelectList } from 'react-native-dropdown-select-list'
+import { SelectList } from "react-native-dropdown-select-list";
 
 import IcMail from "../assets/icons/ic_mail.svg";
 import { useNavigation } from "@react-navigation/native";
@@ -124,14 +130,18 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
 
   const [companyName, setCompanyName] = useState("");
 
-  const [reschedule,setReschedule] = useState(false);
+  const [reschedule, setReschedule] = useState(false);
 
   const [notification, setNotification] = useState("");
 
+  const [bottomSheetModal, setBottomSheetModal] = useState(false);
+  const [bottomResSheetModal, setBottomResSheetModal] = useState(false);
+
+
   useEffect(() => {
-    if (notification!="") {
+    if (notification != "") {
       setTimeout(() => {
-        setNotification("")
+        setNotification("");
         setReschedule(false);
       }, 2000);
     }
@@ -139,12 +149,10 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
 
   const [selectedPerson, setSelectedPerson] = useState("");
 
-  
   const data = [
-      {key:'1', value:'John Doe'},
-      {key:'2', value:'Kia Doe'},
-  ]
-
+    { key: "1", value: "John Doe" },
+    { key: "2", value: "Kia Doe" },
+  ];
 
   const navigation = useNavigation();
   const buttonsData = [
@@ -160,16 +168,20 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
   const bottomSheetRescheduleRef = useRef(null);
 
   const toggleUserBottomSheet = () => {
-    console.log("toggleUserBottomSheet")
+    console.log("toggleUserBottomSheet");
     setReschedule(false);
-    setNotification("Praveen's Task Completed!")
+    setNotification("Praveen's Task Completed!");
     bottomSheetRef.current?.expand();
+
+    setBottomSheetModal(true);
   };
 
   const toggleRecheduleBottomSheet = () => {
     bottomSheetRescheduleRef.current?.expand();
-    setNotification("ReScheduling Task!")
+    setNotification("ReScheduling Task!");
     setReschedule(true);
+
+    setBottomResSheetModal(true);
   };
 
   // callbacks
@@ -191,14 +203,12 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
         </View>
       </View>
 
-      {
-        (notification !="" && !reschedule) &&
-        <SuccessToast text={notification} color="emerald"/>
-      }
-      {
-        (notification != "" && reschedule ) &&
-        <SuccessToast text={notification} color="amber"/>
-      }
+      {notification != "" && !reschedule && (
+        <SuccessToast text={notification} color="emerald" />
+      )}
+      {notification != "" && reschedule && (
+        <SuccessToast text={notification} color="amber" />
+      )}
 
       {/* Bulk */}
       {bulkDelete && (
@@ -219,12 +229,30 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           </View>
 
           <SelectList
-        setSelected={(val) => setSelectedPerson(val)} 
-        data={data} 
-        save="value"
-        boxStyles={{borderWidth: 1, borderColor: '#95C2FF', borderRadius: 8}}
-        dropdownStyles={{position: 'absolute', zIndex: 1000, width: '100%', top: 36, left: 0, backgroundColor: 'white', borderColor:"white", borderRadius: 8, shadowColor: '#000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5}}
-    />
+            setSelected={(val) => setSelectedPerson(val)}
+            data={data}
+            save="value"
+            boxStyles={{
+              borderWidth: 1,
+              borderColor: "#95C2FF",
+              borderRadius: 8,
+            }}
+            dropdownStyles={{
+              position: "absolute",
+              zIndex: 1000,
+              width: "100%",
+              top: 36,
+              left: 0,
+              backgroundColor: "white",
+              borderColor: "white",
+              borderRadius: 8,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+            }}
+          />
         </View>
       )}
       {/* Users */}
@@ -280,6 +308,12 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
         index={-1}
         ref={bottomSheetRef}
         onChange={handleSheetChanges}
+        onClose={() => setBottomSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           style={styles.bottomSheet}
@@ -321,6 +355,12 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
         enablePanDownToClose
         ref={bottomSheetRescheduleRef}
         onChange={handleSheetChanges}
+        onClose={() => setBottomResSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomResSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           style={styles.bottomSheet}

@@ -10,9 +10,7 @@ import Checkbox from "../../components/ui/Checkbox";
 import React, { useState } from "react";
 import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
-import ImgDarkMode from "../../assets/images/theme_dark.png";
-import ImgLightMode from "../../assets/images/theme_light.png";
-import ImgSystemMode from "../../assets/images/theme_system.png";
+import { useNavigation } from "@react-navigation/native";
 
 import TopBar from "../../components/ui/TopBar";
 import ScreenTitle from "../../components/ui/ScreenTitle";
@@ -20,6 +18,7 @@ import InputFeild from "../../components/ui/InputFeild";
 import Button from "../../components/ui/Button";
 
 const ReportFilterScreen = () => {
+  const navigation = useNavigation();
   const types = ["Follow Up", "Pending Vists", "Sample Docs", "Sample Tasks"];
   const subTypes = [
     "Call",
@@ -31,8 +30,13 @@ const ReportFilterScreen = () => {
   ];
 
   const [lang, setLang] = useState(types[0]);
+
+  const handleBack = () =>{
+    navigation.navigate("Reports")
+  }
+
   return (
-    <Screen>
+    <Screen className="bg-white">
       <TopBar logo={CrLogo} />
 
       <ScrollView>
@@ -83,8 +87,8 @@ const ReportFilterScreen = () => {
         </View>
 
         <View className="mt-4 flex flex-row items-center justify-between">
-          <Button varient="primary">Apply</Button>
-          <Button varient="outline">Discard</Button>
+          <Button onPress={handleBack} varient="primary">Apply</Button>
+          <Button onPress={handleBack} varient="outline">Discard</Button>
         </View>
 
         <View className="mb-32 mt-8">

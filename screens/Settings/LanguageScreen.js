@@ -4,18 +4,19 @@ import {
   View,
   Image,
   TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
 import Checkbox from "../../components/ui/Checkbox";
 import React, { useState } from "react";
 import Screen from "../../components/ui/Screen";
 import CrLogo from "../../assets/images/cr_logo.png";
-import ImgDarkMode from "../../assets/images/theme_dark.png";
-import ImgLightMode from "../../assets/images/theme_light.png";
-import ImgSystemMode from "../../assets/images/theme_system.png";
+import { useNavigation } from "@react-navigation/native";
 
 import TopBar from "../../components/ui/TopBar";
+import Button from "../../components/ui/Button";
 
 const LanguageScreen = () => {
+  const navigation = useNavigation();
   const languages = [
     "English",
     "Hindi",
@@ -30,46 +31,53 @@ const LanguageScreen = () => {
   ];
 
   const [lang, setLang] = useState(languages[0]);
+
+  const handleBack = () => {
+    navigation.goBack();
+  };
+
   return (
-    <Screen>
+    <Screen className="bg-white">
       <TopBar logo={CrLogo} />
-
-      <View className="p-4">
-        <Text className="font-bold text-md">Language</Text>
-      </View>
-
-      <View className="flex border m-6 p-4 rounded-md border-gray-900 ">
-        <Text className="text-xl font-medium">{lang}</Text>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            setLang("English");
-          }}
-        >
-          <Text className="text-blue-500 mt-2 italic ">Edit</Text>
-        </TouchableWithoutFeedback>
-      </View>
-      <View className="flex flex-wrap justify-around gap-y-3 p-4 px-6">
-        {/* Check box for languages */}
-        {languages.map((language, i) => (
-          <TouchableWithoutFeedback key={i}>
-            <View className="flex p-2 flex-row gap-3 ">
-              <Checkbox
-                checked={lang === language}
-                label={language}
-                onChange={() => {
-                  setLang(language);
-                }}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        ))}
-      </View>
-
-      <TouchableWithoutFeedback>
-        <View className="border m-3 border-blue-500 p-4 rounded-xl mt-4 items-center justify-center">
-          <Text className="text-blue-500 text-center">Save Changes</Text>
+      <ScrollView>
+        <View className="p-4">
+          <Text className="font-bold text-md">Language</Text>
         </View>
-      </TouchableWithoutFeedback>
+
+        <View className="flex border m-6 p-4 rounded-md border-gray-900 ">
+          <Text className="text-xl font-medium">{lang}</Text>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              setLang("English");
+            }}
+          >
+            <Text className="text-blue-500 mt-2 italic ">Edit</Text>
+          </TouchableWithoutFeedback>
+        </View>
+        <View className="flex flex-wrap justify-around gap-y-3 p-4 px-6">
+          {/* Check box for languages */}
+          {languages.map((language, i) => (
+            <TouchableWithoutFeedback key={i}>
+              <View className="flex p-2 flex-row gap-3 ">
+                <Checkbox
+                  checked={lang === language}
+                  label={language}
+                  onChange={() => {
+                    setLang(language);
+                  }}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+          ))}
+        </View>
+
+        {/* Apply  Button */}
+        <View className="px-4">
+          <Button varient={"outline"} onPress={handleBack}>
+            Apply Changes
+          </Button>
+        </View>
+      </ScrollView>
     </Screen>
   );
 };

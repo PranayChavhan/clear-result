@@ -28,15 +28,15 @@ const PushNotificationScreen = () => {
   const toggleSwitch3 = () => setIsEnabled3((previousState) => !previousState);
 
   return (
-    <Screen>
+    <Screen className="bg-white">
       <TopBar logo={CrLogo} />
 
       <View className="p-4">
         <Text className="font-bold text-md">Push Notification</Text>
       </View>
 
-      <View className="px-4  flex gap-3">
-        <View className="flex flex-row w-full  items-center justify-between">
+      <View className="px-4">
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
           <Text className="text-gray-700">Task Reminder</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
@@ -45,10 +45,8 @@ const PushNotificationScreen = () => {
             value={isEnabled1}
           />
         </View>
-      </View>
-
-      <View className="px-4  flex gap-3">
-        <View className="flex flex-row w-full  items-center justify-between">
+     
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
           <Text className="text-gray-700">Exhibition Updates</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
@@ -57,10 +55,8 @@ const PushNotificationScreen = () => {
             value={isEnabled2}
           />
         </View>
-      </View>
-
-      <View className="px-4  flex gap-3">
-        <View className="flex flex-row w-full  items-center justify-between">
+      
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
           <Text className="text-gray-700">Prospects/Customer Updates</Text>
           <Switch
             trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}

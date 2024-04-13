@@ -36,128 +36,140 @@ const HomeScreen = () => {
   };
 
   return (
-    <Screen>
-      <TopBar logo={CrLogo} />
+    <>
+      <Screen>
+        <TopBar logo={CrLogo} />
 
-      <ScrollView
-        classnName="px-2"
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-      >
-        {/* Scrollable Cards. */}
         <ScrollView
-          horizontal
-          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+          // classnName="px-2"
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
-          <SubscriptionCard type={"Prospects"} />
-          <SubscriptionCard type={"Customer"} />
-        </ScrollView>
-        {/* Just For You */}
-        <View className="flex flex-row  justify-start items-center px-4 gap-3">
-          <IcNewsLetter />
-          <Text
-            className={"font-semibold text-lg"}
-            style={{ fontFamily: "Poppins-Regular" }}
+          {/* Scrollable Cards. */}
+          <ScrollView
+            horizontal
+            className="py-4 px-2 flex relative max-h-300 h-300 overflow-hidden"
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
           >
-            Just For You
-          </Text>
-        </View>
-        <ScrollView
-          horizontal
-          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-        >
-          <NewsLetterCard />
-          <NewsLetterCard />
-        </ScrollView>
-        {/* Upcoming Exibitions */}
-        <ScrollView
-          horizontal
-          className="p-4 flex relative max-h-300 h-300 overflow-hidden"
-          showsVerticalScrollIndicator={false}
-          showsHorizontalScrollIndicator={false}
-        >
-          <UpcomingExCard />
-        </ScrollView>
-
-        <TouchableOpacity
-          onPress={() => {
-            setBottomSheetModal(true);
-            openBottomSheet();
-          }}
-          className={` mx-3  mb-3 flex-row items-center justify-center p-3 rounded-lg bg-[${colors.primary}] `}
-        >
-          <Text
-            className="text-white"
-            style={{ fontFamily: "Poppins-Regular" }}
-          >
-            Invite Users
-          </Text>
-        </TouchableOpacity>
-
-        <View className="pt-10 pb-16">
-          <Text className="text-xs italic text-gray-300 text-center">
-            Powered By Clear Results{" "}
-          </Text>
-        </View>
-
-        {/* Bottom Sheet */}
-        <BottomSheet
-          ref={bottomSheetRef}
-          snapPoints={["30%"]}
-          index={-1}
-          onClose={() => setBottomSheetModal(false)}
-          backgroundStyle={{
-            backgroundColor: "rgba(255, 255, 255,1)",
-          }}
-          style={{
-            shadowColor: "#000",
-
-            shadowOffset: { width: 0, height: 10 }, // Adjust as needed
-            shadowOpacity: 1,
-            shadowRadius: 4,
-          }}
-          enablePanDownToClose
-        >
-          <BottomSheetView className="p-12 flex flex-1 items-center justify-center">
-            <Text className="font-semibold text-center text-lg">Add Lead</Text>
-
-            <Text className="text-center text-gray-400 mt-2">
-              Please select one of the options for adding the lead.
+            <SubscriptionCard type={"Prospects"} />
+            <SubscriptionCard type={"Customer"} />
+            <View className="w-4"></View>
+          </ScrollView>
+          {/* Just For You */}
+          <View className="flex flex-row  justify-start items-center px-4 gap-3">
+            <IcNewsLetter />
+            <Text
+              className={"font-semibold text-lg"}
+              style={{ fontFamily: "Poppins-Regular" }}
+            >
+              Just For You
             </Text>
+          </View>
+          <ScrollView
+            horizontal
+            className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+          >
+            <NewsLetterCard />
+            <NewsLetterCard />
+          </ScrollView>
+          {/* Upcoming Exibitions */}
+          <ScrollView
+            horizontal
+            className="p-4 flex relative max-h-300 h-300 overflow-hidden"
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+          >
+            <UpcomingExCard />
+          </ScrollView>
 
-            <View className="flex flex-row gap-x-6 py-8 items-center justify-center">
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Camera")}
-                className={`p-2 bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
-              >
-                <IcBsCamera />
-              </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setBottomSheetModal(true);
+              openBottomSheet();
+            }}
+            className={` mx-3  mb-3 flex-row items-center justify-center p-3 rounded-lg bg-[${colors.primary}] `}
+          >
+            <Text
+              className="text-white"
+              style={{ fontFamily: "Poppins-Regular" }}
+            >
+              Invite Users
+            </Text>
+          </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("CreateTask");
-                }}
-                className={`py-3   bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
-              >
-                <IcBsScan />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("UserInfoForm");
-                }}
-                className={`py-3   bg-sky-100 h-20 w-20 flex items-center justify-center rounded-3xl`}
-              >
-                <IcBsForm />
-              </TouchableOpacity>
-            </View>
-          </BottomSheetView>
-        </BottomSheet>
-      </ScrollView>
-    </Screen>
+          <View className="pt-10 pb-16">
+            <Text className="text-xs italic text-gray-300 text-center">
+              Powered By Clear Results{" "}
+            </Text>
+          </View>
+        </ScrollView>
+      </Screen>
+      {/* Bottom Sheet */}
+      <BottomSheet
+        ref={bottomSheetRef}
+        snapPoints={["40%"]}
+        index={-1}
+        onClose={() => setBottomSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
+        backgroundStyle={{
+          backgroundColor: "rgba(255, 255, 255,1)",
+        }}
+        style={{
+          shadowColor: "#000",
+
+          shadowOffset: { width: 0, height: 10 }, // Adjust as needed
+          shadowOpacity: 1,
+          shadowRadius: 4,
+        }}
+        enablePanDownToClose
+      >
+        <BottomSheetView className="p-12 flex flex-1 items-center justify-center">
+          <Text className="font-semibold text-center text-lg">Add Lead</Text>
+
+          <Text className="text-center text-gray-400 mt-2">
+            Please select one of the options for adding the lead.
+          </Text>
+
+          <View className="flex flex-row gap-x-6 py-8 items-center justify-center">
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Camera");
+                bottomSheetRef.current.close();
+              }}
+              className={`p-2 bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsCamera />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Home");
+                bottomSheetRef.current.close();
+              }}
+              className={`py-3   bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsScan />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("UserInfoForm");
+                bottomSheetRef.current.close();
+              }}
+              className={`py-3   bg-sky-100 h-20 w-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsForm />
+            </TouchableOpacity>
+          </View>
+        </BottomSheetView>
+      </BottomSheet>
+    </>
   );
 };
 

@@ -21,7 +21,7 @@ import SuccessToast from "../../components/SuccessToast";
 const RequestRefund = () => {
   const navigation = useNavigation();
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const isTextInputFocused = useRef(false);
 
   const [expand, setExpand] = useState(false);
@@ -35,7 +35,7 @@ const RequestRefund = () => {
     setTimeout(() => {
       setNotification(false);
       navigation.navigate("SubscriptionScreen", {tracknavigation: true});
-    }, 1500);
+    }, 800);
   }
 
   return (
@@ -80,7 +80,7 @@ const RequestRefund = () => {
           <TouchableWithoutFeedback onPress={() => setExpand(!expand)}>
           <View className="flex flex-row justify-between items-center border-b pb-3 border-gray-300">
             <Text>Why do you want to cancel subscription?</Text>
-            <View className={`${expand?"rotate-180":""} transition-all `}>
+            <View className={`${expand?"rotate-0":"rotate-180"} transition-all `}>
 
             <IcArrowUp />
             </View>

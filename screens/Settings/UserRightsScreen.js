@@ -31,49 +31,45 @@ import {
     const toggleSwitch3 = () => setIsEnabled3((previousState) => !previousState);
   
     return (
-      <Screen>
-        <TopBar logo={CrLogo} />
-  
-        <View className="p-4">
-          <Text className="font-bold text-md">User Rights</Text>
+      <Screen className="bg-white">
+      <TopBar logo={CrLogo} />
+
+      <View className="p-4">
+        <Text className="font-bold text-md">User Rights</Text>
+      </View>
+
+      <View className="px-4">
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
+          <Text className="text-gray-700">Creation Rights</Text>
+          <Switch
+            trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+            thumbColor={isEnabled1 ? "white" : "white"}
+            onValueChange={toggleSwitch1}
+            value={isEnabled1}
+          />
         </View>
-  
-        <View className="px-4  flex gap-3">
-          <View className="flex flex-row w-full  items-center justify-between">
-            <Text className="text-gray-700">Creation Rights</Text>
-            <Switch
-              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled1 ? "white" : "white"}
-              onValueChange={toggleSwitch1}
-              value={isEnabled1}
-            />
-          </View>
+     
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
+          <Text className="text-gray-700">Editor Rights</Text>
+          <Switch
+            trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+            thumbColor={isEnabled2 ? "white" : "white"}
+            onValueChange={toggleSwitch2}
+            value={isEnabled2}
+          />
         </View>
-  
-        <View className="px-4  flex gap-3">
-          <View className="flex flex-row w-full  items-center justify-between">
-            <Text className="text-gray-700">Editor Rights</Text>
-            <Switch
-              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled2 ? "white" : "white"}
-              onValueChange={toggleSwitch2}
-              value={isEnabled2}
-            />
-          </View>
+      
+        <View className="flex py-2 flex-row w-full  items-center justify-between">
+          <Text className="text-gray-700">Download Report</Text>
+          <Switch
+            trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+            thumbColor={isEnabled3 ? "white" : "white"}
+            onValueChange={toggleSwitch3}
+            value={isEnabled3}
+          />
         </View>
-  
-        <View className="px-4  flex gap-3">
-          <View className="flex flex-row w-full  items-center justify-between">
-            <Text className="text-gray-700">Download Report</Text>
-            <Switch
-              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled3 ? "white" : "white"}
-              onValueChange={toggleSwitch3}
-              value={isEnabled3}
-            />
-          </View>
-        </View>
-      </Screen>
+      </View>
+    </Screen>
     );
   };
   

@@ -29,16 +29,19 @@ const TemplateScreen = () => {
 
   const bottomSheetRef = useRef(null);
 
+  const [bottomSheetModal, setBottomSheetModal] = useState(false);
+
   const navigation = useNavigation();
 
   //open bottom sheet
   const openBottomSheet = () => {
-    if (bottomSheetIndex === -1) {
-      bottomSheetRef.current?.expand();
-    }
+    bottomSheetRef.current.expand();
+    setBottomSheetModal(true);
   };
 
   return (
+    <>
+
     <Screen>
       <TopBar logo={CrLogo} />
       <ScrollView>
@@ -93,11 +96,20 @@ const TemplateScreen = () => {
         </View>
         {/* Bottom Sheet  */}
       </ScrollView>
+      </Screen>
+
       <BottomSheet
         index={-1}
         snapPoints={snapPoints}
         enablePanDownToClose
         ref={bottomSheetRef}
+        onChange={(index) => setBottomSheetIndex(index)}
+        onClose={() => setBottomSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
       >
         <BottomSheetView
           className="shadow-md bg-amber-50 shadow-gray-400 z-50 p-8"
@@ -156,7 +168,7 @@ const TemplateScreen = () => {
           </View>
         </BottomSheetView>
       </BottomSheet>
-    </Screen>
+</>
   );
 };
 

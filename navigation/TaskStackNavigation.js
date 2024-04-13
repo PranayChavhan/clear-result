@@ -5,6 +5,7 @@ import CreateTaskScreen from "../screens/tasks/CreateTaskScreen";
 import CurrentSubscription from "../screens/dashboard/CurrentSubscription";
 import PaymentModeScreen from "../screens/dashboard/PaymentModeScreen";
 import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
+import TaskFilterScreen from "../screens/tasks/TaskFilter";
 
 const Stack = createNativeStackNavigator();
 const TaskStack = () => {
@@ -20,6 +21,11 @@ const TaskStack = () => {
         component={CreateTaskScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="TaskFilter"
+        component={TaskFilterScreen}
+        options={{ headerShown: false }}
+        />
       <Stack.Screen
         name="SubscriptionPackages"
         component={SubscriptionScreen}

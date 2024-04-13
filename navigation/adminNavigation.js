@@ -1,6 +1,11 @@
-import * as React from "react";
 import { Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import IcBsCamera from "../assets/icons/ic_bs_camera.svg";
+import IcBsScan from "../assets/icons/ic_bs_scan.svg";
+import IcBsForm from "../assets/icons/ic_bs_form.svg";
+
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabSearch from "../assets/icons/Tab_Search.svg";
 import InactiveCreate from "../assets/icons/inactive_create.svg";
@@ -11,7 +16,6 @@ import ActiveMeal from "../assets/icons/ic_exhibition.svg";
 import ActiveTasks from "../assets/icons/active_tasks.svg";
 import SearchScreen from "../screens/tabs/SearchScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 
 import DashboardScreen from "../screens/admin/DashboardScreen";
 import ExhibitionGraphScreen from "../screens/admin/ExhibitionGraphScreen";
@@ -28,7 +32,6 @@ const Tab = createBottomTabNavigator();
 const Dashboard = createNativeStackNavigator();
 const Exhibition = createNativeStackNavigator();
 
-
 const screenOptions = {
   tabBarShowLabel: false,
   headerShown: false,
@@ -43,170 +46,243 @@ const screenOptions = {
   },
 };
 
-
 const DashboardTabNavigation = () => {
-    return (
-        <Dashboard.Navigator screenOptions={screenOptions}>
-            <Dashboard.Screen
-                name="Dashboard"
-                component={DashboardScreen}
-                options={{headerShown: false}}
-            />
-            <Dashboard.Screen
-                name="SalesRepresentative"
-                component={SalesRepresentative}
-                options={{headerShown: false}}
-            />
-        </Dashboard.Navigator>
-    );
+  return (
+    <Dashboard.Navigator screenOptions={screenOptions}>
+      <Dashboard.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{ headerShown: false }}
+      />
+      <Dashboard.Screen
+        name="SalesRepresentative"
+        component={SalesRepresentative}
+        options={{ headerShown: false }}
+      />
+    </Dashboard.Navigator>
+  );
 };
 
 const ExhibitionStack = () => {
-    return (
-        <Exhibition.Navigator screenOptions={screenOptions}>
-            <Exhibition.Screen
-                name="Exhibition"
-                component={ExhibitionListScreen}
-                options={{headerShown: false}}
-            />
-            <Exhibition.Screen
-                name="ExhibitionInfo"
-                component={ExhibitionInfoScreen}
-                options={{headerShown: false}}
-            />
-            <Exhibition.Screen
-                name="ExhibitionGraph"
-                component={ExhibitionGraphScreen}
-                options={{headerShown: false}}
-            />
-        </Exhibition.Navigator>
-    );
+  return (
+    <Exhibition.Navigator screenOptions={screenOptions}>
+      <Exhibition.Screen
+        name="Exhibition"
+        component={ExhibitionListScreen}
+        options={{ headerShown: false }}
+      />
+      <Exhibition.Screen
+        name="ExhibitionInfo"
+        component={ExhibitionInfoScreen}
+        options={{ headerShown: false }}
+      />
+      <Exhibition.Screen
+        name="ExhibitionGraph"
+        component={ExhibitionGraphScreen}
+        options={{ headerShown: false }}
+      />
+    </Exhibition.Navigator>
+  );
 };
-
-
 
 // Tab Navigation
 const AdminTabNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen
-        name="CreateStack"
-        component={DashboardTabNavigation}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
+    <>
+      <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen
+          name="CreateStack"
+          component={DashboardTabNavigation}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
                 <View
-                  className={`flex flex-col items-center gap-1 ${
-                    focused ? "text-gray-800" : "text-gray-500"
-                  }`}
+                  style={{ alignItems: "center", justifyContent: "center" }}
                 >
-                  <InactiveCreate />
-                  <Text
-                    className={`${focused ? "text-gray-800" : "text-gray-500"}`}
-                  >
-                    Create
-                  </Text>
-                </View>
-              </View>
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="TaskStack"
-        component={AdminTaskScreen}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <View
-                  className={`flex flex-col items-center gap-1 ${
-                    focused ? "text-gray-800" : "text-gray-500"
-                  }`}
-                >
-                  {focused ? <ActiveTasks /> : <InactiveTasks />}
-                  <Text
-                    className={`${focused ? "text-gray-800" : "text-gray-500"}`}
-                  >
-                    Task
-                  </Text>
-                </View>
-              </View>
-            );
-          },
-        }}
-      />
-
-      <Tab.Screen
-        name="SeachStack"
-        component={SearchScreen}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View className=" absolute -top-5">
-                {focused ? (
-                  <View className="flex flex-col items-center gap-1">
-                    <TabSearch />
-                  </View>
-                ) : (
-                  <View className="flex flex-col items-center gap-1">
-                    <TabSearch />
-                  </View>
-                )}
-              </View>
-            );
-          },
-        }}
-      />
-
-      <Tab.Screen
-        name="ExhibitionStack"
-        component={ExhibitionStack}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <View className={`flex flex-col items-center gap-1`}>
-                  {focused ? <ActiveMeal /> : <InactiveMeal />}
-                  <Text
-                    className={`${focused ? "text-gray-800" : "text-gray-500"}`}
-                  >
-                    Exhibition
-                  </Text>
-                </View>
-              </View>
-            );
-          },
-        }}
-      />
-
-      <Tab.Screen
-        name="ProfileStack"
-        component={SettingsStack}
-        //pass param to screen
-        initialParams={{ admin: true }}
-        options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <View className={`flex flex-col items-center gap-1 `}>
-                  <InactiveProfile />
-                  <Text
-                    className={`${
-                      focused ? "text-gray-800 font-medium" : "text-gray-500"
+                  <View
+                    className={`flex flex-col items-center gap-1 ${
+                      focused ? "text-gray-800" : "text-gray-500"
                     }`}
                   >
-                    Profile
-                  </Text>
+                    <InactiveCreate />
+                    <Text
+                      className={`${
+                        focused ? "text-gray-800" : "text-gray-500"
+                      }`}
+                    >
+                      Create
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            );
-          },
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="TaskStack"
+          component={AdminTaskScreen}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ alignItems: "center", justifyContent: "center" }}
+                >
+                  <View
+                    className={`flex flex-col items-center gap-1 ${
+                      focused ? "text-gray-800" : "text-gray-500"
+                    }`}
+                  >
+                    {focused ? <ActiveTasks /> : <InactiveTasks />}
+                    <Text
+                      className={`${
+                        focused ? "text-gray-800" : "text-gray-500"
+                      }`}
+                    >
+                      Task
+                    </Text>
+                  </View>
+                </View>
+              );
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="SeachStack"
+          component={SearchScreen}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View className=" absolute -top-5">
+                  {focused ? (
+                    <View className="flex flex-col items-center gap-1">
+                      <TabSearch />
+                    </View>
+                  ) : (
+                    <View className="flex flex-col items-center gap-1">
+                      <TabSearch />
+                    </View>
+                  )}
+                </View>
+              );
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="ExhibitionStack"
+          component={ExhibitionStack}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ alignItems: "center", justifyContent: "center" }}
+                >
+                  <View className={`flex flex-col items-center gap-1`}>
+                    {focused ? <ActiveMeal /> : <InactiveMeal />}
+                    <Text
+                      className={`${
+                        focused ? "text-gray-800" : "text-gray-500"
+                      }`}
+                    >
+                      Exhibition
+                    </Text>
+                  </View>
+                </View>
+              );
+            },
+          }}
+        />
+
+        <Tab.Screen
+          name="ProfileStack"
+          component={SettingsStack}
+          //pass param to screen
+          initialParams={{ admin: true }}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ alignItems: "center", justifyContent: "center" }}
+                >
+                  <View className={`flex flex-col items-center gap-1 `}>
+                    <InactiveProfile />
+                    <Text
+                      className={`${
+                        focused ? "text-gray-800 font-medium" : "text-gray-500"
+                      }`}
+                    >
+                      Profile
+                    </Text>
+                  </View>
+                </View>
+              );
+            },
+          }}
+        />
+      </Tab.Navigator>
+
+      {/* Bottom Sheet */}
+      <BottomSheet
+        ref={bottomSheetRef}
+        snapPoints={["30%"]}
+        index={-1}
+        onClose={() => setBottomSheetModal(false)}
+        backdropComponent={({ style }) =>
+          bottomSheetModal && (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )
+        }
+        backgroundStyle={{
+          backgroundColor: "rgba(255, 255, 255,1)",
         }}
-        
-      />
-    </Tab.Navigator>
+        style={{
+          shadowColor: "#000",
+
+          shadowOffset: { width: 0, height: 10 }, // Adjust as needed
+          shadowOpacity: 1,
+          shadowRadius: 4,
+        }}
+        enablePanDownToClose
+      >
+        <BottomSheetView className="p-12 flex flex-1 items-center justify-center">
+          <Text className="font-semibold text-center text-lg">Add Lead</Text>
+
+          <Text className="text-center text-gray-400 mt-2">
+            Please select one of the options for adding the lead.
+          </Text>
+
+          <View className="flex flex-row gap-x-6 py-8 items-center justify-center">
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Camera"), bottomSheetRef.current.close();
+              }}
+              className={`p-2 bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsCamera />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                bottomSheetRef.current.close();
+              }}
+              className={`py-3   bg-sky-100 w-20 h-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsScan />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("UserInfoForm");
+                bottomSheetRef.current.close();
+              }}
+              className={`py-3   bg-sky-100 h-20 w-20 flex items-center justify-center rounded-3xl`}
+            >
+              <IcBsForm />
+            </TouchableOpacity>
+          </View>
+        </BottomSheetView>
+      </BottomSheet>
+    </>
   );
 };
 

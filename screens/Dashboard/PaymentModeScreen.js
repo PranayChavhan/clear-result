@@ -1,5 +1,6 @@
 import { View, ScrollView, TouchableWithoutFeedback, Text } from "react-native";
 import React, { useState, useRef } from "react";
+import { useNavigation } from "@react-navigation/native";
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
@@ -7,7 +8,12 @@ import { Radio, RadioGroup } from "@ui-kitten/components";
 import CreditCard from "../../components/CreditCard";
 import UPIPayment from "../../components/UPIPayment";
 import InternetBanking from "../../components/InternetBanking";
+
+
 const PaymentModeScreen = () => {
+
+  const navigation = useNavigation();
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const isTextInputFocused = useRef(false);
   return (
@@ -22,7 +28,7 @@ const PaymentModeScreen = () => {
         <View className="flex flex-row items-center justify-between">
           <Text className="text-[16px] font-semibold">Payment Mode</Text>
 
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={()=>navigation.navigate("Home")}>
             <Text
               className={`text-[14px] font-medium text-[#2F80ED] underline`}
             >

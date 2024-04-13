@@ -61,7 +61,7 @@ const SubscriptionScreen = ({ route }) => {
               Subscription Packages
             </Text>
             <TouchableWithoutFeedback
-              onPress={() => navigation.navigate("Home")}
+              onPress={()=>navigation.navigate("HomeStack",{screen:"Home"})}
             >
               <Text
                 className={`text-[14px] font-medium text-[#2F80ED] underline`}

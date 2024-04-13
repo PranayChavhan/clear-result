@@ -91,10 +91,11 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter firstname and last name of the contact"
-            onChangeText={(text) => setCompanyName(text)}
+           
             secureTextEntry={false}
           />
         </View>
+
         {/* Mobile Number */}
         <View className="mt-4 ">
           <Text className="text-[13px] font-medium text-[#828282] mb-2">
@@ -109,7 +110,7 @@ const UserInfoFormScreen = () => {
             </TouchableOpacity>
 
             <TextInput
-              placeholder="Enter the description here"
+              placeholder="+91 9876543210"
               secureTextEntry={false}
             />
           </View>
@@ -130,7 +131,7 @@ const UserInfoFormScreen = () => {
             </TouchableOpacity>
 
             <TextInput
-              placeholder="Enter the description here"
+              placeholder="+91 9876543210"
               secureTextEntry={false}
             />
           </View>
@@ -143,7 +144,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the email address"
-            onChangeText={(text) => setCompanyName(text)}
             secureTextEntry={false}
           />
         </View>
@@ -208,13 +208,16 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Please enter if any notes"
-            onChangeText={(text) => setCompanyName(text)}
+           
             secureTextEntry={false}
           />
         </View>
 
         <View className="mt-4 flex flex-row items-center justify-between">
           <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Home");
+            }}
             className={`py-3 bg-white border-[1px] w-[48%] border-[#2F80ED]  rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
@@ -224,7 +227,7 @@ const UserInfoFormScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("SubscriptionPackages");
+              navigation.navigate("TaskStack");
             }}
             className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
           >

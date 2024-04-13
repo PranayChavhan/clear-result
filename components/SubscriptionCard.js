@@ -25,7 +25,7 @@ const SubscriptionCard = ({ type }) => {
     navigator.navigate("Prospects");
   };
   return (
-    <View className={`w-screen pr-10 mr-3`}>
+    <View style={{width:Dimensions.get("window").width-28, paddingEnd:10, paddingVertical:5}}>
       <View className="p-4 rounded-3xl bg-orange-100 h-auto flex flex-col overflow-hidden">
         {/* Title */}
         <View>
@@ -64,12 +64,12 @@ const SubscriptionCard = ({ type }) => {
             <SubscriptionStatBox
               title="55"
               desc="Total"
-              logo={<IcContact width="28" height="28" />}
+              logo={<IcContact width="24" height="24" />}
             />
             <SubscriptionStatBox
               title="07"
               desc="Pending Visit"
-              logo={<IcBoard width="28" height="28" />}
+              logo={<IcBoard width="24" height="24" />}
             />
           </View>
 
@@ -78,12 +78,12 @@ const SubscriptionCard = ({ type }) => {
             <SubscriptionStatBox
               title="05"
               desc="Negotiation"
-              logo={<IcBadge width="28" height="28" />}
+              logo={<IcBadge width="24" height="24" />}
             />
             <SubscriptionStatBox
               title="12"
               desc="InActive"
-              logo={<IcBlock width="28" height="28" />}
+              logo={<IcBlock width="24" height="24" />}
             />
           </View>
           <View className="flex flex-row  justify-between items-center">
@@ -91,12 +91,12 @@ const SubscriptionCard = ({ type }) => {
             <SubscriptionStatBox
               title="15"
               desc="Win"
-              logo={<IcWin width="28" height="28" />}
+              logo={<IcWin width="24" height="24" />}
             />
             <SubscriptionStatBox
               title="06"
               desc="Closed"
-              logo={<IcClose width="28" height="28" />}
+              logo={<IcClose width="24" height="24" />}
             />
           </View>
         </View>

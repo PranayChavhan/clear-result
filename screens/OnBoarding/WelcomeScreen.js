@@ -14,6 +14,9 @@ import Logo from "../../assets/images/cr_logo_auth.png";
 import Screen from "../../components/ui/Screen";
 import colors from "../../constants/colors";
 
+import IcDot from "../../assets/icons/ic_dot.svg";
+import IcRdot from "../../assets/icons/ic_rdot.svg";
+
 export default function WelcomeScreen() {
   const navigation = useNavigation();
   const [currentPage, setCurrentPage] = useState(1);
@@ -78,14 +81,11 @@ export default function WelcomeScreen() {
         <View className="flex flex-col items-center justify-center">
           <View className="flex flex-row gap-1 items-center justify-center mb-4">
             {pages.map((_, index) => (
-              <Image
-                key={index}
-                source={
-                  currentPage === index + 1
-                    ? require("../../assets/icons/rdot.png")
-                    : require("../../assets/icons/dot.png")
-                }
-              />
+              currentPage === index + 1 ? (
+                <IcRdot key={index} />
+              ) : (
+                <IcDot key={index} />  
+              )
             ))}
           </View>
         </View>

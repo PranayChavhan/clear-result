@@ -14,11 +14,6 @@ export function DashboardStack() {
   return (
     <Stack.Navigator initialRouteName="SubscriptionPackage">
       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
         name="SubscriptionPackage"
         component={SubscriptionScreen}
         options={{ headerShown: false }}
@@ -26,6 +21,11 @@ export function DashboardStack() {
       <Stack.Screen
         name="PaymentMode"
         component={PaymentModeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen

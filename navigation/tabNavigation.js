@@ -48,6 +48,7 @@ const TabNavigation = () => {
 
   const openBottomSheet = () => {
     bottomSheetRef.current.expand();
+    setBottomSheetModal(true);
   }
 
   return (
@@ -184,6 +185,9 @@ const TabNavigation = () => {
           snapPoints={["30%"]}
           index={-1}
           onClose={() => setBottomSheetModal(false)}
+          backdropComponent={({ style }) => (
+           bottomSheetModal && <View style={[style, { backgroundColor: 'rgba(0, 0, 0, 0.5)' }]} />
+          )}
           backgroundStyle={{
             backgroundColor: "rgba(255, 255, 255,1)",
           }}
