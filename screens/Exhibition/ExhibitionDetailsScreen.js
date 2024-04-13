@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "@react-native-community/slider";
 import { useNavigation } from "@react-navigation/native";
 
@@ -27,7 +27,7 @@ import IcMail from "../../assets/icons/ic_circum_mail2.svg";
 import IcVender from "../../assets/icons/ic_vender.svg";
 import CheckBox from "../../components/ui/Checkbox";
 
-const ExhibitionDetailsScreen = () => {
+const ExhibitionDetailsScreen = ({route}) => {
   const navigation = useNavigation();
   const [sliderValue, setSliderValue] = useState(0);
 
@@ -44,9 +44,12 @@ const ExhibitionDetailsScreen = () => {
   };
 
   const handleBack = () => {
-    navigation.goBack();
+    // send data while going back
+    route.params.onGoBack("Invite has been sent to all leads.");
+    navigation.goBack()
   }
 
+ 
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />

@@ -157,6 +157,7 @@ const TabNavigation = () => {
       <Tab.Screen
         name="ProfileStack"
         component={SettingsStack}
+        initialParams={{ tab: true }}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -165,7 +166,7 @@ const TabNavigation = () => {
                   <InactiveProfile />
                   <Text
                     className={`${
-                      focused ? "text-gray-800 font-medium" : "text-gray-500"
+                      focused ? "text-gray-800 " : "text-gray-500"
                     }`}
                   >
                     Profile

@@ -32,6 +32,7 @@ import { FlatList, Swipeable } from "react-native-gesture-handler";
 import ProspectUserListItem from "./dashboard/ProspectUserListItem";
 import InputFeild from "./ui/InputFeild";
 import SuccessToast from "./SuccessToast";
+import WarningToast from "./WarningToast";
 const Tab = createMaterialTopTabNavigator();
 
 const usersData = [
@@ -143,7 +144,7 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
       setTimeout(() => {
         setNotification("");
         setReschedule(false);
-      }, 2000);
+      }, 3000);
     }
   }, [notification]);
 
@@ -207,7 +208,7 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
         <SuccessToast text={notification} color="emerald" />
       )}
       {notification != "" && reschedule && (
-        <SuccessToast text={notification} color="amber" />
+        <WarningToast text={notification} color="amber" />
       )}
 
       {/* Bulk */}

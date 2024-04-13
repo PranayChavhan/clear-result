@@ -1,10 +1,11 @@
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import IcBsCamera from "../assets/icons/ic_bs_camera.svg";
 import IcBsScan from "../assets/icons/ic_bs_scan.svg";
 import IcBsForm from "../assets/icons/ic_bs_form.svg";
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { useNavigation } from "@react-navigation/native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabSearch from "../assets/icons/Tab_Search.svg";
@@ -25,6 +26,9 @@ import AdminTaskScreen from "../screens/admin/AdminTaskScreen";
 import SalesRepresentative from "../screens/admin/SalesRepresentative";
 import ExhibitionListScreen from "../screens/admin/ExhibitionListScreen";
 import ExhibitionInfoScreen from "../screens/admin/ExhibitionInfoScreen";
+import DashboardStack from "./admin/DashboardNavigation";
+import TaskStack from "./admin/TaskStackNavigation";
+import ExhibitionStack from "./admin/ExhibitionNavigation";
 // import DashboardStack from "./DashBoardNavigation";
 // import TaskStack from "./TaskStackNavigation";
 
@@ -46,53 +50,35 @@ const screenOptions = {
   },
 };
 
-const DashboardTabNavigation = () => {
-  return (
-    <Dashboard.Navigator screenOptions={screenOptions}>
-      <Dashboard.Screen
-        name="Dashboard"
-        component={DashboardScreen}
-        options={{ headerShown: false }}
-      />
-      <Dashboard.Screen
-        name="SalesRepresentative"
-        component={SalesRepresentative}
-        options={{ headerShown: false }}
-      />
-    </Dashboard.Navigator>
-  );
-};
 
-const ExhibitionStack = () => {
-  return (
-    <Exhibition.Navigator screenOptions={screenOptions}>
-      <Exhibition.Screen
-        name="Exhibition"
-        component={ExhibitionListScreen}
-        options={{ headerShown: false }}
-      />
-      <Exhibition.Screen
-        name="ExhibitionInfo"
-        component={ExhibitionInfoScreen}
-        options={{ headerShown: false }}
-      />
-      <Exhibition.Screen
-        name="ExhibitionGraph"
-        component={ExhibitionGraphScreen}
-        options={{ headerShown: false }}
-      />
-    </Exhibition.Navigator>
-  );
-};
+
 
 // Tab Navigation
 const AdminTabNavigation = () => {
+
+  const [bottomSheetModal, setBottomSheetModal] = useState(false);
+  const bottomSheetRef = useRef(null);
+
+  const navigation = useNavigation();
+
+  const openBottomSheet = () => {
+    bottomSheetRef.current.expand();
+    setBottomSheetModal(true);
+  }
   return (
     <>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
-          name="CreateStack"
-          component={DashboardTabNavigation}
+          name="HomeStack"
+          component={DashboardStack}
+          listeners={{
+            tabPress: (e) => {
+              e.preventDefault();
+              console.log("Hello");
+              //Open Modal i.e. Bottom sheet
+              openBottomSheet();
+            },
+          }}
           options={{
             tabBarIcon: ({ focused }) => {
               return (
@@ -120,7 +106,7 @@ const AdminTabNavigation = () => {
         />
         <Tab.Screen
           name="TaskStack"
-          component={AdminTaskScreen}
+          component={TaskStack}
           options={{
             tabBarIcon: ({ focused }) => {
               return (

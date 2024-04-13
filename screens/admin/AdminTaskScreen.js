@@ -16,10 +16,13 @@ import ReportsTopNavigation from "../../components/reports/ReportsTopNavigation"
 import IcArrowDownBlue from "../../assets/icons/ic_arrow_down_blue.svg";
 import IcMultiPerson from "../../assets/icons/ic_multi_person.svg";
 import SalesRepresentativeCard from "../../components/SalesRepresentativeCard";
+import { useNavigation } from "@react-navigation/native";
 import Screen from "../../components/ui/Screen";
 import Button from "../../components/ui/Button";
 
-const DashboardScreen = () => {
+const AdminTaskScreen = () => {
+
+  const navigation = useNavigation();
   const buttonsData = [
     { label: "Follow Ups", count: "34" },
     { label: "Pending Visits", count: "16" },
@@ -78,7 +81,7 @@ const DashboardScreen = () => {
               {buttonsData.map((button, index) => (
                 <TouchableOpacity
                   key={index}
-                  onPress={() => handleButtonPress(index)}
+                  onPress={() => {}}
                   className={`${
                     0 === index ? "bg-[#BFF0FF80]" : "bg-[#FAFAFA]"
                   } w-16 rounded-md flex flex-col items-center justify-center p-2`}
@@ -100,7 +103,7 @@ const DashboardScreen = () => {
               resizeMode="contain"
             />
 
-           <Button varient={"outline"}>Create Task</Button>
+           <Button varient={"outline"} onPress={()=>navigation.navigate("CreateTask")}>Create Task</Button>
 
             <View className="mb-32 mt-12">
               <Text className="text-gray-400 text-center italic text-sm text-light">
@@ -114,4 +117,4 @@ const DashboardScreen = () => {
   );
 };
 
-export default DashboardScreen;
+export default AdminTaskScreen;

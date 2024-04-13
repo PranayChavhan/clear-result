@@ -22,6 +22,7 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import InputFeild from "../../components/ui/InputFeild";
 import Button from "../../components/ui/Button";
+import SuccessToast from "../../components/SuccessToast";
 
 const ShopProfileScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +34,9 @@ const ShopProfileScreen = () => {
   const bottomSheetRef = useRef(null);
 
   const bottomCancelSheetRef = useRef(null);
+
+
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
     bottomSheetRef.current?.close();
@@ -53,6 +57,14 @@ const ShopProfileScreen = () => {
     setBottomCancelSheetModal(true);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification("");
+    }, 3000);
+  }
+  , [notification]);
+
+
   // callbacks
   const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
@@ -68,6 +80,9 @@ const ShopProfileScreen = () => {
           showsVerticalScrollIndicator={false}
           className="px-4 py-4"
         >
+
+          
+          {notification!="" && <SuccessToast text={notification} onPress={()=>setNotification("")} />}
           <ShopCard />
 
           <ShopSliderNavigartion clickItemTask={toggleDueTaskBottomSheet} />
@@ -161,7 +176,9 @@ const ShopProfileScreen = () => {
             <Button
               varient="primary"
               onPress={() => {
+                setNotification("Email has been successfully sent to Praveen!")
                 bottomSheetRef.current.close();
+
               }}
             >
               Send
@@ -227,7 +244,10 @@ const ShopProfileScreen = () => {
           </View>
 
           <View className="mt-4 flex flex-row items-center justify-between">
-            <Button varient="primary" onPress={()=>bottomCancelSheetRef.current.close()}>Send</Button>
+            <Button varient="primary" onPress={()=>{
+              setNotification("Praveen’s task rescheduled & transferred to Amit!");
+              bottomCancelSheetRef.current.close();
+            }}>Send</Button>
             <Button
               onPress={() => bottomCancelSheetRef.current.close()}
               varient="outline"

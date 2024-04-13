@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const ProfileSettingsCard = ({ data }) => {
   const navigation = useNavigation();
+
   return (
     <View className={`rounded-xl  sm flex flex-col p-4 shadow-md bg-white m-4`}>
       {data.map((d, i) => (

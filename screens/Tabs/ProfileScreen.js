@@ -1,5 +1,5 @@
 import { Text, ScrollView, View, Image } from "react-native";
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
 import ProfileContactCard from "../../components/profile/ProfileContactCard";
@@ -13,6 +13,7 @@ import IcEmail from "../../assets/icons/ic_set_email.svg";
 import IcUserRights from "../../assets/icons/ic_user_rights.svg";
 import CrLogo from "../../assets/images/cr_logo.png";
 import IcAdditional from "../../assets/icons/ic_set_additional.svg";
+import SuccessToast from "../../components/SuccessToast";
 
 const settings1 = [
   {
@@ -77,12 +78,32 @@ const ProfileScreen = ({route}) => {
 
   //get admin param
   const admin  = route?.params?.admin;
+  const tab = route?.params?.tab;
   console.log("admin param");
   console.log(admin);
+
+  const [notification, setNotification] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification("");
+    }
+    , 3000);
+}, [notification]);
+
   return (
     <Screen className={`bg-gray-100`}>
       <TopBar logo={CrLogo} />
+
       <ScrollView>
+
+      {
+          notification!=""&&
+          <SuccessToast
+            text={notification}
+            onClose={() => setNotification("")}
+            />
+      }
         {/* Profile Card */}
         <ProfileContactCard />
 
@@ -90,8 +111,8 @@ const ProfileScreen = ({route}) => {
         <ProfileSettingsCard data={settings1} />
 
         {/* Settings Card */}
-        <ProfileSettingsCard data={admin?settings2:settings2.slice(1,settings2.length)} />
-        <ProfileSettingsCard data={settings3} />
+        <ProfileSettingsCard data={admin?settings2:settings2.slice(1,settings2.length)} setNotification={setNotification}/>
+        <ProfileSettingsCard data={settings3}/>
         <View className="h-32"></View>
       </ScrollView>
     </Screen>

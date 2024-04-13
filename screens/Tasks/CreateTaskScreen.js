@@ -192,7 +192,7 @@ const CreateTaskScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("SubscriptionPackages");
+              navigation.goBack();
             }}
             className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
           >

@@ -50,7 +50,7 @@ const RequestRefund = () => {
        {
           notification && (
             <SuccessToast text="Your request for a refund has been received. You'll hear from us
-            soon." color="emerald" />
+            soon."  />
           )
        }
        

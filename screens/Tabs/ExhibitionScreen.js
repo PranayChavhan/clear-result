@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Screen from "../../components/ui/Screen";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
@@ -12,18 +12,40 @@ import IcMore from "../../assets/icons/ic_exhibition.svg";
 
 import { useNavigation } from "@react-navigation/native";
 import ExhibitionCard from "../../components/exhibition/ExhibitionCard";
+import SuccessToast from "../../components/SuccessToast";
 
 
 const ExhibitionScreen = () => {
   const navigation = useNavigation();
+  const [notification, setNotification] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification("");
+    }
+    , 3000);
+}, [notification]);
+
+
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
+
+      {
+          notification!=""&&
+          <SuccessToast
+            text={notification}
+            onClose={() => setNotification("")}
+            />
+      }
+
       <View className="mt-4 px-4">
         <View className="flex flex-row items-center gap-4">
           <IcMore />
           <Text className="text-[18px] font-[500]">Exhibition Master</Text>
         </View>
+
+
 
         <View className="my-8">
           <ExhibitionCard
@@ -46,9 +68,16 @@ const ExhibitionScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ExhibitionDetails");
+              navigation.navigate("ExhibitionDetails",
+              {
+                onGoBack: (data) => {
+                  // Callback function to handle data from ScreenB
+                  setNotification(data);
+                },
+              }
+            );
             }}
-            className={`py-3 bg-blue-500   rounded-lg `}
+            className={`py-3 bg-blue-500 rounded-lg `}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
               Add New Exhibition
