@@ -74,7 +74,7 @@ const AdditionalSettingsScreen = () => {
           className={`rounded-xl  sm flex flex-col p-4 shadow-md shadow-gray-400 bg-white m-2`}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate("AdditionalSettings")}
+            onPress={() => navigation.navigate("StatusVertical")}
             className={`  flex gap-4 flex-row justify-start items-center `}
           >
             <View className={``}>

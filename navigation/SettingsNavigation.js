@@ -9,6 +9,7 @@ import UserRightsScreen from "../screens/settings/UserRightsScreen";
 import SMSGatewayScreeen from "../screens/settings/SMSGatewayScreen";
 import ThemeScreen from "../screens/settings/ThemeScreen";
 import ProfileScreen from "../screens/tabs/ProfileScreen";
+import StatusVerticalScreen from "../screens/settings/StatusVertical";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -82,6 +83,12 @@ const SettingsStack = ({route}) => {
         component={AdditionalSettingsScreen}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="StatusVertical"
+        component={StatusVerticalScreen}
+        options={{ headerShown: false }}
+        />
     </Stack.Navigator>
   );
 };
