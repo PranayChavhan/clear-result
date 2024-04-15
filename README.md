@@ -1,14 +1,23 @@
-# Expo Router Example
+# Clear Result 
+React native application for sales representative management and customer management.
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+## Features
+- Sales representative management
+- Customer management
+- Sales representative can add/edit/delete prospects
+- Sales representative can add/edit/delete customers
+- Manage Exhibition and Events
+- Manage Leads
+- Admin Dashboard
 
-## 🚀 How to use
+## Technology
+- React Native
+- Nativewind
 
-```sh
-npx create-expo-app -e with-router
-```
+## Installation
+- Clone the repository
+- Run `npm install`
+- Run `npm start`
 
-## 📝 Notes
+## Screenshots
 
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
