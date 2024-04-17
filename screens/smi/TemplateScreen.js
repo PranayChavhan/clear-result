@@ -49,7 +49,12 @@ const TemplateScreen = () => {
           <IcTemplate />
           <Text className="text-md font-medium">Templates for You</Text>
         </View>
-        <View className="py-8">
+        <View className="p-4">
+        <View>
+            <Text className="text-md font-medium italic px-2 text-gray-600">
+              New Collection
+            </Text>
+          </View>
           <TouchableOpacity onPress={openBottomSheet}>
             <View className="flex items-center justify-center flex-row max-h-[150px] object-contain">
               <Image
@@ -78,7 +83,11 @@ const TemplateScreen = () => {
               />
             </View>
           </TouchableOpacity>
-
+          <View>
+            <Text className="text-md font-medium px-2 py-4 italic text-gray-600">
+              Offers
+            </Text>
+          </View>
           <TouchableOpacity onPress={openBottomSheet}>
             <View className="flex items-center justify-center flex-row max-h-[150px] object-contain">
               <Image
