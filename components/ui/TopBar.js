@@ -29,7 +29,7 @@ const TopBar = ({ logo, nodrawer }) => {
       </View>
       </TouchableWithoutFeedback>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Login")}
+        onPress={() => navigation.navigate("Notifications")}
         className="m-0 p-0"
       >
         <View className="w-8 h-8 flex items-center justify-center border border-gray-300  rounded-lg">

@@ -9,6 +9,7 @@ import EditTemplateScreen from "../screens/smi/EditTemplateScreen";
 import SubscriptionScreen from "../screens/tasks/SubscriptionScreen";
 import PaymentModeScreen from "../screens/dashboard/PaymentModeScreen";
 import InvoiceScreen from "../screens/dashboard/InvoiceScreen";
+import NotificationScreen from "../screens/dashboard/NotificationScreen";
 
 const Stack = createNativeStackNavigator();
 export function DashboardStack() {
@@ -27,6 +28,12 @@ export function DashboardStack() {
       <Stack.Screen
         name="InvoiceScreen"
         component={InvoiceScreen}
+        options={{ headerShown: false }}
+        />
+
+      <Stack.Screen
+        name="Notifications"
+        component={NotificationScreen}
         options={{ headerShown: false }}
         />
       <Stack.Screen
