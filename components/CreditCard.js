@@ -157,7 +157,7 @@ const CreditCard = () => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("InvoiceScreen");
           }}
           className={`py-3  w-[48%]  bg-[#2F80ED]  rounded-xl`}
         >
