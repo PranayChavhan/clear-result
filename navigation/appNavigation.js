@@ -22,6 +22,7 @@ import CurrentSubscription from "../screens/dashboard/CurrentSubscription";
 import RequestRefund from "../screens/dashboard/RequestRefund";
 import TrackRefundStatus from "../screens/dashboard/TrackRefundStatus";
 import AdminTabNavigation from "./adminNavigation";
+import SupportScreen from "../screens/support/SupportScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -90,6 +91,11 @@ const DrawerNavigation = () => {
         component={TrackRefundStatus}
         options={{ headerShown: false }}
       />
+       <Drawer.Screen
+        name="SupportScreen"
+        component={SupportScreen}
+        options={{ headerShown: false }}
+      />
     </Drawer.Navigator>
   );
 };
@@ -153,6 +159,16 @@ const CustomDrawerContent = ({ navigation }) => {
         }
       >
         <Text className="font-semibold ">Reports Segment</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        className="bg-[#F4F9FF] p-4 rounded-xl my-2"
+        onPress={() =>
+          //open reports sceen
+          navigation.navigate("SupportScreen")
+        }
+      >
+        <Text className="font-semibold ">Help & Support</Text>
       </TouchableOpacity>
     </View>
   );

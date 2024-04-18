@@ -98,8 +98,7 @@ const AdditionalSettingsScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the days"
-            value={textVal}
-            onChangeText={(text) => settextVal(text)}
+            
             secureTextEntry={false}
           />
         </View>
@@ -112,8 +111,7 @@ const AdditionalSettingsScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the days"
-            value={textVal}
-            onChangeText={(text) => settextVal(text)}
+            
             secureTextEntry={false}
           />
         </View>
@@ -125,8 +123,7 @@ const AdditionalSettingsScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the days"
-            value={textVal}
-            onChangeText={(text) => settextVal(text)}
+            
             secureTextEntry={false}
           />
         </View>
@@ -138,8 +135,7 @@ const AdditionalSettingsScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the days"
-            value={textVal}
-            onChangeText={(text) => settextVal(text)}
+            
             secureTextEntry={false}
           />
         </View>
@@ -150,8 +146,7 @@ const AdditionalSettingsScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter the days"
-            value={textVal}
-            onChangeText={(text) => settextVal(text)}
+            
             secureTextEntry={false}
           />
         </View>
