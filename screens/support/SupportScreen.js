@@ -18,6 +18,8 @@ import BottomSheet, {
   BottomSheetView,
   BottomSheetBackdrop,
 } from "@gorhom/bottom-sheet";
+import NotificationCard from "../../components/NotificationCard";
+import SuccessToast from "../../components/SuccessToast";
 
 const faqs = [
   {
@@ -54,6 +56,8 @@ const SupportScreen = () => {
 
   const bottomSheetRef = useRef(null);
 
+  const [notification, setNotification] = useState(false);
+
   const handleSearchChange = (e) => {
     setSearch(e);
   };
@@ -75,10 +79,24 @@ const SupportScreen = () => {
     setOpen(index);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setNotification("");
+    }, 3000);
+  }, [notification]);
+  
+
   return (
     <>
       <Screen className="bg-white">
         <TopBar logo={CrLogo} />
+
+        {
+          notification!="" && (
+            <SuccessToast text={notification} onPress={() => setNotification("")} />
+          )
+        }
+
         <View className="">
           <ScrollView>
             <View className="p-4">
@@ -185,6 +203,7 @@ const SupportScreen = () => {
                 varient={"primary"}
                 onPress={() => {
                   bottomSheetRef.current?.close();
+                  setNotification("You have successfully created a support ticket and raised the issue.")
                   setBottomResSheetModal(false);
                 }}
               >

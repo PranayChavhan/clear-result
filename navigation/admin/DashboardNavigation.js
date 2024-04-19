@@ -10,6 +10,7 @@ import DashboardScreen from "../../screens/admin/DashboardScreen";
 import SalesRepresentative from "../../screens/admin/SalesRepresentative";
 import InvoiceScreen from "../../screens/dashboard/InvoiceScreen";
 import NotificationScreen from "../../screens/dashboard/NotificationScreen";
+import ServerScreen from "../../screens/server/ServerScreen";
 
 const Stack = createNativeStackNavigator();
 export function DashboardStack() {
@@ -73,6 +74,11 @@ export function DashboardStack() {
         component={ReportFilterScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="ServerScreen"
+        component={ServerScreen}
+        options={{ headerShown: false }}
+        />
     </Stack.Navigator>
   );
 }

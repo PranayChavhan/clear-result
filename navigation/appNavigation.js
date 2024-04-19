@@ -23,6 +23,7 @@ import RequestRefund from "../screens/dashboard/RequestRefund";
 import TrackRefundStatus from "../screens/dashboard/TrackRefundStatus";
 import AdminTabNavigation from "./adminNavigation";
 import SupportScreen from "../screens/support/SupportScreen";
+import ServerScreen from "../screens/server/ServerScreen";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -96,6 +97,11 @@ const DrawerNavigation = () => {
         component={SupportScreen}
         options={{ headerShown: false }}
       />
+      <Drawer.Screen
+        name="ServerScreen"
+        component={ServerScreen}
+        options={{ headerShown: false }}
+        />
     </Drawer.Navigator>
   );
 };
@@ -169,6 +175,18 @@ const CustomDrawerContent = ({ navigation }) => {
         }
       >
         <Text className="font-semibold ">Help & Support</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        className="bg-[#F4F9FF] p-4 rounded-xl my-2"
+        onPress={() =>
+          //open reports sceen
+          navigation.navigate("Home", {
+            screen: "ServerScreen",
+          })
+        }
+      >
+        <Text className="font-semibold ">Server Processing Time</Text>
       </TouchableOpacity>
     </View>
   );
