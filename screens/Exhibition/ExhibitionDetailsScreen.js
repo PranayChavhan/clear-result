@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Switch,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Slider from "@react-native-community/slider";
@@ -26,10 +27,20 @@ import IcCall from "../../assets/icons/ic_phone_call.svg";
 import IcMail from "../../assets/icons/ic_circum_mail2.svg";
 import IcVender from "../../assets/icons/ic_vender.svg";
 import CheckBox from "../../components/ui/Checkbox";
+import IcClose from "../../assets/icons/ic_close_blue.svg";
 
-const ExhibitionDetailsScreen = ({route}) => {
+const ExhibitionDetailsScreen = ({ route }) => {
   const navigation = useNavigation();
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(10000);
+
+  const [share, setShare] = useState(false);
+
+  //Switch
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+  const [tags, setTags] = useState(["Traditional Wear"]);
+  const [tagText,setTagText] = useState("");
 
   const onValueChange = (value) => {
     setSliderValue(value);
@@ -44,12 +55,28 @@ const ExhibitionDetailsScreen = ({route}) => {
   };
 
   const handleBack = () => {
-    // send data while going back
-    route.params.onGoBack("Invite has been sent to all leads.");
-    navigation.goBack()
-  }
+    // send data to ExhibitionMasterScreen
 
- 
+    navigation.navigate("Exhibition", {
+      data: "Invite has been sent to the leads!",
+    });
+  };
+
+  const removeTag = (index) => {
+    let newTags = tags.filter((tag, i) => i !== index);
+    setTags(newTags);
+  };
+  
+
+  useEffect(() => {
+    console.log(tagText)
+    if(tagText.includes(",")){
+      setTags([...tags,tagText.split(",")[0]]);
+      setTagText("")
+    }
+    console.log(tags)
+  },[tagText]);
+
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
@@ -112,19 +139,18 @@ const ExhibitionDetailsScreen = ({route}) => {
             Tags
           </Text>
 
-          <View className=" p-2 rounded-md border-[1px] border-gray-300 flex flex-row ">
-            <View className="bg-blue-100 rounded-full flex flex-row items-center w-fit p-1 px-4">
-              <Text>Traditional Wear</Text>
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal className=" p-2 rounded-md border-[1px] border-gray-300 flex flex-row ">
+            {tags.map((tag, index) => (
+              <TouchableOpacity key={index} onPress={()=>removeTag(index)} className="bg-blue-100  gap-x-2 mx-1 rounded-full flex flex-row items-center w-fit p-1 px-4">
+                <Text>{tag}</Text>
+                <IcClose width={8} height={8} />
+              </TouchableOpacity>
+            ))}
+            <View className="flex-1">
 
-              <Text className="ml-3 ">X</Text>
+            <TextInput value={tagText} className="w-full"  onChangeText={(text)=>setTagText(text)} placeholder="Add Tag" />
             </View>
-
-            <View className="bg-blue-100 rounded-full flex flex-row items-center w-fit  px-4 mx-2">
-              <Text>Indian Wear</Text>
-
-              <Text className="ml-3 ">X</Text>
-            </View>
-          </View>
+          </ScrollView>
         </View>
 
         <View className="mt-2">
@@ -146,23 +172,57 @@ const ExhibitionDetailsScreen = ({route}) => {
         <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg">
           <View className="flex flex-row items-center justify-between mb-4">
             <Text className="italic text-gray-500 font-medium">Invites</Text>
-            <IcToggle />
+            <Switch
+              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+              thumbColor={isEnabled ? "white" : "white"}
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
           </View>
 
           <View className="flex flex-row items-center justify-between">
-            <TouchableOpacity className="bg-gray-200 w-[48%] p-2 rounded-full flex flex-row items-center justify-center">
+            <TouchableOpacity
+              onPress={() => setShare(!share)}
+              className={` ${
+                !share
+                  ? "border-blue-400 bg-blue-200"
+                  : "border-gray-300 bg-gray-200"
+              } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
+            >
               <View className="flex flex-row items-center gap-2">
                 <IcEmail />
-                <Text className="text-gray-600">Emails</Text>
+                <View className="flex flex-row items-center justify-between">
+                  <Text
+                    className={`${
+                      !share ? "text-blue-600" : "text-gray-700"
+                    } mr-3`}
+                  >
+                    Emails
+                  </Text>
+                  {!share && <IcClose width={8} height={8} />}
+                </View>
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity className="bg-blue-200 border-blue-400 border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center">
+            <TouchableOpacity
+              onPress={() => setShare(!share)}
+              className={` ${
+                share
+                  ? "border-blue-400 bg-blue-200"
+                  : "border-gray-300 bg-gray-200"
+              } border w-[48%]  p-2 rounded-full flex flex-row items-center justify-center`}
+            >
               <View className="flex flex-row items-center gap-2">
                 <IcWhatsapp />
                 <View className="flex flex-row items-center justify-between">
-                  <Text className="text-blue-600">Whatsapp</Text>
-                  <Text className="text-blue-600 ml-6">X</Text>
+                  <Text
+                    className={`${
+                      share ? "text-blue-600" : "text-gray-700"
+                    } mr-3`}
+                  >
+                    Whatsapp
+                  </Text>
+                  {share && <IcClose width={8} height={8} />}
                 </View>
               </View>
             </TouchableOpacity>
@@ -201,7 +261,12 @@ const ExhibitionDetailsScreen = ({route}) => {
             <Text className="italic text-gray-500 font-medium">
               Exhibition Cost
             </Text>
-            <IcToggle />
+            <Switch
+              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+              thumbColor={isEnabled ? "white" : "white"}
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
           </View>
 
           <View
@@ -211,48 +276,28 @@ const ExhibitionDetailsScreen = ({route}) => {
               alignItems: "center",
             }}
           >
-            <View
-              style={{
-                width: "100%",
-                height: 5,
-                backgroundColor: "#D3D3D3",
-                borderRadius: 10,
-                overflow: "hidden",
-              }}
-            >
-              <View
-                style={{
-                  height: "100%",
-                  backgroundColor: "#007AFF",
-                  borderRadius: 10,
-                  width: `${sliderValue}%`,
-                }}
-              />
-            </View>
             <Slider
               style={{
-                position: "absolute",
-                width: "100%",
-                height: 120,
                 zIndex: 1,
+                width: "100%",
               }}
-              minimumValue={0}
-              maximumValue={100}
+              minimumValue={10000}
+              maximumValue={500000}
               value={sliderValue}
               onValueChange={onValueChange}
-              minimumTrackTintColor="transparent"
-              maximumTrackTintColor="transparent"
+              minimumTrackTintColor="#2F80ED"
+              maximumTrackTintColor="gray"
               thumbTintColor="#007AFF"
             />
           </View>
 
           <View className="flex flex-row items-center justify-between my-4">
             <View className="bg-gray-200 p-2 rounded border-[0.2px]">
-              <Text>10,000</Text>
+              <Text>{sliderValue.toFixed()}</Text>
             </View>
 
             <View className="bg-gray-200 p-2 rounded border-[0.2px]">
-              <Text>10,000,00</Text>
+              <Text>{5000 * 100}</Text>
             </View>
           </View>
 
@@ -285,7 +330,12 @@ const ExhibitionDetailsScreen = ({route}) => {
             <Text className="italic text-gray-500 font-medium">
               Contact Details
             </Text>
-            <IcToggle />
+            <Switch
+              trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
+              thumbColor={isEnabled ? "white" : "white"}
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
           </View>
 
           <View className="mt-2">

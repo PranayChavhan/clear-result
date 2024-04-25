@@ -59,7 +59,7 @@ const TodayScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white h-screen px-4 pt-4">
+    <ScrollView className="bg-white h-screen px-4 pt-4 z-20">
       <View className="flex flex-row items-center justify-between gap-4 mb-4">
         {buttonsData.map((button, index) => (
           <TouchableOpacity

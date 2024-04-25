@@ -38,7 +38,7 @@ import React from "react";
 import { Text } from "react-native";
 import { CheckBox } from "@ui-kitten/components";
 
-const Checkbox = ({ label, className }) => {
+const Checkbox = ({ label, className,   }) => {
   const [checked, setChecked] = React.useState(false);
 
   return (

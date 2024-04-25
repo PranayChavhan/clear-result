@@ -118,8 +118,20 @@ const EditTemplateScreen = () => {
           </ImageBackground>
         </View>
 
+          <View className="flex flex-row justify-center mt-4 px-8 ">
+            <Button
+              onPress={() => navigation.navigate("SIMScreen")}
+              varient={"outline"}
+            >Discard</Button>
+
+            <Button
+              onPress={() => navigation.navigate("SIMScreen")}
+              varient={"primary"}
+            >Save</Button>
+
+            </View>
         {/* Bottom menu */}
-        <View className="flex mt-36 flex-row justify-between px-4 py-4 bg-blue-50">
+        <View className="flex mt-20 flex-row justify-between px-4 py-4 bg-blue-50">
           <TouchableOpacity onPress={openDesignSheet}>
             <View className="flex items-center justify-center flex-col">
               <IcDesign />

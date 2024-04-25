@@ -135,7 +135,7 @@ const TemplateScreen = () => {
           {/* Options */}
           <View className="px-4">
             <TouchableOpacity
-              onPress={() => navigation.navigate("EditTemplate")}
+              onPress={() =>{ navigation.navigate("EditTemplate"); bottomSheetRef.current.close();}}
             >
               <View className="flex flex-row gap-x-2 items-center py-4">
                 <IcEdit />

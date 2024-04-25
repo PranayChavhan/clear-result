@@ -18,7 +18,7 @@ import IcWhatsapp from "../../assets/icons/ic_whatsapp.svg";
 import IcPlusLight from "../../assets/icons/ic_plus_light.svg";
 import IcCameraUpload from "../../assets/icons/ic_camera_upload.svg";
 import { useNavigation } from "@react-navigation/native";
-import CheckBox from "../../components/ui/Checkbox";
+import { CheckBox } from "@ui-kitten/components";
 
 const InputFeild = ({
   placeholder,
@@ -43,6 +43,8 @@ const InputFeild = ({
 const UserInfoFormScreen = () => {
   const navigation = useNavigation();
   const [isEnabled, setIsEnabled] = useState(false);
+
+  const [hasWhatsapp, setHasWhatsapp] = useState(false);
 
   const toggleSwitch = () => {
     setIsEnabled((previousState) => !previousState);
@@ -78,10 +80,14 @@ const UserInfoFormScreen = () => {
               placeholder="Enter the company/store name"
               secureTextEntry={false}
             />
+            <View className="flex items-center pt-2">
+
             <CheckBox
               className=""
-              label={"Company name and store name is different."}
-            />
+              >
+              <Text>Company name and store name is different.</Text>
+              </CheckBox>
+              </View>
           </View>
         </View>
 
@@ -91,7 +97,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Enter firstname and last name of the contact"
-           
             secureTextEntry={false}
           />
         </View>
@@ -109,16 +114,24 @@ const UserInfoFormScreen = () => {
               </View>
             </TouchableOpacity>
 
-            <TextInput
-              placeholder="+91 9876543210"
-              secureTextEntry={false}
-            />
+            <TextInput placeholder="+91 9876543210" secureTextEntry={false} />
           </View>
-          <CheckBox className="" label={"Whatsapp Number is not similar?"} />
+          <View className="flex flex-row items-center justify-start">
+
+          <CheckBox
+            checked={hasWhatsapp}
+            style={{ margin: 3 }}
+            onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
+            
+            />
+            <Text className="text-xs">Whatsapp no is not similar?</Text>
+            </View>
         </View>
 
         {/* Mobile Number */}
-        <View className="mt-4 ">
+       {
+        hasWhatsapp && (
+          <View className="mt-4 ">
           <Text className="text-[13px] font-medium text-[#828282] mb-2">
             Mobile Number
           </Text>
@@ -130,12 +143,10 @@ const UserInfoFormScreen = () => {
               </View>
             </TouchableOpacity>
 
-            <TextInput
-              placeholder="+91 9876543210"
-              secureTextEntry={false}
-            />
+            <TextInput placeholder="+91 9876543210" secureTextEntry={false} />
           </View>
-        </View>
+        </View>)
+       }
 
         {/* Email */}
         <View className="mt-4">
@@ -208,7 +219,6 @@ const UserInfoFormScreen = () => {
           </Text>
           <InputFeild
             placeholder="Please enter if any notes"
-           
             secureTextEntry={false}
           />
         </View>

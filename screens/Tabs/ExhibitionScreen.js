@@ -15,9 +15,17 @@ import ExhibitionCard from "../../components/exhibition/ExhibitionCard";
 import SuccessToast from "../../components/SuccessToast";
 
 
-const ExhibitionScreen = () => {
+const ExhibitionScreen = ({route}) => {
   const navigation = useNavigation();
   const [notification, setNotification] = useState("");
+
+
+  //get data from params
+  useEffect(() => {
+    if (route && route.params && route.params.data) {
+      setNotification(route.params.data);
+    }
+  }, [route.params]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,14 +76,7 @@ const ExhibitionScreen = () => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ExhibitionDetails",
-              {
-                onGoBack: (data) => {
-                  // Callback function to handle data from ScreenB
-                  setNotification(data);
-                },
-              }
-            );
+              navigation.navigate("ExhibitionDetails");
             }}
             className={`py-3 bg-blue-500 rounded-lg `}
           >
