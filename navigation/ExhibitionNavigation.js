@@ -1,3 +1,4 @@
+import ExhibitionInfoScreen from "../screens/admin/ExhibitionInfoScreen";
 import AddContactPerson from "../screens/exhibition/AddContactPerson";
 import ExhibitionDetailsScreen from "../screens/exhibition/ExhibitionDetailsScreen";
 import ExhibitionFilter from "../screens/exhibition/ExhibitionFilter";
@@ -12,6 +13,11 @@ const ExhibitionStack = () => {
       <Stack.Screen
         name="Exhibition"
         component={ExhibitionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ExhibitionInfo"
+        component={ExhibitionInfoScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen

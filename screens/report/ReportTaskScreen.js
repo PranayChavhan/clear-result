@@ -14,19 +14,11 @@ const ReportTaskScreen = () => {
       <ScrollView>
         {/* Images */}
         <View className="p-1 py-2">
-          <ImageBackground
-            source={require("../../assets/images/reports/report_1.png")}
-            className="w-full mt-4 mb-4 z-0"
-            style={{
-              height: Dimensions.get("screen").width * (9 / 16) + 12,
-              zIndex: 0,
-            }}
-            resizeMode="contain"
-          >
-            <TouchableOpacity onPress={()=>navigation.navigate("ReportsFilter")} className="absolute z-50 right-3 -top-4 ml-2 shadow-md bg-white px-2 py-3 shadow-gray-500 rounded-md ">
+          <View className="flex items-end justify-center p-2">
+            <TouchableOpacity onPress={()=>navigation.navigate("ReportsFilter")} className=" shadow-md bg-white px-2 py-3 shadow-gray-500 rounded-md ">
               <IcFilter />
             </TouchableOpacity>
-          </ImageBackground>
+          </View>
 
           <Image
             source={require("../../assets/images/reports/report_2.png")}

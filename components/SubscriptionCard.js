@@ -65,11 +65,13 @@ const SubscriptionCard = ({ type }) => {
               title="55"
               desc="Total"
               logo={<IcContact width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
             <SubscriptionStatBox
               title="07"
               desc="Pending Visit"
               logo={<IcBoard width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
           </View>
 
@@ -79,11 +81,13 @@ const SubscriptionCard = ({ type }) => {
               title="05"
               desc="Negotiation"
               logo={<IcBadge width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
             <SubscriptionStatBox
               title="12"
               desc="InActive"
               logo={<IcBlock width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
           </View>
           <View className="flex flex-row  justify-between items-center">
@@ -92,11 +96,13 @@ const SubscriptionCard = ({ type }) => {
               title="15"
               desc="Win"
               logo={<IcWin width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
             <SubscriptionStatBox
               title="06"
               desc="Closed"
               logo={<IcClose width="24" height="24" />}
+              onPress={handleOpenProspects}
             />
           </View>
         </View>

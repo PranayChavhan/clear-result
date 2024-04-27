@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import IcSearch from "../../assets/icons/ic_search.svg";
 import Checkbox from "../../components/ui/Checkbox";
 import { useNavigation } from "@react-navigation/native";
+
 const AddContactPerson = () => {
   const [activeButton, setActiveButton] = useState(0);
   const items = [
@@ -21,6 +22,26 @@ const AddContactPerson = () => {
     { label: "Profession 1", value: "Profession 1" },
     { label: "Profession 2", value: "Profession 2" },
   ];
+
+  const names = [
+    "Praveen Sharma",
+    "Ananya Gupta",
+    "Madhu Agrawal",
+    "Rahul Shah",
+    "Mohit Kale",
+    "Ritika Agrawal",
+    "Reena Desai",
+    "Suyash Rathi",
+    "Varun Nair",
+    "Rohit Ray",
+  ];
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // ES6 syntax for swapping elements
+    }
+    return array;
+  };
 
   return (
     <Screen className="bg-white">
@@ -60,7 +81,11 @@ const AddContactPerson = () => {
               ))}
             </View>
             <View className="w-full px-4">
-              {activeButton === 0 ? <Vendor /> : null}
+              {activeButton === 0 ? (
+                <Vendor names={names} />
+              ) : (
+                <Vendor names={shuffleArray(names)} />
+              )}
               {/* {activeButton === 1 ? <StoreCompany /> : null}
           {activeButton === 2 ? <EventExhibition /> : null}
           {activeButton === 3 ? <ContactPerson /> : null} */}
@@ -76,7 +101,7 @@ const AddContactPerson = () => {
   );
 };
 
-const Vendor = () => {
+const Vendor = ({names}) => {
   const navigation = useNavigation();
   return (
     <View>
@@ -92,27 +117,9 @@ const Vendor = () => {
 
       <Text className="text-[12px] font-bold text-[#828282]">Names</Text>
 
-      <Checkbox label="Praveen Sharma" />
-      <Checkbox label="Ananya Gupta" />
-      <Checkbox label="Madhu Agrawal" />
-      <Checkbox label="Rahul Shah" />
-      <Checkbox label="Mohit Kale" />
-      <Checkbox label="Ritika Agrawal" />
-      <Checkbox label="Reena Desai" />
-      <Checkbox label="Suyash Rathi" />
-      <Checkbox label="Varun Nair" />
-      <Checkbox label="Rohit Ray" />
-
-      <Checkbox label="Praveen Sharma" />
-      <Checkbox label="Ananya Gupta" />
-      <Checkbox label="Madhu Agrawal" />
-      <Checkbox label="Rahul Shah" />
-      <Checkbox label="Mohit Kale" />
-      <Checkbox label="Ritika Agrawal" />
-      <Checkbox label="Reena Desai" />
-      <Checkbox label="Suyash Rathi" />
-      <Checkbox label="Varun Nair" />
-      <Checkbox label="Rohit Ray" />
+      {names.map((name, index) => (
+        <Checkbox key={index} label={name} />
+      ))}
 
       <View className=" flex flex-row items-center gap-2 mt-4">
         <TouchableOpacity

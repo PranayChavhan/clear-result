@@ -7,10 +7,9 @@ import ReportScreen from "../../screens/report/ReportScreen";
 import ReportFilterScreen from "../../screens/report/ReportsFilter";
 import PaymentModeScreen from "../../screens/dashboard/PaymentModeScreen";
 import DashboardScreen from "../../screens/admin/DashboardScreen";
-import SalesRepresentative from "../../screens/admin/SalesRepresentative";
-import InvoiceScreen from "../../screens/dashboard/InvoiceScreen";
 import NotificationScreen from "../../screens/dashboard/NotificationScreen";
 import ServerScreen from "../../screens/server/ServerScreen";
+import SalesRepresentative from "../../screens/admin/SalesRepresentative";
 
 const Stack = createNativeStackNavigator();
 export function DashboardStack() {
@@ -21,22 +20,6 @@ export function DashboardStack() {
         component={DashboardScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="SalesRepresentative"
-        component={SalesRepresentative}
-        options={{ headerShown: false }}
-      />
-
-      <Stack.Screen
-        name="PaymentMode"
-        component={PaymentModeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="InvoiceScreen"
-        component={InvoiceScreen}
-        options={{ headerShown: false }}
-        />
 
       <Stack.Screen
         name="Notifications"
@@ -53,6 +36,12 @@ export function DashboardStack() {
         component={ProspectsScreen}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="SalesRepresentative"
+        component={SalesRepresentative}
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen
         name="UserInfoForm"
         component={UserInfoFormScreen}

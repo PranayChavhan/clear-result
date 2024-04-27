@@ -38,17 +38,17 @@ const Tab = createMaterialTopTabNavigator();
 const usersData = [
   {
     id: 1,
-    name: "John Doe",
-    email: "john@gmail.com",
+    name: "Praveen Sharma",
+    email: "praveen@gmail.com",
   },
   {
     id: 2,
-    name: "Kia Doe",
-    email: "kia@gmail.com",
+    name: "Kumar Joshi",
+    email: "kj@gmail.com",
   },
 ];
 
-const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
+const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer, setBulkDelete, setBulkTransfer }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -82,6 +82,8 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
           <UserDetailsTabView
             bulkDelete={bulkDelete}
             bulkTransfer={bulkTransfer}
+            setBulkDelete={setBulkDelete}
+            setBulkTransfer={setBulkTransfer}
           />
         )}
       />
@@ -91,6 +93,8 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
           <UserDetailsTabView
             bulkDelete={bulkDelete}
             bulkTransfer={bulkTransfer}
+            setBulkDelete={setBulkDelete}
+            setBulkTransfer={setBulkTransfer}
           />
         )}
       />
@@ -100,6 +104,8 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
           <UserDetailsTabView
             bulkDelete={bulkDelete}
             bulkTransfer={bulkTransfer}
+            setBulkDelete={setBulkDelete}
+            setBulkTransfer={setBulkTransfer}
           />
         )}
       />
@@ -109,6 +115,8 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
           <UserDetailsTabView
             bulkDelete={bulkDelete}
             bulkTransfer={bulkTransfer}
+            setBulkDelete={setBulkDelete}
+            setBulkTransfer={setBulkTransfer}
           />
         )}
       />
@@ -118,6 +126,8 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
           <UserDetailsTabView
             bulkDelete={bulkDelete}
             bulkTransfer={bulkTransfer}
+            setBulkDelete={setBulkDelete}
+            setBulkTransfer={setBulkTransfer}
           />
         )}
       />
@@ -125,7 +135,7 @@ const ProspectsTopNavigation = ({ bulkDelete, bulkTransfer }) => {
   );
 };
 
-const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
+const UserDetailsTabView = ({ bulkTransfer, bulkDelete, setBulkDelete, setBulkTransfer }) => {
   const snapPoints = useMemo(() => ["60%", "80%"], []);
   const resSnapPoints = useMemo(() => ["95%"], []);
 
@@ -189,6 +199,21 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
   const handleSheetChanges = useCallback((index) => {
     console.log("handleSheetChanges", index);
   }, []);
+
+
+  //handle deletes and transfer with notification
+  const handleBulkTransfer = () => {
+    setBulkTransfer(false);
+    setBulkDelete(false);
+    setNotification("Prospects have been transferred!");
+  };
+
+  const handleBulkDelete = () => {
+    setBulkDelete(false);
+    setBulkTransfer(false);
+    setNotification("Prospects have been deleted!");
+  };
+
 
   return (
     <View className="bg-gray-50 h-screen px-4 pt-4">
@@ -284,12 +309,13 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete }) => {
           <TouchableOpacity
             className={`py-3 bg-white border-[1px] border-[#2F80ED] flex-1 rounded-xl`}
           >
-            <Text className="text-[16px] font-semibold text-center text-[#2F80ED]">
+            <Text onPress={handleBulkDelete} className="text-[16px] font-semibold text-center text-[#2F80ED]">
               Cancel
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
+            onPress={handleBulkTransfer}
             className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">

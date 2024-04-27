@@ -22,12 +22,12 @@ import IcWhatsapp from "../../assets/icons/ic_vwp.svg";
 import IcPen from "../../assets/icons/ic_pen.svg";
 import IcAttachment from "../../assets/icons/ic_attachment.svg";
 import IcSearch from "../../assets/icons/ic_search_black.svg";
-import IcFlag from "../../assets/icons/ic_flag-india.svg";
+import IcFlagIndia from "../../assets/icons/ic_flag-india.svg";
 import IcCall from "../../assets/icons/ic_phone_call.svg";
 import IcMail from "../../assets/icons/ic_circum_mail2.svg";
 import IcVender from "../../assets/icons/ic_vender.svg";
-import CheckBox from "../../components/ui/Checkbox";
 import IcClose from "../../assets/icons/ic_close_blue.svg";
+import { CheckBox } from "@ui-kitten/components";
 
 const ExhibitionDetailsScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -35,9 +35,18 @@ const ExhibitionDetailsScreen = ({ route }) => {
 
   const [share, setShare] = useState(false);
 
+  const [saveNew, setSaveNew] = useState(false);
+
   //Switch
   const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled1, setIsEnabled1] = useState(false);
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch1 = () => setIsEnabled1((previousState) => !previousState);
+  const toggleSwitch2 = () => setIsEnabled2((previousState) => !previousState);
+
+  const [hasWhatsapp, setHasWhatsapp] = useState(false);
 
   const [tags, setTags] = useState(["Traditional Wear"]);
   const [tagText,setTagText] = useState("");
@@ -66,6 +75,8 @@ const ExhibitionDetailsScreen = ({ route }) => {
     let newTags = tags.filter((tag, i) => i !== index);
     setTags(newTags);
   };
+
+
   
 
   useEffect(() => {
@@ -263,9 +274,9 @@ const ExhibitionDetailsScreen = ({ route }) => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled1 ? "white" : "white"}
+              onValueChange={toggleSwitch1}
+              value={isEnabled1}
             />
           </View>
 
@@ -332,9 +343,9 @@ const ExhibitionDetailsScreen = ({ route }) => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled2 ? "white" : "white"}
+              onValueChange={toggleSwitch2}
+              value={isEnabled2}
             />
           </View>
 
@@ -366,25 +377,50 @@ const ExhibitionDetailsScreen = ({ route }) => {
             />
           </View>
 
+         {/* Mobile Number */}
+        <View className="mt-4 ">
+          <Text className="text-[13px] font-medium text-[#828282] mb-2">
+            Mobile Number
+          </Text>
+          <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
+            <TouchableOpacity>
+              <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
+                <IcFlagIndia />
+                <IcDown />
+              </View>
+            </TouchableOpacity>
+
+            <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"  />
+          </View>
+          <View className="flex flex-row items-center justify-start">
+            <CheckBox
+              checked={hasWhatsapp}
+              style={{ margin: 3 }}
+              onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
+            />
+            <Text className="text-xs">Whatsapp no is not similar?</Text>
+          </View>
+        </View>
+
+        {/* Mobile Number */}
+        {hasWhatsapp && (
           <View className="mt-4 ">
             <Text className="text-[13px] font-medium text-[#828282] mb-2">
               Mobile Number
             </Text>
-            <View className="flex flex-row items-center bg-white border border-blue-300  rounded-md">
+            <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
               <TouchableOpacity>
                 <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
-                  <IcFlag />
+                  <IcFlagIndia />
                   <IcDown />
                 </View>
               </TouchableOpacity>
 
-              <TextInput
-                placeholder="Enter the description here"
-                secureTextEntry={false}
-              />
+              <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"/>
             </View>
-            <CheckBox className="" label={"Whatsapp Number is not similar?"} />
           </View>
+        )}
+
 
           <View className="mt-2">
             <Text className="text-[12px] font-medium text-[#828282] mb-2">
@@ -397,7 +433,9 @@ const ExhibitionDetailsScreen = ({ route }) => {
             />
           </View>
 
-          <View className="bg-white rounded-lg p-2 mt-2">
+          {
+            saveNew && (  
+              <View className="bg-white rounded-lg p-2 mt-2">
             <View className="flex flex-row items-center justify-between">
               <Text>Praveen Sharma</Text>
 
@@ -422,6 +460,8 @@ const ExhibitionDetailsScreen = ({ route }) => {
               <Text className="text-[12px] text-gray-400"> Vender</Text>
             </View>
           </View>
+            )
+          }
           <View className="fles flex-row items-center justify-center w-full mt-8">
             <TouchableWithoutFeedback
               onPress={() => {
@@ -458,7 +498,7 @@ const ExhibitionDetailsScreen = ({ route }) => {
         </View>
 
         <View className="flex flex-col items-center justify-center mt-4">
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={()=>setSaveNew(true)}>
             <Text
               className={`text-[16px] font-medium text-[#2F80ED] underline`}
             >

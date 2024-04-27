@@ -15,6 +15,7 @@ import IcDown from "../../assets/icons/ic_down.svg";
 import IcMail from "../../assets/icons/ic_mail.svg";
 import IcWhatsapp from "../../assets/icons/ic_whatsapp.svg";
 import { useNavigation } from "@react-navigation/native";
+import { SelectList } from "react-native-dropdown-select-list";
 const InputFeild = ({
   placeholder,
   value,
@@ -40,10 +41,30 @@ const CreateTaskScreen = () => {
   const navigation = useNavigation();
   const [companyName, setCompanyName] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const [isEnabled3, setIsEnabled3] = useState(false);
+
 
   const toggleSwitch = () => {
     setIsEnabled((previousState) => !previousState);
   };
+
+  const toggleSwitch2 = () => {
+    setIsEnabled2((previousState) => !previousState);
+  };
+
+  const toggleSwitch3 = () => {
+    setIsEnabled3((previousState) => !previousState);
+  };
+
+  const [selectedPerson, setSelectedPerson] = useState("");
+
+  const data = [
+    { key: "1", value: "Piyush Sharma" },
+    { key: "2", value: "Parveen Kumar" },
+  ];
+
+
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
@@ -62,6 +83,40 @@ const CreateTaskScreen = () => {
           </Text>
           <IcDown />
         </View>
+
+
+        <View className="pb-3">
+            <View className="py-2">
+              <Text className="text-sm text-gray-500">Assign to</Text>
+            </View>
+
+            <SelectList
+              setSelected={(val) => setSelectedPerson(val)}
+              data={data}
+              save="value"
+              placeholder="Search & Select Person"
+              boxStyles={{
+                borderWidth: 1,
+                borderColor: "#95C2FF",
+                borderRadius: 8,
+              }}
+              dropdownStyles={{
+                position: "absolute",
+                zIndex: 1000,
+                width: "100%",
+                top: 36,
+                left: 0,
+                backgroundColor: "white",
+                borderColor: "white",
+                borderRadius: 8,
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 5,
+              }}
+            />
+          </View>
 
         <View className="mt-2">
           <Text className="text-[14px] font-medium text-[#828282] mb-2">
@@ -132,9 +187,9 @@ const CreateTaskScreen = () => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled2 ? "white" : "white"}
+              onValueChange={toggleSwitch2}
+              value={isEnabled2}
             />
           </View>
 
@@ -174,9 +229,9 @@ const CreateTaskScreen = () => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled3 ? "white" : "white"}
+              onValueChange={toggleSwitch3}
+              value={isEnabled3}
             />
           </View>
         </View>

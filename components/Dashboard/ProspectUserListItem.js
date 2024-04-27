@@ -77,7 +77,7 @@ const ProspectUserListItem = ({
         <View className="py-6 rounded-lg p-2 flex-row items-center">
           {bulk ? <Checkbox /> : null}
           <Avatar02 width="64" height="64" />
-          <View>
+          <View className="pl-2">
             <Text className="text-lg font-semibold">{item.name}</Text>
             <Text className="text-sm text-gray-400">{item.email}</Text>
           </View>

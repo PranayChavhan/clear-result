@@ -19,6 +19,8 @@ import IcPlusLight from "../../assets/icons/ic_plus_light.svg";
 import IcCameraUpload from "../../assets/icons/ic_camera_upload.svg";
 import { useNavigation } from "@react-navigation/native";
 import { CheckBox } from "@ui-kitten/components";
+import { SelectList } from "react-native-dropdown-select-list";
+import { useUserRole } from "../../context/UserContext";
 
 const InputFeild = ({
   placeholder,
@@ -42,13 +44,29 @@ const InputFeild = ({
 
 const UserInfoFormScreen = () => {
   const navigation = useNavigation();
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled1, setIsEnabled1] = useState(false);
+  const [isEnabled2, setIsEnabled2] = useState(false);
+
+
 
   const [hasWhatsapp, setHasWhatsapp] = useState(false);
 
-  const toggleSwitch = () => {
-    setIsEnabled((previousState) => !previousState);
+  const { userRole } = useUserRole();
+
+  const toggleSwitch1 = () => {
+    setIsEnabled1((previousState) => !previousState);
   };
+
+  const toggleSwitch2 = () => {
+    setIsEnabled2((previousState) => !previousState);
+  }
+
+  const [selectedPerson, setSelectedPerson] = useState("");
+
+  const data = [
+    { key: "1", value: "Piyush Sharma" },
+    { key: "2", value: "Parveen Kumar" },
+  ];
   return (
     <Screen className="bg-white">
       <TopBar logo={CrLogo} />
@@ -68,6 +86,41 @@ const UserInfoFormScreen = () => {
           <IcDown />
         </View>
 
+        {userRole === "admin" && (
+          <View className="px-2 pb-3">
+            <View className="py-2">
+              <Text className="text-sm text-gray-500">Assign to</Text>
+            </View>
+
+            <SelectList
+              setSelected={(val) => setSelectedPerson(val)}
+              data={data}
+              save="value"
+              placeholder="Search & Select Person"
+              boxStyles={{
+                borderWidth: 1,
+                borderColor: "#95C2FF",
+                borderRadius: 8,
+              }}
+              dropdownStyles={{
+                position: "absolute",
+                zIndex: 1000,
+                width: "100%",
+                top: 36,
+                left: 0,
+                backgroundColor: "white",
+                borderColor: "white",
+                borderRadius: 8,
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 5,
+              }}
+            />
+          </View>
+        )}
+
         <View className="flex items-center justify-center gap-x-3 flex-row">
           <View className="mt-2 bg-gray-100 rounded-full h-14 w-14 flex items-center justify-center">
             <IcCameraUpload />
@@ -81,13 +134,10 @@ const UserInfoFormScreen = () => {
               secureTextEntry={false}
             />
             <View className="flex items-center pt-2">
-
-            <CheckBox
-              className=""
-              >
-              <Text>Company name and store name is different.</Text>
+              <CheckBox className="">
+                <Text>Company name and store name is different.</Text>
               </CheckBox>
-              </View>
+            </View>
           </View>
         </View>
 
@@ -114,39 +164,36 @@ const UserInfoFormScreen = () => {
               </View>
             </TouchableOpacity>
 
-            <TextInput placeholder="+91 9876543210" secureTextEntry={false} />
+            <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"  />
           </View>
           <View className="flex flex-row items-center justify-start">
-
-          <CheckBox
-            checked={hasWhatsapp}
-            style={{ margin: 3 }}
-            onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
-            
+            <CheckBox
+              checked={hasWhatsapp}
+              style={{ margin: 3 }}
+              onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
             />
             <Text className="text-xs">Whatsapp no is not similar?</Text>
-            </View>
+          </View>
         </View>
 
         {/* Mobile Number */}
-       {
-        hasWhatsapp && (
+        {hasWhatsapp && (
           <View className="mt-4 ">
-          <Text className="text-[13px] font-medium text-[#828282] mb-2">
-            Mobile Number
-          </Text>
-          <View className="flex flex-row items-center border border-blue-200  rounded-md">
-            <TouchableOpacity>
-              <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
-                <IcFlagIndia />
-                <IcDown />
-              </View>
-            </TouchableOpacity>
+            <Text className="text-[13px] font-medium text-[#828282] mb-2">
+              Mobile Number
+            </Text>
+            <View className="flex flex-row items-center border border-blue-200  rounded-md">
+              <TouchableOpacity>
+                <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
+                  <IcFlagIndia />
+                  <IcDown />
+                </View>
+              </TouchableOpacity>
 
-            <TextInput placeholder="+91 9876543210" secureTextEntry={false} />
+              <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"/>
+            </View>
           </View>
-        </View>)
-       }
+        )}
 
         {/* Email */}
         <View className="mt-4">
@@ -166,9 +213,9 @@ const UserInfoFormScreen = () => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled1 ? "white" : "white"}
+              onValueChange={toggleSwitch1}
+              value={isEnabled1}
             />
           </View>
 
@@ -205,9 +252,9 @@ const UserInfoFormScreen = () => {
             </Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
-              thumbColor={isEnabled ? "white" : "white"}
-              onValueChange={toggleSwitch}
-              value={isEnabled}
+              thumbColor={isEnabled2 ? "white" : "white"}
+              onValueChange={toggleSwitch2}
+              value={isEnabled2}
             />
           </View>
         </View>

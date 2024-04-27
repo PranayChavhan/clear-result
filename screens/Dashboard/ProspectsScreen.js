@@ -137,6 +137,8 @@ const ProspectsScreen = () => {
       <ProspectsTopNavigation
         bulkDelete={bulkDelete}
         bulkTransfer={bulkTransfer}
+        setBulkDelete={setBulkDelete}
+        setBulkTransfer={setBulkTransfer}
       />
       {bulkDelete ||
         (bulkTransfer && (

@@ -28,16 +28,6 @@ const TaskStack = () => {
         options={{ headerShown: false }}
         />
       <Stack.Screen
-        name="SubscriptionPackages"
-        component={SubscriptionScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="CurrentSubscriptionPackages"
-        component={CurrentSubscription}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
         name="ShopProfile"
         component={ShopProfileScreen}
         options={{ headerShown: false }}

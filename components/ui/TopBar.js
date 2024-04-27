@@ -4,9 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 import { DrawerActions } from "@react-navigation/native";
 import IcNotification from "../../assets/icons/ic_notification.svg";
 import IcMenu from "../../assets/icons/ic_menu.svg";
+import { useUserRole } from "../../context/UserContext";
 
 const TopBar = ({ logo, nodrawer }) => {
   const navigation = useNavigation();
+
+  const {userRole } = useUserRole();
 
   const openDrawer = () => {
     // check if this screen is in drawer navigation
@@ -16,6 +19,14 @@ const TopBar = ({ logo, nodrawer }) => {
     }
   };
 
+  const handleNavigateHome = () =>{
+    if(userRole === 'admin'){
+      navigation.navigate('HomeStack')
+    }else{
+      navigation.navigate("HomeStack",{screen:"Home"})
+    }
+  }
+
   return (
     <View className="flex flex-row items-center justify-between px-4 py-4  z-50">
       <TouchableOpacity onPress={openDrawer}>
@@ -23,7 +34,7 @@ const TopBar = ({ logo, nodrawer }) => {
           <IcMenu width={20} height={20} />
         </View>
       </TouchableOpacity>
-      <TouchableWithoutFeedback onPress={()=>navigation.navigate("HomeStack",{screen:"Home"})}>
+      <TouchableWithoutFeedback onPress={handleNavigateHome}>
       <View className="object-contain w-40 flex items-center justify-center h-8">
         <Image source={logo} className="max-w-full h-6 object-contain" />
       </View>

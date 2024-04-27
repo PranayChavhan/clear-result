@@ -19,6 +19,9 @@ const ExhibitionCard = ({
       navigation.navigate(link);
     };
     return (
+      <TouchableOpacity onPress={() => {
+        navigation.navigate("ExhibitionInfo");
+      }}>
       <View className="border-[0.8px] border-gray-300 bg-white rounded-xl mb-8">
         <View className="flex flex-row marker:items-center justify-between p-4">
           <View>
@@ -55,6 +58,7 @@ const ExhibitionCard = ({
           </TouchableWithoutFeedback>
         </View>
       </View>
+      </TouchableOpacity>
     );
   }
   

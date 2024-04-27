@@ -7,8 +7,9 @@ import {
   TextInput,
   ScrollView,
   Dimensions,
+  BackHandler,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../../components/ui/TopBar";
 import CrLogo from "../../assets/images/cr_logo.png";
 import ScreenTitle from "../../components/ui/ScreenTitle";
@@ -25,6 +26,7 @@ const DashboardScreen = () => {
     console.log(name);
     navigation.navigate("SalesRepresentative", { name: name });
   }
+
   return (
     <>
       <Screen className="bg-white">

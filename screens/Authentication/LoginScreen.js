@@ -16,6 +16,7 @@ import colors from "../../constants/colors";
 import IcFacebook from "../../assets/icons/ic_facebook.svg";
 import IcGoogle from "../../assets/icons/ic_google.svg";
 import DynamicToggleButton from "../../components/ui/DynamicToggleButton";
+import { useUserRole } from "../../context/UserContext";
 
 const InputFeild = ({
   placeholder,
@@ -40,6 +41,9 @@ const InputFeild = ({
 export default function LoginScreen() {
   const [toggleValue, setToggleValue] = useState(false);
 
+
+  const {setUserRole} = useUserRole();
+
   const handleToggle = (value) => {
     setToggleValue(value);
   };
@@ -55,11 +59,13 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     if (email == "admin@cr.com" && password == "admin") {
+      setUserRole("admin");
       navigation.navigate("Home", {
         screen: "AdminDashboard",
       });
       return;
     } else {
+      setUserRole("user")
       navigation.navigate("Home");
     }
   };
