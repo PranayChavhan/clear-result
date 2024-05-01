@@ -41,7 +41,7 @@ const ExhibitionDetailsScreen = ({ route }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
-  
+
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const toggleSwitch1 = () => setIsEnabled1((previousState) => !previousState);
   const toggleSwitch2 = () => setIsEnabled2((previousState) => !previousState);
@@ -49,7 +49,7 @@ const ExhibitionDetailsScreen = ({ route }) => {
   const [hasWhatsapp, setHasWhatsapp] = useState(false);
 
   const [tags, setTags] = useState(["Traditional Wear"]);
-  const [tagText,setTagText] = useState("");
+  const [tagText, setTagText] = useState("");
 
   const onValueChange = (value) => {
     setSliderValue(value);
@@ -76,17 +76,14 @@ const ExhibitionDetailsScreen = ({ route }) => {
     setTags(newTags);
   };
 
-
-  
-
   useEffect(() => {
-    console.log(tagText)
-    if(tagText.includes(",")){
-      setTags([...tags,tagText.split(",")[0]]);
-      setTagText("")
+    console.log(tagText);
+    if (tagText.includes(",")) {
+      setTags([...tags, tagText.split(",")[0]]);
+      setTagText("");
     }
-    console.log(tags)
-  },[tagText]);
+    console.log(tags);
+  }, [tagText]);
 
   return (
     <Screen className="bg-white">
@@ -150,16 +147,28 @@ const ExhibitionDetailsScreen = ({ route }) => {
             Tags
           </Text>
 
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal className=" p-2 rounded-md border-[1px] border-gray-300 flex flex-row ">
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            className=" p-2 rounded-md border-[1px] border-gray-300 flex flex-row "
+          >
             {tags.map((tag, index) => (
-              <TouchableOpacity key={index} onPress={()=>removeTag(index)} className="bg-blue-100  gap-x-2 mx-1 rounded-full flex flex-row items-center w-fit p-1 px-4">
+              <TouchableOpacity
+                key={index}
+                onPress={() => removeTag(index)}
+                className="bg-blue-100  gap-x-2 mx-1 rounded-full flex flex-row items-center w-fit p-1 px-4"
+              >
                 <Text>{tag}</Text>
                 <IcClose width={8} height={8} />
               </TouchableOpacity>
             ))}
             <View className="flex-1">
-
-            <TextInput value={tagText} className="w-full"  onChangeText={(text)=>setTagText(text)} placeholder="Add Tag" />
+              <TextInput
+                value={tagText}
+                className="w-full"
+                onChangeText={(text) => setTagText(text)}
+                placeholder="Add Tag"
+              />
             </View>
           </ScrollView>
         </View>
@@ -180,8 +189,8 @@ const ExhibitionDetailsScreen = ({ route }) => {
           />
         </View>
 
-        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg">
-          <View className="flex flex-row items-center justify-between mb-4">
+        <View className="mt-2 bg-blue-50 py-2 px-2 rounded-lg">
+          <View className="flex flex-row items-center justify-between ">
             <Text className="italic text-gray-500 font-medium">Invites</Text>
             <Switch
               trackColor={{ false: "#8282828b", true: "#2f81ed4d" }}
@@ -191,7 +200,9 @@ const ExhibitionDetailsScreen = ({ route }) => {
             />
           </View>
 
-          <View className="flex flex-row items-center justify-between">
+          <View className={`${isEnabled ? "" : "hidden"}`}>
+
+          <View className="flex flex-row items-center mt-4 justify-between">
             <TouchableOpacity
               onPress={() => setShare(!share)}
               className={` ${
@@ -265,10 +276,11 @@ const ExhibitionDetailsScreen = ({ route }) => {
               </Text>
             </TouchableWithoutFeedback>
           </View>
+          </View>
         </View>
 
-        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg">
-          <View className="flex flex-row items-center justify-between mb-4">
+        <View className="mt-2 bg-blue-50 py-2 px-2 rounded-lg">
+          <View className="flex flex-row items-center justify-between">
             <Text className="italic text-gray-500 font-medium">
               Exhibition Cost
             </Text>
@@ -279,28 +291,24 @@ const ExhibitionDetailsScreen = ({ route }) => {
               value={isEnabled1}
             />
           </View>
-
-          <View
-            style={{
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Slider
-              style={{
-                zIndex: 1,
-                width: "100%",
-              }}
-              minimumValue={10000}
-              maximumValue={500000}
-              value={sliderValue}
-              onValueChange={onValueChange}
-              minimumTrackTintColor="#2F80ED"
-              maximumTrackTintColor="gray"
-              thumbTintColor="#007AFF"
-            />
-          </View>
+          <View className={`${isEnabled1 ? "mt-4" : "hidden"}`}>
+            {
+              isEnabled1 && (
+                <Slider
+                style={{
+                  width: "100%",
+                }}
+                minimumValue={10000}
+                maximumValue={500000}
+                value={sliderValue}
+                onValueChange={onValueChange}
+                minimumTrackTintColor="#2F80ED"
+                maximumTrackTintColor="gray"
+                thumbTintColor="#007AFF"
+              />
+              )
+            }
+           
 
           <View className="flex flex-row items-center justify-between my-4">
             <View className="bg-gray-200 p-2 rounded border-[0.2px]">
@@ -334,10 +342,11 @@ const ExhibitionDetailsScreen = ({ route }) => {
               </Text>
             </TouchableWithoutFeedback>
           </View>
+          </View>
         </View>
 
-        <View className="mt-2 bg-blue-50 py-4 px-2 rounded-lg w-full">
-          <View className="flex flex-row items-center justify-between mb-4">
+        <View className="mt-2 bg-blue-50 py-2 px-2 rounded-lg w-full">
+          <View className="flex flex-row items-center justify-between ">
             <Text className="italic text-gray-500 font-medium">
               Contact Details
             </Text>
@@ -348,132 +357,141 @@ const ExhibitionDetailsScreen = ({ route }) => {
               value={isEnabled2}
             />
           </View>
+          <View className={`${isEnabled2 ? "mt-4" : "hidden"}`}>
+            <View className="mt-2">
+              <Text className="text-[12px] font-medium text-[#828282] mb-2">
+                Profession
+              </Text>
 
-          <View className="mt-2">
-            <Text className="text-[12px] font-medium text-[#828282] mb-2">
-              Profession
-            </Text>
+              <View className="flex flex-row items-center justify-between">
+                <TextInput
+                  className="border border-blue-300 p-2 rounded-md bg-white px-2 pl-2 flex-1"
+                  placeholder="Select the profession"
+                />
 
-            <View className="flex flex-row items-center justify-between">
-              <TextInput
-                className="border border-blue-300 p-2 rounded-md bg-white w-[86%]"
-                placeholder="Select the profession"
-              />
-
-              <TouchableOpacity className="bg-gray-300 p-[14px] rounded-md">
-                <IcSearch />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View className="mt-2">
-            <Text className="text-[12px] font-medium text-[#828282] mb-2">
-              Contact Person
-            </Text>
-
-            <TextInput
-              className="border border-blue-300 p-2 rounded-md bg-white "
-              placeholder="Select the contact person"
-            />
-          </View>
-
-         {/* Mobile Number */}
-        <View className="mt-4 ">
-          <Text className="text-[13px] font-medium text-[#828282] mb-2">
-            Mobile Number
-          </Text>
-          <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
-            <TouchableOpacity>
-              <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
-                <IcFlagIndia />
-                <IcDown />
+                <TouchableOpacity className="bg-gray-300 p-[14px] rounded-md ml-1">
+                  <IcSearch />
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
 
-            <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"  />
-          </View>
-          <View className="flex flex-row items-center justify-start">
-            <CheckBox
-              checked={hasWhatsapp}
-              style={{ margin: 3 }}
-              onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
-            />
-            <Text className="text-xs">Whatsapp no is not similar?</Text>
-          </View>
-        </View>
+            <View className="mt-2">
+              <Text className="text-[12px] font-medium text-[#828282] mb-2">
+                Contact Person
+              </Text>
 
-        {/* Mobile Number */}
-        {hasWhatsapp && (
-          <View className="mt-4 ">
-            <Text className="text-[13px] font-medium text-[#828282] mb-2">
-              Mobile Number
-            </Text>
-            <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
-              <TouchableOpacity>
-                <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
-                  <IcFlagIndia />
-                  <IcDown />
+              <TextInput
+                className="border border-blue-300 p-2 rounded-md bg-white pl-2 flex-1"
+                placeholder="Select the contact person"
+              />
+            </View>
+
+            {/* Mobile Number */}
+            <View className="mt-4 ">
+              <Text className="text-[13px] font-medium text-[#828282] mb-2">
+                Mobile Number
+              </Text>
+              <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
+                <TouchableOpacity>
+                  <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
+                    <IcFlagIndia />
+                    <IcDown />
+                  </View>
+                </TouchableOpacity>
+
+                <TextInput
+                  placeholder="+91 9876543210"
+                  secureTextEntry={false}
+                  inputMode="numeric"
+                />
+              </View>
+              <View className="flex flex-row items-center justify-start">
+                <CheckBox
+                  checked={hasWhatsapp}
+                  style={{ margin: 3 }}
+                  onChange={(nextChecked) => setHasWhatsapp(!hasWhatsapp)}
+                />
+                <Text className="text-xs">Whatsapp no is not similar?</Text>
+              </View>
+            </View>
+
+            {/* Mobile Number */}
+            {hasWhatsapp && (
+              <View className="mt-4 ">
+                <Text className="text-[13px] font-medium text-[#828282] mb-2">
+                  Mobile Number
+                </Text>
+                <View className="flex flex-row items-center border border-blue-200 bg-white  rounded-md">
+                  <TouchableOpacity>
+                    <View className=" p-3 rounded-md mr-2 gap-x-3 flex flex-row items-center justify-center">
+                      <IcFlagIndia />
+                      <IcDown />
+                    </View>
+                  </TouchableOpacity>
+
+                  <TextInput
+                    placeholder="+91 9876543210"
+                    secureTextEntry={false}
+                    inputMode="numeric"
+                  />
                 </View>
-              </TouchableOpacity>
+              </View>
+            )}
 
-              <TextInput placeholder="+91 9876543210" secureTextEntry={false} inputMode="numeric"/>
+            <View className="mt-2">
+              <Text className="text-[12px] font-medium text-[#828282] mb-2">
+                Email Address
+              </Text>
+
+              <TextInput
+                className="border border-blue-300 p-2 rounded-md bg-white pl-3 flex-1"
+                placeholder="Enter the email address"
+              />
             </View>
-          </View>
-        )}
 
-
-          <View className="mt-2">
-            <Text className="text-[12px] font-medium text-[#828282] mb-2">
-              Email Address
-            </Text>
-
-            <TextInput
-              className="border border-blue-300 p-2 rounded-md bg-white "
-              placeholder="Enter the email address"
-            />
-          </View>
-
-          {
-            saveNew && (  
+            {saveNew && (
               <View className="bg-white rounded-lg p-2 mt-2">
-            <View className="flex flex-row items-center justify-between">
-              <Text>Praveen Sharma</Text>
+                <View className="flex flex-row items-center justify-between">
+                  <Text>Praveen Sharma</Text>
 
-              <IcPen />
-            </View>
+                  <IcPen />
+                </View>
 
-            <View className="flex flex-row items-center gap-2 my-1">
-              <IcCall />
-              <Text className="text-[12px] text-gray-400"> +91-7856632923</Text>
-            </View>
+                <View className="flex flex-row items-center gap-2 my-1">
+                  <IcCall />
+                  <Text className="text-[12px] text-gray-400">
+                    {" "}
+                    +91-7856632923
+                  </Text>
+                </View>
 
-            <View className="flex flex-row items-center gap-2 my-1">
-              <IcMail />
-              <Text className="text-[12px] text-gray-400">
-                {" "}
-                praveen@gmail.com
-              </Text>
-            </View>
+                <View className="flex flex-row items-center gap-2 my-1">
+                  <IcMail />
+                  <Text className="text-[12px] text-gray-400">
+                    {" "}
+                    praveen@gmail.com
+                  </Text>
+                </View>
 
-            <View className="flex flex-row items-center gap-2 my-1 ">
-              <IcVender />
-              <Text className="text-[12px] text-gray-400"> Vender</Text>
-            </View>
-          </View>
-            )
-          }
-          <View className="fles flex-row items-center justify-center w-full mt-8">
-            <TouchableWithoutFeedback
-              onPress={() => {
-                navigation.navigate("AddContactPerson");
-              }}
-            >
-              <Text
-                className={`text-[16px] font-medium text-[#2F80ED] underline`}
+                <View className="flex flex-row items-center gap-2 my-1 ">
+                  <IcVender />
+                  <Text className="text-[12px] text-gray-400"> Vender</Text>
+                </View>
+              </View>
+            )}
+            <View className="fles flex-row items-center justify-center w-full mt-8">
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  navigation.navigate("AddContactPerson");
+                }}
               >
-                + Add contact person
-              </Text>
-            </TouchableWithoutFeedback>
+                <Text
+                  className={`text-[16px] font-medium text-[#2F80ED] underline`}
+                >
+                  + Add contact person
+                </Text>
+              </TouchableWithoutFeedback>
+            </View>
           </View>
         </View>
 
@@ -498,7 +516,7 @@ const ExhibitionDetailsScreen = ({ route }) => {
         </View>
 
         <View className="flex flex-col items-center justify-center mt-4">
-          <TouchableWithoutFeedback onPress={()=>setSaveNew(true)}>
+          <TouchableWithoutFeedback onPress={() => setSaveNew(true)}>
             <Text
               className={`text-[16px] font-medium text-[#2F80ED] underline`}
             >

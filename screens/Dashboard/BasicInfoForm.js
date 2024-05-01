@@ -219,7 +219,7 @@ const UserInfoFormScreen = () => {
             />
           </View>
 
-          <View className=" flex gap-y-2">
+          <View className={`${isEnabled1?'flex':'hidden'} gap-y-2`}>
             <Text className="text-[13px] text-gray-500 font-semibold ">
               Agent
             </Text>

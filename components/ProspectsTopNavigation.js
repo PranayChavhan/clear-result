@@ -309,13 +309,13 @@ const UserDetailsTabView = ({ bulkTransfer, bulkDelete, setBulkDelete, setBulkTr
           <TouchableOpacity
             className={`py-3 bg-white border-[1px] border-[#2F80ED] flex-1 rounded-xl`}
           >
-            <Text onPress={handleBulkDelete} className="text-[16px] font-semibold text-center text-[#2F80ED]">
+            <Text onPress={bulkDelete? handleBulkDelete : handleBulkTransfer} className="text-[16px] font-semibold text-center text-[#2F80ED]">
               Cancel
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={handleBulkTransfer}
+            onPress={bulkDelete? handleBulkDelete : handleBulkTransfer}
             className={`py-3  border-[1px] border-[#2F80ED] bg-[#2F80ED] flex-1 rounded-xl`}
           >
             <Text className="text-[16px] font-semibold text-center text-white">
