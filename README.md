@@ -5,7 +5,7 @@ React native application for sales representative management and customer manage
 - Sales representative management
 - Customer management
 - Sales representative can add/edit/delete prospects
-- Sales representative can add/edit/delete customers
+- Sales representative can add/edit/delete customers 
 - Manage Exhibition and Events
 - Manage Leads
 - Admin Dashboard
